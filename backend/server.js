@@ -10,7 +10,7 @@ app.use(morgan("dev"))
 
 // Define a route handler for the root URL
 app.get("/", (req, res) => {
-  res.send("Hello World!")
+  res.send("Hello AAQq!")
 })
 
 // Start the server

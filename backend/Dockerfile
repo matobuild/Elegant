@@ -1,5 +1,5 @@
 # Use the official Node.js 14 image as base
-FROM node
+FROM node:18-alpine3.17
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Command to run your application
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
