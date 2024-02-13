@@ -19,3 +19,14 @@ services:
     environment:
       CHOKIDAR_USEPOLLING: "true"
     stdin_open: true
+
+  db:
+    container_name: Elegant-Database
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: test_db
+    ports:
+      - "4000:5432"
