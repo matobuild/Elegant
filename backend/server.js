@@ -10,16 +10,14 @@ const PORT = process.env.PORT || 3000
 app.use(express.json())
 app.use(morgan("dev"))
 
+// initialize table in database
+const { initializeTable } = require("./db/table")
+initializeTable()
+
 // Define a route handler for the root URL
 app.get("/", (req, res) => {
-  res.send("HfggQq!")
+  res.send("mato!")
 })
-app.get("/api/test", (req, res) => {
-  // You can send any data as a response here
-  res.json({ message: "This is a test API endpoint" })
-})
-
-// app.use("/api/v1", router)
 
 // Start the server
 app.listen(PORT, () => {
