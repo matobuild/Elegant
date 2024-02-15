@@ -5,13 +5,13 @@ const encrypt = require("../utils/encrypt")
 exports.signUp = async (req, res, next) => {
   try {
     let body = req.body
-    console.log("BODY------->", body)
+    // console.log("BODY------->", body)
     let sqlCheckDupUser = `SELECT * FROM public.users where username = $1`
 
     let responseCheckDupUser = await pool.query(sqlCheckDupUser, [
       body.username,
     ])
-    console.log("responseCheckDupUser result --->", responseCheckDupUser)
+    // console.log("responseCheckDupUser result --->", responseCheckDupUser)
     if (responseCheckDupUser.rowCount > 0) {
       return res.status(400).json({ status: "Fail", data: "User is duplicate" })
     }
