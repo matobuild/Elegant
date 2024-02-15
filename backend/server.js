@@ -2,6 +2,8 @@ const express = require("express")
 const morgan = require("morgan")
 // dotenv need to include
 const router = require("./router/router")
+const errors = require("./utils/errors")
+
 const app = express()
 
 const PORT = process.env.PORT || 3000
@@ -18,6 +20,11 @@ initializeTable()
 app.get("/", (req, res) => {
   res.send("mato!")
 })
+
+app.use("/api/v1", router)
+
+// global error handling
+app.use(errors.ApiError)
 
 // Start the server
 app.listen(PORT, () => {

@@ -16,7 +16,10 @@ pool.query("SELECT NOW()", (err, res) => {
     console.error("Error executing query:", err)
     return
   }
-  console.log("Current date and time from PostgreSQL:", res.rows[0].now)
+  console.log(
+    "DATABASE is connected, Current date and time from PostgreSQL:",
+    res.rows[0].now
+  )
 })
 
 module.exports = pool

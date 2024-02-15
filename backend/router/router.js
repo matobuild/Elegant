@@ -3,6 +3,6 @@ const userService = require("../service/userService")
 
 const router = express.Router()
 
-router.route("/createTable").get(userService.signUp)
+router.route("/users").post(userService.signUp)
 
 module.exports = router
