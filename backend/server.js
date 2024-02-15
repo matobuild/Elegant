@@ -18,7 +18,7 @@ initializeTable()
 
 // Define a route handler for the root URL
 app.get("/", (req, res) => {
-  res.send("mato!")
+  res.send("test tomato!")
 })
 
 app.use("/api/v1", router)

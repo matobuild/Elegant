@@ -6,7 +6,7 @@ exports.signUp = async (req, res, next) => {
   try {
     let body = req.body
     // console.log("BODY------->", body)
-    let sqlCheckDupUser = `SELECT * FROM public.users where username = $1`
+    let sqlCheckDupUser = `SELECT * FROM public.users WHERE username = $1`
 
     let responseCheckDupUser = await pool.query(sqlCheckDupUser, [
       body.username,
@@ -40,6 +40,51 @@ exports.signUp = async (req, res, next) => {
     }
   } catch (error) {
     console.log("THE ERROR message is -->", error.message)
+    errors.mapError(500, "Internal Server Error", next)
+  }
+}
+
+exports.signIn = async (req, res, next) => {
+  try {
+    let body = req.body
+    // console.log("BODY------->", body)
+    let sql = `SELECT * FROM public.users WHERE username = $1`
+    let response = await pool.query(sql, [body.username])
+    console.log("RESPONSE--------->", response)
+    if (response.rowCount > 0) {
+      const isPwdValid = await encrypt.comparePassword(
+        body.password,
+        response.rows[0].user_password
+      )
+      // console.log("isPwdValid--------->", response)
+      if (isPwdValid) {
+        const token = await encrypt.generateJWT({
+          username: body.username,
+          role: response.rows[0].roles,
+          userId: response.rows[0].id,
+        })
+        return res
+          .status(200)
+          .cookie("jwt", token, {
+            expires: new Date(Date.now() + 60 * 60 * 24 * 1000),
+            httpOnly: true,
+            secure: true,
+          })
+          .json({
+            status: "success",
+            token: token,
+            data: "Login success",
+          })
+      } else {
+        return res
+          .status(401)
+          .json({ status: "Fail", data: "Password invalid" })
+      }
+    } else {
+      return res.status(400).json({ status: "Fail", data: "User not found" })
+    }
+  } catch (error) {
+    console.log(error.message)
     errors.mapError(500, "Internal Server Error", next)
   }
 }
