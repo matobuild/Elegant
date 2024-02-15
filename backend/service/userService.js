@@ -21,8 +21,8 @@ exports.signUp = async (req, res, next) => {
     VALUES($1, $2, $3, $4, $5, $6);`
     let pwd = await encrypt.hashPassword(body.password)
     let response = await pool.query(sql, [
-      body.firstname,
-      body.lastname,
+      body.first_name,
+      body.last_name,
       body.email,
       body.username,
       pwd,
@@ -31,6 +31,7 @@ exports.signUp = async (req, res, next) => {
     console.log("The response is --->", response)
     if (response.rowCount > 0) {
       const token = await encrypt.generateJWT({ username: body.username })
+      console.log("Token is:---->", token)
       return res
         .status(200)
         .json({ status: "Success", token: token, data: "SignUp success" })
