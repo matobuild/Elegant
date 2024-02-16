@@ -1,7 +1,16 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom"
+import SignUpPage from "./pages/signUp"
+
 function App() {
+  const router = createBrowserRouter([
+    { path: "/signUp", element: <SignUpPage /> },
+  ])
+
   return (
     <>
-      <div className="font-bold underline text-3xl">HELLO</div>
+      <div>
+        <RouterProvider router={router} />
+      </div>
     </>
   )
 }
