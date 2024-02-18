@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { getImageUrl } from "../../utils/utils"
 import logo from "../../../assets/signUp/logo.svg"
+import Button from "../../components/Button"
 
 interface FormData {
   name: string
@@ -116,10 +117,9 @@ const SignUpPage = () => {
                     className=" h-6 w-6 fill-[#FCFCFD] rounded border-[1.5px] che"
                     type="checkbox"
                     {...register("checkbox", {
-                      required: "*",
+                      required: " *",
                     })}
                   />
-                  {errors.password && <span>{errors.password.message}</span>}
                   <label className="text-neutral-4 body-2 ">
                     I agree with{" "}
                     <span className=" body-2-semi text-neutral-7">
@@ -129,16 +129,11 @@ const SignUpPage = () => {
                     <span className=" body-2-semi text-neutral-7">
                       Terms of Use
                     </span>
+                    {errors.checkbox && <span>{errors.checkbox.message}</span>}
                   </label>
                 </div>
               </div>
-
-              <button
-                className=" rounded-lg bg-neutral-7 w-full py-[10px] px-10 text-neutral-1"
-                type="submit"
-              >
-                Submit
-              </button>
+              <Button text="submit" />
             </form>
           </div>
         </div>
