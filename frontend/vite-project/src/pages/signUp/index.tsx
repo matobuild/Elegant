@@ -1,5 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { getImageUrl } from "../../utils/utils"
+import logo from "../../../assets/signUp/logo.svg"
 
 interface FormData {
   name: string
@@ -24,12 +25,17 @@ const SignUpPage = () => {
     <div>
       <div className="flex">
         <div className="w-1/2 ">
-          <img
-            className=""
-            src={getImageUrl("signUp/Image Placeholder.png")}
-            alt="Image Placeholder"
-          />
+          <div className="relative ">
+            <img
+              className="w-full h-auto "
+              src={getImageUrl("signUp/Image Placeholder.png")}
+              alt="Image Placeholder"
+            />
+          </div>
+          {/* need to make logo responsive */}
+          <img className="absolute top-8 left-[315px] " src={logo} alt="logo" />
         </div>
+
         <div className="w-1/2 flex justify-center items-center ">
           <div className="flex flex-col w-[456px] gap-8 shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)] rounded-b-lg">
             <div className="flex flex-col items-start gap-6 self-stretch">
