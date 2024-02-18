@@ -17,12 +17,11 @@ exports.signUp = async (req, res, next) => {
     }
 
     let sql = `INSERT INTO public.users
-    ( first_name, last_name, email,username, user_password, roles)
-    VALUES($1, $2, $3, $4, $5, $6);`
+    ( name, email,username, user_password, roles)
+    VALUES($1, $2, $3, $4, $5);`
     let pwd = await encrypt.hashPassword(body.password)
     let response = await pool.query(sql, [
-      body.first_name,
-      body.last_name,
+      body.name,
       body.email,
       body.username,
       pwd,

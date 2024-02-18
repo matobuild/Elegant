@@ -4,9 +4,12 @@ const morgan = require("morgan")
 const router = require("./router/router")
 const errors = require("./utils/errors")
 
+const cors = require("cors")
 const app = express()
 
 const PORT = process.env.PORT || 3000
+
+app.use(cors())
 
 // Middleware to parse JSON bodies
 app.use(express.json())

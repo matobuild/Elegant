@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import { getImageUrl } from "../../utils/utils"
 import logo from "../../../assets/signUp/logo.svg"
 import Button from "../../components/Button"
+import { SignUpService } from "../../services/SignUpService"
 
 interface FormData {
   name: string
@@ -18,8 +19,13 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm<FormData>()
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data)
+  async function postSign(input: object) {
+    const data = await SignUpService.postSignUp(input)
+    console.log("return answer is ----> ", data)
+  }
+
+  const onSubmit: SubmitHandler<FormData> = (signUpData) => {
+    postSign(signUpData)
   }
 
   return (
