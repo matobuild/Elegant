@@ -1,5 +1,5 @@
 import { getImageUrl } from "../../utils/utils"
-import logo from "../../../assets/signUp/logo.svg"
+import logo from "../../../assets/signUp&In/logo.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
 import Button from "../../components/Button"
@@ -44,17 +44,17 @@ const SignInPage = () => {
         <div className="w-1/2 ">
           <div className="relative ">
             <img
-              className="w-full h-screen "
-              src={getImageUrl("signUp/SignIn Image Placeholder.png")}
+              className="h-screen w-full "
+              src={getImageUrl("signUp&In/SignIn Image Placeholder.png")}
               alt="Image Placeholder"
             />
           </div>
           {/* need to make logo responsive */}
-          <img className="absolute top-8 left-[315px] " src={logo} alt="logo" />
+          <img className="absolute left-[315px] top-8 " src={logo} alt="logo" />
         </div>
 
-        <div className="w-1/2 flex justify-center items-center ">
-          <div className="flex flex-col w-[456px] gap-8 shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)] rounded-b-lg">
+        <div className="flex w-1/2 items-center justify-center ">
+          <div className="flex w-[456px] flex-col gap-8 rounded-b-lg shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)]">
             <div className="flex flex-col items-start gap-6 self-stretch">
               <div className=" heading-4 text-neutral-7 text-with-shadow">
                 Sign In
@@ -68,10 +68,10 @@ const SignInPage = () => {
             </div>
 
             <form
-              className="flex flex-col items-start gap-8 text-neutral-4 self-stretch"
+              className="text-neutral-4 flex flex-col items-start gap-8 self-stretch"
               onSubmit={handleSubmit(onSubmit)}
             >
-              <div className=" border-b border-neutral-3 w-full pb-[14px]">
+              <div className=" border-neutral-3 w-full border-b pb-[14px]">
                 <div className="flex gap-2">
                   <label>Username</label>
                   <input
@@ -85,7 +85,7 @@ const SignInPage = () => {
                 </div>
               </div>
 
-              <div className=" border-b border-neutral-3 w-full pb-[14px]">
+              <div className=" border-neutral-3 w-full border-b pb-[14px]">
                 <div className="flex gap-2">
                   <label>Password</label>
                   <input
