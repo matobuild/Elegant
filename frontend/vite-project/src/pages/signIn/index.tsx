@@ -29,7 +29,7 @@ const SignInPage = () => {
       localStorage.setItem("token", token)
       navigate("/")
     } else {
-      // show error such as wrong password
+      // show  a model pop up error such as wrong password or username or username
       console.log("CANNOT log in")
     }
   }
