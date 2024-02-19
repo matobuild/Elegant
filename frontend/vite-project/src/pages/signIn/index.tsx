@@ -1,5 +1,5 @@
 import { getImageUrl } from "../../utils/utils"
-import logo from "../../../assets/signUp&In/logo.svg"
+import logo from "../../../assets/logo.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
 import Button from "../../components/Button"

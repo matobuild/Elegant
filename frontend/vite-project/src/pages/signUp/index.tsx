@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { getImageUrl } from "../../utils/utils"
-import logo from "../../../assets/signUp&In/logo.svg"
+import logo from "../../../assets/logo.svg"
 import Button from "../../components/Button"
 import { SignService } from "../../services/SignService"
 import { Link, useNavigate } from "react-router-dom"
