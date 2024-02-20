@@ -4,6 +4,7 @@ import TopAlert from "../../components/TopAlert"
 import BannerSection from "../../components/BannerSection"
 import ProductSection from "../../components/ProductSection"
 import ValuesSection from "../../components/ValueSection/ValuesSection"
+import LeftImageFillerSection from "../../components/LeftImageFillerSection"
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <BannerSection />
       <ProductSection />
       <ValuesSection />
+      <LeftImageFillerSection />
     </>
   )
 }

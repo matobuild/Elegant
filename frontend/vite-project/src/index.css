@@ -16,6 +16,15 @@
   line-height: 96px; /* 100% */
   letter-spacing: -1.92px;
 }
+.hairline-1 {
+  /* Hairline 1 */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 16px; /* 100% */
+  text-transform: uppercase;
+}
 
 .heading-1 {
   font-feature-settings:
