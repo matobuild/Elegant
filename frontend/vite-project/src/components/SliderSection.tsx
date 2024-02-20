@@ -1,6 +1,6 @@
 const SliderSection = () => {
   return (
-    <div className=" px-40 pb-10">
+    <section className=" px-40 pb-10">
       <div className="flex flex-col gap-8 ">
         <img src="../../assets/Home/header-image.png" alt="Header-Image" />
         <div className="flex justify-between">
@@ -24,7 +24,7 @@ const SliderSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
