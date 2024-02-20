@@ -18,7 +18,7 @@ const BannerSection = () => {
         <div className="flex h-full w-full flex-col gap-6">
           <div className="relative h-full w-full">
             <div className="x- absolute left-8 top-[201px] z-10">
-              <BannerShopNow productType="Living Room" />
+              <BannerShopNow productType="Bedroom" />
             </div>
             <img
               className="h-full w-full object-cover"
@@ -28,7 +28,7 @@ const BannerSection = () => {
           </div>
           <div className="relative h-full w-full">
             <div className="x- absolute left-8 top-[201px]  z-10">
-              <BannerShopNow productType="Living Room" />
+              <BannerShopNow productType="Kitchen" />
             </div>
 
             <img
