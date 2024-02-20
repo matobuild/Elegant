@@ -3,6 +3,7 @@ import NavBar from "../../components/NavBar"
 import TopAlert from "../../components/TopAlert"
 import BannerSection from "../../components/BannerSection"
 import ProductSection from "../../components/ProductSection"
+import ValuesSection from "../../components/ValueSection/ValuesSection"
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
       <SliderSection />
       <BannerSection />
       <ProductSection />
+      <ValuesSection />
     </>
   )
 }
