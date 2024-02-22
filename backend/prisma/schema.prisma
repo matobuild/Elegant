@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model cartitems {
+  cartitem_id Int       @id @default(autoincrement())
+  quantity    Int?
+  cart_id     Int?
+  product_id  Int?
+  carts       carts?    @relation(fields: [cart_id], references: [cart_id], onDelete: NoAction, onUpdate: NoAction)
+  products    products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model carts {
+  cart_id   Int         @id @default(autoincrement())
+  type      String?     @db.VarChar(255)
+  user_id   Int?
+  cartitems cartitems[]
+  users     users?      @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model categories {
+  category_id Int        @id @default(autoincrement())
+  name        String?    @db.VarChar(255)
+  products    products[]
+}
+
+model order_items {
+  order_item_id Int       @id @default(autoincrement())
+  name          String?   @db.VarChar(255)
+  quantity      Int?
+  price         Decimal?  @db.Decimal(10, 2)
+  description   String?   @db.VarChar(255)
+  image_url     String?   @db.VarChar(255)
+  order_id      Int?
+  product_id    Int?
+  orders        orders?   @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+  products      products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model orders {
+  order_id       Int              @id @default(autoincrement())
+  total_price    Decimal?         @db.Decimal(10, 2)
+  status         String?          @db.VarChar(255)
+  created_at     DateTime?        @default(now()) @db.Timestamp(6)
+  user_id        Int?
+  order_items    order_items[]
+  users          users?           @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  orders_payment orders_payment[]
+  shipping       shipping[]
+}
+
+model orders_payment {
+  order_payment_id Int       @id @default(autoincrement())
+  payment_method   String?   @db.VarChar(255)
+  transaction_id   String?   @db.VarChar(255)
+  amount           Decimal?  @db.Decimal(10, 2)
+  bank_number      String?   @db.VarChar(255)
+  method_type      String?   @db.VarChar(255)
+  payment_time     DateTime? @default(now()) @db.Timestamp(6)
+  order_id         Int?
+  orders           orders?   @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model products {
+  product_id  Int           @id @default(autoincrement())
+  name        String?       @db.VarChar(255)
+  description String?       @db.VarChar(255)
+  price       Decimal?      @db.Decimal(10, 2)
+  image_url   String?       @db.VarChar(255)
+  stock       String?       @db.VarChar(255)
+  category_id Int?
+  cartitems   cartitems[]
+  order_items order_items[]
+  categories  categories?   @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction)
+  reviews     reviews[]
+}
+
+model reviews {
+  review_id  Int       @id @default(autoincrement())
+  review     String?   @db.VarChar(255)
+  rating     Int?
+  product_id Int?
+  user_id    Int?
+  products   products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction)
+  users      users?    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model shipping {
+  shipping_id     Int     @id @default(autoincrement())
+  address         String? @db.VarChar(255)
+  city            String? @db.VarChar(255)
+  zip_code        String? @db.VarChar(255)
+  country         String? @db.VarChar(255)
+  shipping_method String? @db.VarChar(255)
+  order_id        Int?
+  orders          orders? @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model users {
+  user_id       Int       @id @default(autoincrement())
+  name          String?   @db.VarChar(255)
+  email         String?   @db.VarChar(255)
+  username      String?   @unique @db.VarChar(255)
+  user_password String?   @db.VarChar(255)
+  roles         String?   @db.VarChar(255)
+  carts         carts[]
+  orders        orders[]
+  reviews       reviews[]
+}

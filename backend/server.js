@@ -1,12 +1,13 @@
 const express = require("express")
 const morgan = require("morgan")
-// dotenv need to include
+const dotenv = require("dotenv")
 const router = require("./router/router")
 const errors = require("./utils/errors")
 
 const cors = require("cors")
 const app = express()
 
+dotenv.config({ path: "./config.env" })
 const PORT = process.env.PORT || 3000
 
 app.use(cors())
