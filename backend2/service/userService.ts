@@ -24,7 +24,7 @@ const signUp = async (req: Request, res: Response, next:NextFunction) => {
         name: body.name,
         email: body.email,
         username: body.username,
-        user_password: pwd,
+        user_password: pwd!,
         roles: body.role,
       },
     })
