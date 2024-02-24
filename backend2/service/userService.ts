@@ -1,9 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import {mapError} from "../utils/errors";
 import {hashPassword, generateJWT,comparePassword} from "../utils/encrypt";
-
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient()
+import prisma from '../configs/database';
 
 const signUp = async (req: Request, res: Response, next:NextFunction) => {
   try {
