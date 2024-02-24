@@ -246,12 +246,12 @@
     "clig" off,
     "liga" off;
 
-  /* Body 1 (Bold) */
+  /* Text/18px/Regular */
   font-family: Inter;
-  font-size: 20px;
+  font-size: 18px;
   font-style: normal;
-  font-weight: 700;
-  line-height: 32px; /* 160% */
+  font-weight: 400;
+  line-height: 30px; /* 166.667% */
 }
 
 .text-18px-semibold {

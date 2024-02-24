@@ -5,6 +5,7 @@ import BannerSection from "../../components/BannerSection"
 import ProductSection from "../../components/ProductSection"
 import ValuesSection from "../../components/ValueSection/ValuesSection"
 import LeftImageFillerSection from "../../components/LeftImageFillerSection"
+import { NewsLetterSection } from "../../components/NewsLetterSection"
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <ProductSection />
       <ValuesSection />
       <LeftImageFillerSection />
+      <NewsLetterSection />
     </>
   )
 }
