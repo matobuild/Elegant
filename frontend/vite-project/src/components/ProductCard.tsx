@@ -3,7 +3,7 @@ import { getImageFromData } from "../utils/utils"
 
 const ProductCard = () => {
   return (
-    <div className=" flex max-h-[433px] w-full max-w-[262px] flex-col gap-3">
+    <div className=" group flex max-h-[433px] w-full max-w-[262px] flex-col gap-3">
       <div className="relative w-full">
         <img
           className="h-auto w-full"
@@ -18,7 +18,7 @@ const ProductCard = () => {
             -50%
           </div>
         </div>
-        <div className="bg-neutral-1 absolute right-4 top-4 rounded-[32px] p-[6px] shadow-[0_8px_16px_-8px_rgba(15,15,15,0.12)]">
+        <div className="bg-neutral-1 absolute right-4 top-4 hidden rounded-[32px] p-[6px] shadow-[0_8px_16px_-8px_rgba(15,15,15,0.12)] group-hover:block">
           <svg
             className="flex-1 self-stretch"
             xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ const ProductCard = () => {
             />
           </svg>
         </div>
-        <button className=" bg-neutral-7 text-neutral-1 button-s absolute bottom-4 left-4 right-4 rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)]">
+        <button className=" bg-neutral-7 text-neutral-1 button-s absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block">
           Add to Car
         </button>
       </div>

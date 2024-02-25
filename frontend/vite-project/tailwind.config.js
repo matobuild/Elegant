@@ -28,6 +28,7 @@ export default {
         poppins: ["Poppins", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
+      display: ["group-hover"],
     },
   },
   plugins: [],
