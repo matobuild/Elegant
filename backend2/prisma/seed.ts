@@ -42,6 +42,8 @@ async function main() {
             details: 'This loveseat sofa is perfect for small spaces. The design makes it easy to fit into any room.',
             packaging: `Width: 18 " Height: 1 ½ " Length: 19 ½ " Weight: 6 lb 8 oz Package(s): 1`,
             stock: 15,
+            total_stars_review : 5,
+            discount : 50,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -58,6 +60,8 @@ async function main() {
             details: 'Made with high-quality materials and designed for comfort, this sofa is perfect for relaxing after a long day. The sleek design adds a touch of elegance to any room.',
             packaging: `Width: 22 " Height: 2 " Length: 23 ½ " Weight: 8 lb 8 oz Package(s): 1`,
             stock: 5,
+            total_stars_review : 4,
+            discount : 40,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -74,6 +78,8 @@ async function main() {
             details: 'This lamp provides a warm, cozy light that\'s perfect for reading, working, or just relaxing. Its sleek design and high-quality materials make it a stylish and practical addition to any room.',
             packaging: `Width: 8 " Height: 12 " Length: 8 " Weight: 2 lb 8 oz Package(s): 1`,
             stock: 20,
+            total_stars_review : 0,
+            discount : 60,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -90,6 +96,8 @@ async function main() {
             details: 'With its plush cushions and soft fabric, this sofa is perfect for relaxing after a long day. The modern design adds a touch of elegance to any room.',
             packaging: `Width: 20 " Height: 1 ½ " Length: 21 ½ " Weight: 7 lb 8 oz Package(s): 1`,
             stock: 10,
+            total_stars_review : 4,
+            discount : 20,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -106,6 +114,8 @@ async function main() {
             details: 'This drawer unit provides ample storage space while adding a touch of style to your room. The white finish gives it a clean, modern look.',
             packaging: `Width: 21 " Height: 2 " Length: 22 ½ " Weight: 8 lb 8 oz Package(s): 1`,
             stock: 15,
+            total_stars_review : 3,
+            discount : 10,
             categories: {
                 create: {  name: 'Bedroom' }
             }
@@ -122,6 +132,8 @@ async function main() {
             details: 'This tray table is perfect for serving drinks or snacks, and its sleek design adds a touch of modern style to any room.',
             packaging: `Width: 12 " Height: 1 " Length: 12 ½ " Weight: 3 lb 8 oz Package(s): 1`,
             stock: 20,
+            total_stars_review : 5,
+            discount : 15,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -138,6 +150,8 @@ async function main() {
             details: 'This lamp provides a bright, focused light that\'s perfect for reading, working, or just relaxing. Its sleek design and high-quality materials make it a stylish and practical addition to any room.',
             packaging: `Width: 7 " Height: 13 " Length: 7 " Weight: 2 lb 8 oz Package(s): 1`,
             stock: 15,
+            total_stars_review : 5,
+            discount : 30,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -154,6 +168,8 @@ async function main() {
             details: 'This side table provides a convenient surface for drinks or books, and its sleek design adds a touch of modern style to any room.',
             packaging: `Width: 12 " Height: 1 " Length: 12 ½ " Weight: 3 lb 8 oz Package(s): 1`,
             stock: 20,
+            total_stars_review : 5,
+            discount : 20,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -170,6 +186,8 @@ async function main() {
             details: 'This pillow is perfect for adding a touch of comfort and style to any room. The light beige color complements a variety of decor styles.',
             packaging: `Width: 10 " Height: 6 " Length: 10 " Weight: 1 lb 8 oz Package(s): 1`,
             stock: 30,
+            total_stars_review : 4,
+            discount : 10,
             categories: {
                 create: {  name: 'Bedroom' }
             }
@@ -186,6 +204,8 @@ async function main() {
             details: 'This lamp provides a warm, cozy light that\'s perfect for reading, working, or just relaxing. Its sleek design and high-quality materials make it a stylish and practical addition to any room.',
             packaging: `Width: 8 " Height: 12 " Length: 8 " Weight: 2 lb 8 oz Package(s): 1`,
             stock: 20,
+            total_stars_review : 5,
+            discount : 10,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -202,6 +222,8 @@ async function main() {
             details: 'This basket is perfect for storing blankets, toys, or other items. The bamboo material is durable and eco-friendly.',
             packaging: `Width: 12 " Height: 12 " Length: 12 " Weight: 2 lb 8 oz Package(s): 1`,
             stock: 25,
+            total_stars_review : 4,
+            discount : 20,
             categories: {
                 create: {  name: 'Living Room' }
             }
@@ -219,6 +241,8 @@ async function main() {
             details: 'This pillow is perfect for adding a touch of comfort and style to any room. The off-white color complements a variety of decor styles.',
             packaging: `Width: 10 " Height: 6 " Length: 10 " Weight: 1 lb 8 oz Package(s): 1`,
             stock: 30,
+            total_stars_review : 10,
+            discount : 30,
             categories: {
                 create: {  name: 'Bedroom' }
             }

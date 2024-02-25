@@ -68,20 +68,22 @@ model orders_payment {
 }
 
 model products {
-  product_id   Int           @id @default(autoincrement())
-  name         String        @db.VarChar(255)
-  description  String        @db.VarChar(255)
-  price        Decimal       @db.Decimal(10, 2)
-  image_url    String        @db.VarChar(255)
-  measurements String?       @db.VarChar(255)
-  details      String?       @db.VarChar(255)
-  packaging    String?       @db.VarChar(255)
-  stock        Int           @default(0)
-  category_id  Int?
-  cartitems    cartitems[]
-  order_items  order_items[]
-  categories   categories?   @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction)
-  reviews      reviews[]
+  product_id         Int           @id @default(autoincrement())
+  name               String        @db.VarChar(255)
+  description        String        @db.VarChar(255)
+  price              Decimal       @db.Decimal(10, 2)
+  image_url          String        @db.VarChar(255)
+  measurements       String?       @db.VarChar(255)
+  details            String?       @db.VarChar(255)
+  packaging          String?       @db.VarChar(255)
+  stock              Int           @default(0)
+  total_stars_review Int?          @default(0)
+  discount           Int?          @default(0)
+  category_id        Int?
+  cartitems          cartitems[]
+  order_items        order_items[]
+  categories         categories?   @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction)
+  reviews            reviews[]
 }
 
 model reviews {

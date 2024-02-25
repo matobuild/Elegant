@@ -13,7 +13,7 @@ const ProductSection = () => {
           <RightArrowLink name="More Products" />
         </div>
       </header>
-      <div className=" py-12 pl-40">
+      <div className=" flex gap-6 py-12 pl-40">
         {/* need to finish  */}
         <ProductCard />
       </div>
