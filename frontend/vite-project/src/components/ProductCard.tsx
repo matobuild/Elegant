@@ -1,13 +1,27 @@
 import star from "../../assets/icons/star-icon.svg"
-import { getImageFromData } from "../utils/utils"
+import { USDollar, afterDiscount, getImageFromData } from "../utils/utils"
 
-const ProductCard = () => {
+type ProductCardProps = {
+  img: string
+  title: string
+  price: number
+  discount: number
+  stars: number
+}
+
+const ProductCard = ({
+  img,
+  title,
+  price,
+  discount,
+  stars,
+}: ProductCardProps) => {
   return (
     <div className=" group flex max-h-[433px] w-full max-w-[262px] flex-col gap-3">
       <div className="relative w-full">
         <img
           className="h-auto w-full"
-          src={getImageFromData("products/Bamboo Basket.png")}
+          src={getImageFromData(img)}
           alt="Bamboo-Basket"
         />
         <div className=" absolute left-4 top-4 inline-flex flex-col gap-2">
@@ -15,7 +29,7 @@ const ProductCard = () => {
             NEW
           </div>
           <div className=" bg-secondary-green text-neutral-1 hairline-1 flex content-center items-center rounded px-[14px] py-1 ">
-            -50%
+            -{discount}%
           </div>
         </div>
         <div className="bg-neutral-1 absolute right-4 top-4 hidden rounded-[32px] p-[6px] shadow-[0_8px_16px_-8px_rgba(15,15,15,0.12)] group-hover:block">
@@ -42,17 +56,18 @@ const ProductCard = () => {
 
       <div className="flex flex-col">
         <div className="g-[2px] flex">
-          <img src={star} alt="start-icon" />
-          <img src={star} alt="start-icon" />
-          <img src={star} alt="start-icon" />
-          <img src={star} alt="start-icon" />
+          {Array.from({ length: stars }).map((_, index) => (
+            <img key={index} src={star} alt="start-icon" />
+          ))}
         </div>
-        <p className=" text-neutral-7 body-2-semi self-stretch">
-          Loveseat Sofa
-        </p>
+        <p className=" text-neutral-7 body-2-semi self-stretch">{title}</p>
         <div className="flex gap-3">
-          <p className=" caption-1-semi text-neutral-7">$199.00</p>
-          <p className=" text-neutral-4 caption-1 line-through">$400.00</p>
+          <p className=" caption-1-semi text-neutral-7">
+            {USDollar.format(afterDiscount(price, discount))}
+          </p>
+          <p className=" text-neutral-4 caption-1 line-through">
+            {USDollar.format(price)}
+          </p>
         </div>
       </div>
     </div>

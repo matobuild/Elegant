@@ -113,7 +113,7 @@ model users {
   email         String    @db.VarChar(255)
   username      String    @unique @db.VarChar(255)
   user_password String    @db.VarChar(255)
-  roles         String    @db.VarChar(255)
+  roles         String    @default("user") @db.VarChar(255)
   carts         carts[]
   orders        orders[]
   reviews       reviews[]

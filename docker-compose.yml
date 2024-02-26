@@ -1,24 +1,24 @@
 version: "3.8"
 
 services:
-  backend:
-    build: ./backend
-    ports:
-      - "3001:3000"
-    volumes:
-      - ./backend/server.js:/app/server.js
+  # backend:
+  #   build: ./backend
+  #   ports:
+  #     - "3001:3000"
+  #   volumes:
+  #     - ./backend/server.js:/app/server.js
 
-  frontend:
-    build: ./frontend/vite-project
-    ports:
-      - "5173:5173"
-    volumes:
-      - "./frontend/vite-project:/usr/src/app"
-      - /usr/src/app/node_modules
-    restart: always
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-    stdin_open: true
+  # frontend:
+  #   build: ./frontend/vite-project
+  #   ports:
+  #     - "5173:5173"
+  #   volumes:
+  #     - "./frontend/vite-project:/usr/src/app"
+  #     - /usr/src/app/node_modules
+  #   restart: always
+  #   environment:
+  #     CHOKIDAR_USEPOLLING: "true"
+  #   stdin_open: true
 
   db:
     container_name: Elegant-Database

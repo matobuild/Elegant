@@ -67,11 +67,16 @@ CREATE TABLE "orders_payment" (
 -- CreateTable
 CREATE TABLE "products" (
     "product_id" SERIAL NOT NULL,
-    "name" VARCHAR(255),
-    "description" VARCHAR(255),
-    "price" DECIMAL(10,2),
-    "image_url" VARCHAR(255),
-    "stock" VARCHAR(255),
+    "name" VARCHAR(255) NOT NULL,
+    "description" VARCHAR(255) NOT NULL,
+    "price" DECIMAL(10,2) NOT NULL,
+    "image_url" VARCHAR(255) NOT NULL,
+    "measurements" VARCHAR(255),
+    "details" VARCHAR(255),
+    "packaging" VARCHAR(255),
+    "stock" INTEGER NOT NULL DEFAULT 0,
+    "total_stars_review" INTEGER DEFAULT 0,
+    "discount" INTEGER DEFAULT 0,
     "category_id" INTEGER,
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("product_id")
@@ -104,11 +109,11 @@ CREATE TABLE "shipping" (
 -- CreateTable
 CREATE TABLE "users" (
     "user_id" SERIAL NOT NULL,
-    "name" VARCHAR(255),
-    "email" VARCHAR(255),
-    "username" VARCHAR(255),
-    "user_password" VARCHAR(255),
-    "roles" VARCHAR(255),
+    "name" VARCHAR(255) NOT NULL,
+    "email" VARCHAR(255) NOT NULL,
+    "username" VARCHAR(255) NOT NULL,
+    "user_password" VARCHAR(255) NOT NULL,
+    "roles" VARCHAR(255) NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("user_id")
 );
