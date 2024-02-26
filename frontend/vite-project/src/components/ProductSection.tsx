@@ -29,17 +29,19 @@ const ProductSection = () => {
           <RightArrowLink name="More Products" />
         </div>
       </header>
-      <div className=" flex gap-6 py-12 pl-40">
+      <div className=" flex flex-nowrap gap-6 overflow-x-auto py-12 pl-40">
         {productsList.map((product) => {
           return (
-            <ProductCard
-              key={product.product_id}
-              img={product.image_url}
-              title={product.name}
-              price={product.price}
-              discount={product.discount}
-              stars={product.total_stars_review}
-            />
+            <div className=" flex-auto flex-shrink-0 flex-grow-0">
+              <ProductCard
+                key={product.product_id}
+                img={product.image_url}
+                title={product.name}
+                price={product.price}
+                discount={product.discount}
+                stars={product.total_stars_review}
+              />
+            </div>
           )
         })}
       </div>

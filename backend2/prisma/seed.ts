@@ -37,7 +37,7 @@ async function main() {
             name: 'Loveseat Sofa',
             description: 'A cozy loveseat sofa',
             price: 200,
-            image_url: 'products/Luxury Sofa.png',
+            image_url: 'products/Loverseat Sofa.png',
             measurements: '1.5m x 1m',
             details: 'This loveseat sofa is perfect for small spaces. The design makes it easy to fit into any room.',
             packaging: `Width: 18 " Height: 1 ½ " Length: 19 ½ " Weight: 6 lb 8 oz Package(s): 1`,
