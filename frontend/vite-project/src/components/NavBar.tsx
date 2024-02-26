@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import logo from "../../assets/logo.svg"
 import searchIcon from "../../assets/icons/search.svg"
 import userIcon from "../../assets/icons/outline-user-circle.svg"
@@ -9,12 +9,30 @@ const NavBar = () => {
     <nav className=" flex justify-between px-40 py-4">
       <img src={logo} alt="logo" />
       <div className="button-xs text-neutral-4 flex gap-10 ">
-        <Link className="text-neutral-7" to="/">
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-neutral-7" : "")}
+          to="/"
+        >
           Home
-        </Link>
-        <Link to="/shop">Shop</Link>
-        <Link to="/product">Product</Link>
-        <Link to="/contact-us">Contact Us</Link>
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-neutral-7" : "")}
+          to="/shop"
+        >
+          Shop
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-neutral-7" : "")}
+          to="/product"
+        >
+          Product
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "text-neutral-7" : "")}
+          to="/contact-us"
+        >
+          Contact Us
+        </NavLink>
       </div>
       <div className="flex gap-4">
         <img src={searchIcon} alt="search-icon" />
