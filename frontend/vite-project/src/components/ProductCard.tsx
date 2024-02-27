@@ -50,7 +50,7 @@ const ProductCard = ({
           </svg>
         </div>
         <button className=" bg-neutral-7 text-neutral-1 button-s absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block">
-          Add to Car
+          Add to Cart
         </button>
       </div>
 
