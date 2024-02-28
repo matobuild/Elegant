@@ -1,10 +1,11 @@
-import HeaderPage from "../../components/HeaderPage"
+import HeaderSection from "../../components/HeaderPage"
+import ProductCatalogSection from "../../components/ProductCatalogSection"
 
 const ShopPage = () => {
   return (
     <>
-      <div>shopPage</div>
-      <HeaderPage />
+      <HeaderSection />
+      <ProductCatalogSection />
     </>
   )
 }

@@ -241,7 +241,7 @@ async function main() {
             details: 'This pillow is perfect for adding a touch of comfort and style to any room. The off-white color complements a variety of decor styles.',
             packaging: `Width: 10 " Height: 6 " Length: 10 " Weight: 1 lb 8 oz Package(s): 1`,
             stock: 30,
-            total_stars_review : 10,
+            total_stars_review : 5,
             discount : 30,
             categories: {
                 create: {  name: 'Bedroom' }

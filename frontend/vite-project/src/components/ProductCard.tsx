@@ -17,7 +17,7 @@ const ProductCard = ({
   stars,
 }: ProductCardProps) => {
   return (
-    <div className=" group flex max-h-[433px] w-full max-w-[262px] flex-col gap-3">
+    <div className=" group flex  w-full  flex-col gap-3">
       <div className="relative w-full">
         <img
           className="h-auto w-full"

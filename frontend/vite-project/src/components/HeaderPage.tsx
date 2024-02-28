@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { getImageUrl } from "../utils/utils"
 
-const HeaderPage = () => {
+const HeaderSection = () => {
   return (
     <section className="relative px-40">
       <img
@@ -44,4 +44,4 @@ const HeaderPage = () => {
   )
 }
 
-export default HeaderPage
+export default HeaderSection
