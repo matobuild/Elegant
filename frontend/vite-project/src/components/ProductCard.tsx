@@ -19,11 +19,7 @@ const ProductCard = ({
   return (
     <div className=" group flex  w-full  flex-col gap-3">
       <div className="relative w-full">
-        <img
-          className="h-auto w-full"
-          src={getImageFromData(img)}
-          alt="Bamboo-Basket"
-        />
+        <img className="h-auto w-full" src={getImageFromData(img)} alt={img} />
         <div className=" absolute left-4 top-4 inline-flex flex-col gap-2">
           <div className="hairline-1  bg-neutral-1 text-neutral-7  flex content-center items-center rounded px-[14px] py-1 text-center">
             NEW
@@ -59,6 +55,7 @@ const ProductCard = ({
           {Array.from({ length: stars }).map((_, index) => (
             <img key={index} src={star} alt="start-icon" />
           ))}
+          &nbsp;
         </div>
         <p className=" text-neutral-7 body-2-semi self-stretch">{title}</p>
         <div className="flex gap-3">
