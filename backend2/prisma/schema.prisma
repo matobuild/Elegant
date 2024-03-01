@@ -12,8 +12,8 @@ model cartitems {
   quantity    Int?
   cart_id     Int?
   product_id  Int?
-  carts       carts?    @relation(fields: [cart_id], references: [cart_id], onDelete: NoAction, onUpdate: NoAction)
-  products    products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction)
+  carts       carts?    @relation(fields: [cart_id], references: [cart_id])
+  products    products? @relation(fields: [product_id], references: [product_id])
 }
 
 model carts {
@@ -21,12 +21,12 @@ model carts {
   type      String?     @db.VarChar(255)
   user_id   Int?
   cartitems cartitems[]
-  users     users?      @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  users     users?      @relation(fields: [user_id], references: [user_id])
 }
 
 model categories {
   category_id Int        @id @default(autoincrement())
-  name        String?    @db.VarChar(255)
+  name        String     @unique @db.VarChar(255)
   products    products[]
 }
 
@@ -39,8 +39,8 @@ model order_items {
   image_url     String?   @db.VarChar(255)
   order_id      Int?
   product_id    Int?
-  orders        orders?   @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
-  products      products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction)
+  orders        orders?   @relation(fields: [order_id], references: [order_id])
+  products      products? @relation(fields: [product_id], references: [product_id])
 }
 
 model orders {
@@ -50,7 +50,7 @@ model orders {
   created_at     DateTime?        @default(now()) @db.Timestamp(6)
   user_id        Int?
   order_items    order_items[]
-  users          users?           @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  users          users?           @relation(fields: [user_id], references: [user_id])
   orders_payment orders_payment[]
   shipping       shipping[]
 }
@@ -64,12 +64,12 @@ model orders_payment {
   method_type      String?   @db.VarChar(255)
   payment_time     DateTime? @default(now()) @db.Timestamp(6)
   order_id         Int?
-  orders           orders?   @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+  orders           orders?   @relation(fields: [order_id], references: [order_id])
 }
 
 model products {
   product_id         Int           @id @default(autoincrement())
-  name               String        @db.VarChar(255)
+  name               String        @unique @db.VarChar(255)
   description        String        @db.VarChar(255)
   price              Decimal       @db.Decimal(10, 2)
   image_url          String        @db.VarChar(255)
@@ -82,7 +82,7 @@ model products {
   category_id        Int?
   cartitems          cartitems[]
   order_items        order_items[]
-  categories         categories?   @relation(fields: [category_id], references: [category_id], onDelete: NoAction, onUpdate: NoAction)
+  categories         categories?   @relation(fields: [category_id], references: [category_id])
   reviews            reviews[]
 }
 
@@ -92,8 +92,8 @@ model reviews {
   rating     Int?
   product_id Int?
   user_id    Int?
-  products   products? @relation(fields: [product_id], references: [product_id], onDelete: NoAction, onUpdate: NoAction)
-  users      users?    @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction)
+  products   products? @relation(fields: [product_id], references: [product_id])
+  users      users?    @relation(fields: [user_id], references: [user_id])
 }
 
 model shipping {
@@ -104,7 +104,7 @@ model shipping {
   country         String? @db.VarChar(255)
   shipping_method String? @db.VarChar(255)
   order_id        Int?
-  orders          orders? @relation(fields: [order_id], references: [order_id], onDelete: NoAction, onUpdate: NoAction)
+  orders          orders? @relation(fields: [order_id], references: [order_id])
 }
 
 model users {
