@@ -13,7 +13,7 @@ type ListboxOptionsProps = {
 function ListboxOptions({ list }: ListboxOptionsProps) {
   console.log(list[0])
 
-  const [selectedPerson, setSelectedPerson] = useState<listbox>({
+  const [selected, setSelected] = useState<listbox>({
     id: 0,
     name: "",
   })
@@ -21,14 +21,14 @@ function ListboxOptions({ list }: ListboxOptionsProps) {
   console.log(list)
 
   useEffect(() => {
-    setSelectedPerson(list[0])
+    setSelected(list[0])
   }, [list])
 
   return (
     <div className=" border-neutral-4 body-2-semi w-[262px] rounded-lg border-2 border-solid p-2">
-      <Listbox value={selectedPerson} onChange={setSelectedPerson}>
-        <Listbox.Button className="flex w-full items-center justify-between">
-          <div>{selectedPerson?.name}</div>
+      <Listbox value={selected} onChange={setSelected}>
+        <Listbox.Button className="flex w-full items-center justify-between ">
+          <div>{selected?.name}</div>
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
