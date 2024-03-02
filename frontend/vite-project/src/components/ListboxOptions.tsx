@@ -8,17 +8,14 @@ export type listbox = {
 
 type ListboxOptionsProps = {
   list: listbox[]
+  selected: listbox
+  setSelected: (value: listbox) => void
 }
 
-function ListboxOptions({ list }: ListboxOptionsProps) {
+function ListboxOptions({ selected, list, setSelected }: ListboxOptionsProps) {
   console.log(list[0])
 
-  const [selected, setSelected] = useState<listbox>({
-    id: 0,
-    name: "",
-  })
-
-  console.log(list)
+  console.log(selected)
 
   useEffect(() => {
     setSelected(list[0])
@@ -27,7 +24,7 @@ function ListboxOptions({ list }: ListboxOptionsProps) {
   return (
     <div className=" border-neutral-4 body-2-semi w-[262px] rounded-lg border-2 border-solid p-2">
       <Listbox value={selected} onChange={setSelected}>
-        <Listbox.Button className="flex w-full items-center justify-between ">
+        <Listbox.Button className="flex w-full cursor-default items-center justify-between ">
           <div>{selected?.name}</div>
           <div>
             <svg
@@ -55,7 +52,15 @@ function ListboxOptions({ list }: ListboxOptionsProps) {
         >
           <Listbox.Options>
             {list.map((item) => (
-              <Listbox.Option key={item.id} value={item}>
+              <Listbox.Option
+                key={item.id}
+                value={item}
+                className={({ active }) =>
+                  `cursor-default select-none ${
+                    active ? " bg-neutral-2" : " body-2"
+                  }`
+                }
+              >
                 {item.name}
               </Listbox.Option>
             ))}

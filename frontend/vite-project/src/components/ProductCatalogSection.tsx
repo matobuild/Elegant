@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import ListboxOptions, { listbox } from "./ListboxOptions"
 import ProductCard from "./ProductCard"
 import { IProduct } from "../interface/productsResponse"
-import { ProductsService } from "../services/ProductsService"
+import { KeyValue, ProductsService } from "../services/ProductsService"
 import { ICategories } from "../interface/categoriesResponse"
 import { CategoriesService } from "../services/CatagoriesService"
 import SortOption from "./SortOption"
@@ -13,8 +13,14 @@ const ProductCatalogSection = () => {
 
   const [categoriesBoxList, setCategoriesBoxList] = useState<listbox[]>([])
 
+  const [selectedCategory, setSelectedCategory] = useState<listbox>({
+    id: 0,
+    name: "",
+  })
   const getProducts = async () => {
-    const data = await ProductsService.getProducts()
+    // change selectedCategory type to {category_id: selectedCategory.id}
+    const param: KeyValue = { category_id: selectedCategory.id }
+    const data = await ProductsService.getProducts(param)
     // console.log("data status", data?.data?.data)
     if (data?.data) {
       setProductsList(data?.data?.data)
@@ -42,6 +48,10 @@ const ProductCatalogSection = () => {
     getCategories()
   }, [])
 
+  useEffect(() => {
+    getProducts()
+  }, [selectedCategory])
+
   return (
     <section className=" px-40 pb-[100px] pt-[60px]">
       <div className="flex flex-col gap-10">
@@ -50,7 +60,11 @@ const ProductCatalogSection = () => {
             <div className="flex flex-col gap-2">
               <p className=" text-neutral-4 body-2-semi">CATEGORIES</p>
               <div>
-                <ListboxOptions list={categoriesBoxList} />
+                <ListboxOptions
+                  list={categoriesBoxList}
+                  selected={selectedCategory}
+                  setSelected={setSelectedCategory}
+                />
               </div>
             </div>
             <div className="flex flex-col gap-2">
