@@ -1,23 +1,45 @@
 import { useEffect, useState } from "react"
-import ListboxOptions from "./ListboxOptions"
+import ListboxOptions, { listbox } from "./ListboxOptions"
 import ProductCard from "./ProductCard"
 import { IProduct } from "../interface/productsResponse"
 import { ProductsService } from "../services/ProductsService"
+import { ICategories } from "../interface/categoriesResponse"
+import { CategoriesService } from "../services/CatagoriesService"
 import SortOption from "./SortOption"
 import ToolbarViewSelector from "./ToolbarViewSelector"
 
 const ProductCatalogSection = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([])
 
+  const [categoriesBoxList, setCategoriesBoxList] = useState<listbox[]>([])
+
   const getProducts = async () => {
     const data = await ProductsService.getProducts()
-    console.log("data status", data.data?.data)
-    if (data && data.data) {
-      setProductsList(data.data?.data)
+    // console.log("data status", data?.data?.data)
+    if (data?.data) {
+      setProductsList(data?.data?.data)
     }
   }
+
+  const getCategories = async () => {
+    const data = await CategoriesService.getCategories()
+    // console.log("data status", data.data?.data)
+    if (data?.data?.data) {
+      const categoriesList = data?.data?.data
+      //convert type
+      const convert: listbox[] = categoriesList.map((category: ICategories) => {
+        return {
+          id: category.category_id,
+          name: category.name,
+        }
+      })
+      setCategoriesBoxList(convert)
+    }
+  }
+
   useEffect(() => {
     getProducts()
+    getCategories()
   }, [])
 
   return (
@@ -28,14 +50,12 @@ const ProductCatalogSection = () => {
             <div className="flex flex-col gap-2">
               <p className=" text-neutral-4 body-2-semi">CATEGORIES</p>
               <div>
-                <ListboxOptions />
+                <ListboxOptions list={categoriesBoxList} />
               </div>
             </div>
             <div className="flex flex-col gap-2">
               <p className=" text-neutral-4 body-2-semi">PRICE</p>
-              <div>
-                <ListboxOptions />
-              </div>
+              <div>{/* <ListboxOptions list={categoriesBoxList} /> */}</div>
             </div>
           </div>
           <div className="flex items-end">
