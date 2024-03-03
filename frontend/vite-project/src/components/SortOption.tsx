@@ -2,9 +2,10 @@ import { useState } from "react"
 import { Listbox } from "@headlessui/react"
 
 const people = [
-  { id: 1, name: "price", unavailable: false },
-  { id: 2, name: "name", unavailable: false },
-  { id: 3, name: "discount", unavailable: false },
+  { id: 1, name: "ascending" },
+  { id: 2, name: "descending" },
+  { id: 3, name: "discount" },
+  { id: 3, name: "newest" },
 ]
 
 function SortOption() {
@@ -35,11 +36,7 @@ function SortOption() {
 
       <Listbox.Options>
         {people.map((person) => (
-          <Listbox.Option
-            key={person.id}
-            value={person}
-            disabled={person.unavailable}
-          >
+          <Listbox.Option key={person.id} value={person}>
             {person.name}
           </Listbox.Option>
         ))}
