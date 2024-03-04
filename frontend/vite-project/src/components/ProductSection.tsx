@@ -40,6 +40,7 @@ const ProductSection = () => {
                 price={product.price}
                 discount={product.discount}
                 stars={product.total_stars_review}
+                finalPrice={product.final_price}
               />
             </div>
           )

@@ -3,6 +3,7 @@ export interface IProduct {
   name: string
   description: string
   price: number
+  final_price: number
   image_url: string
   measurements: string
   details: string

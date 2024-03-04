@@ -1,11 +1,12 @@
 import star from "../../assets/icons/star-icon.svg"
-import { USDollar, afterDiscount, getImageFromData } from "../utils/utils"
+import { USDollar, getImageFromData } from "../utils/utils"
 
 type ProductCardProps = {
   img: string
   title: string
   price: number
   discount: number
+  finalPrice: number
   stars: number
 }
 
@@ -14,6 +15,7 @@ const ProductCard = ({
   title,
   price,
   discount,
+  finalPrice,
   stars,
 }: ProductCardProps) => {
   return (
@@ -60,7 +62,7 @@ const ProductCard = ({
         <p className=" text-neutral-7 body-2-semi self-stretch">{title}</p>
         <div className="flex gap-3">
           <p className=" caption-1-semi text-neutral-7">
-            {USDollar.format(afterDiscount(price, discount))}
+            {USDollar.format(finalPrice)}
           </p>
           <p className=" text-neutral-4 caption-1 line-through">
             {USDollar.format(price)}

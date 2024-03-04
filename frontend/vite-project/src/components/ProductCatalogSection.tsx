@@ -7,16 +7,23 @@ import { ICategories } from "../interface/categoriesResponse"
 import { CategoriesService } from "../services/CatagoriesService"
 import SortOption from "./SortOption"
 import ToolbarViewSelector from "./ToolbarViewSelector"
+import { USDollar } from "../utils/utils"
 
 const ProductCatalogSection = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([])
 
   const [categoriesBoxList, setCategoriesBoxList] = useState<listbox[]>([])
-
   const [selectedCategory, setSelectedCategory] = useState<listbox>({
     id: 0,
     name: "",
   })
+
+  const [pricesBoxList, setPricesBoxList] = useState<listbox[]>([])
+  const [selectedPrices, setSelectedPrices] = useState<listbox>({
+    id: 0,
+    name: "",
+  })
+
   const getProducts = async () => {
     // change selectedCategory type to {category_id: selectedCategory.id}
     const param: KeyValue = { category_id: selectedCategory.id }
@@ -43,9 +50,52 @@ const ProductCatalogSection = () => {
     }
   }
 
+  const getPrices = async () => {
+    const data = await ProductsService.getProducts()
+    if (data?.data) {
+      const priceList = data?.data?.data.map((item) => {
+        return item.final_price
+      })
+      console.log("priceList", priceList)
+      const maxPrice = Math.max(...priceList)
+      console.log("maxPrice", maxPrice)
+      // Define the range
+      const range = 200
+      // Calculate the number of divisions
+      const divisions = Math.ceil(maxPrice / range)
+      // Create an array to store the price ranges
+      const priceRanges = []
+      // Populate the array with the price ranges
+      for (let i = 0; i < divisions; i++) {
+        priceRanges.push({
+          min: i * range,
+          max: (i + 1) * range - 1,
+        })
+      }
+      console.log("priceRanges", priceRanges)
+
+      // If the max price is not a multiple of the range, adjust the last range
+      // if (maxPrice % range !== 0) {
+      //   priceRanges[priceRanges.length - 1].max = maxPrice
+      //   console.log("priceRanges", priceRanges)
+      // }
+      // convert to listbox type
+      const convertPriceRanges: listbox[] = priceRanges.map((range, index) => {
+        return {
+          id: index + 1,
+          name: `${USDollar.format(range.min)} - ${USDollar.format(range.max)}`,
+        }
+      })
+      const Ranges = [{ id: 0, name: "All" }, ...convertPriceRanges]
+      console.log("convertPriceRanges", Ranges)
+
+      setPricesBoxList(Ranges)
+    }
+  }
   useEffect(() => {
     getProducts()
     getCategories()
+    getPrices()
   }, [])
 
   useEffect(() => {
@@ -69,7 +119,13 @@ const ProductCatalogSection = () => {
             </div>
             <div className="flex flex-col gap-2">
               <p className=" text-neutral-4 body-2-semi">PRICE</p>
-              <div>{/* <ListboxOptions list={categoriesBoxList} /> */}</div>
+              <div>
+                <ListboxOptions
+                  list={pricesBoxList}
+                  selected={selectedPrices}
+                  setSelected={setSelectedPrices}
+                />
+              </div>
             </div>
           </div>
           <div className="flex items-end">
@@ -94,6 +150,7 @@ const ProductCatalogSection = () => {
                   price={product.price}
                   discount={product.discount}
                   stars={product.total_stars_review}
+                  finalPrice={product.final_price}
                 />
               )
             })}

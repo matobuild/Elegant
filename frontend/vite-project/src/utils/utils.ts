@@ -10,7 +10,3 @@ export const USDollar = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 })
-
-export const afterDiscount = (price: number, discount: number) => {
-  return price - (price * discount) / 100
-}
