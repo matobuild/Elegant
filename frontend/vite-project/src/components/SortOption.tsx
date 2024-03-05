@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { Listbox } from "@headlessui/react"
 
-const people = [
+const options = [
   { id: 1, name: "ascending" },
   { id: 2, name: "descending" },
   { id: 3, name: "discount" },
-  { id: 3, name: "newest" },
+  { id: 4, name: "newest" },
 ]
 
 function SortOption() {
-  const [selectedPerson, setSelectedPerson] = useState(people[0])
+  const [selectedPerson, setSelectedPerson] = useState(options[0])
 
   return (
     <Listbox value={selectedPerson} onChange={setSelectedPerson}>
@@ -35,9 +35,9 @@ function SortOption() {
       </Listbox.Button>
 
       <Listbox.Options>
-        {people.map((person) => (
-          <Listbox.Option key={person.id} value={person}>
-            {person.name}
+        {options.map((option) => (
+          <Listbox.Option key={option.id} value={option}>
+            {option.name}
           </Listbox.Option>
         ))}
       </Listbox.Options>

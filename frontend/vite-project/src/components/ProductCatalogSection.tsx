@@ -23,10 +23,22 @@ const ProductCatalogSection = () => {
     id: 0,
     name: "",
   })
+  const [priceRange, setPriceRange] = useState<
+    {
+      min: number
+      max: number
+    }[]
+  >([])
 
   const getProducts = async () => {
     // change selectedCategory type to {category_id: selectedCategory.id}
-    const param: KeyValue = { category_id: selectedCategory.id }
+    const param: KeyValue = {
+      category_id: selectedCategory.id,
+      minPrice: priceRange[selectedPrices.id].min,
+      maxPrice: priceRange[selectedPrices.id].max,
+    }
+    console.log("param", param)
+
     const data = await ProductsService.getProducts(param)
     // console.log("data status", data?.data?.data)
     if (data?.data) {
@@ -73,6 +85,7 @@ const ProductCatalogSection = () => {
         })
       }
       console.log("priceRanges", priceRanges)
+      setPriceRange(priceRanges)
 
       // If the max price is not a multiple of the range, adjust the last range
       // if (maxPrice % range !== 0) {
@@ -82,14 +95,16 @@ const ProductCatalogSection = () => {
       // convert to listbox type
       const convertPriceRanges: listbox[] = priceRanges.map((range, index) => {
         return {
-          id: index + 1,
+          id: index,
           name: `${USDollar.format(range.min)} - ${USDollar.format(range.max)}`,
         }
       })
-      const Ranges = [{ id: 0, name: "All" }, ...convertPriceRanges]
-      console.log("convertPriceRanges", Ranges)
+      console.log("convertPriceRanges", convertPriceRanges)
 
-      setPricesBoxList(Ranges)
+      // const Ranges = [{ id: 0, name: "All" }, ...convertPriceRanges]
+      // console.log("convertPriceRanges", Ranges)
+
+      setPricesBoxList(convertPriceRanges)
     }
   }
   useEffect(() => {
@@ -100,7 +115,7 @@ const ProductCatalogSection = () => {
 
   useEffect(() => {
     getProducts()
-  }, [selectedCategory])
+  }, [selectedCategory, selectedPrices])
 
   return (
     <section className=" px-40 pb-[100px] pt-[60px]">

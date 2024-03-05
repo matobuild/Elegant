@@ -3,15 +3,25 @@ import { mapError } from '../utils/errors';
 import prisma from '../configs/database';
 
 interface KeyValue {
-    [key: string]: string | number
+    [key: string]: string | number | { gte: number, lte: number };
   }
 
 const getQueryObject = (query: { [key: string]: string }) => {
     const result:KeyValue= {};
+    let min= NaN
+    let max = NaN
+
     for (let key in query) {
         switch (key) {
             case "category_id":
                 result[key] = Number(query[key]);
+                break;
+            case "minPrice":                
+              min = Number(query[key]);
+              continue
+             case "maxPrice":
+              max = Number(query[key]);
+                result["final_price"] = {gte: min, lte: max};
                 break;
             default:
         }
@@ -21,6 +31,8 @@ const getQueryObject = (query: { [key: string]: string }) => {
 
 const products = async (req: Request, res: Response, next: NextFunction) => {
     const query = req.query;
+    // console.log("query", query);
+
     const queryObject = getQueryObject(query as { [key: string]: string });
 console.log("queryObject", queryObject);
 

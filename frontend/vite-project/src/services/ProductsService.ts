@@ -8,7 +8,7 @@ type IGetProductsResponse = {
 }
 
 export interface KeyValue {
-  [key: string]: string | number
+  [key: string]: string | number | { gte: number; lte: number }
 }
 
 export const ProductsService = {
