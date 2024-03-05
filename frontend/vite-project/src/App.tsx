@@ -9,6 +9,7 @@ import TopAlert from "./components/TopAlert"
 import ProductPage from "./pages/Product"
 import ContactUsPage from "./pages/ContactUs"
 import NavBar from "./components/NavBar"
+import DetailPage from "./pages/Details"
 
 const AppLayout = () => (
   <>
@@ -35,6 +36,7 @@ function App() {
         { path: "/shop", element: <ShopPage /> },
         { path: "/product", element: <ProductPage /> },
         { path: "/contact-us", element: <ContactUsPage /> },
+        { path: "/detail", element: <DetailPage /> },
       ],
     },
     {

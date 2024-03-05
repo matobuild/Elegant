@@ -32,10 +32,18 @@ const ProductCatalogSection = () => {
 
   const getProducts = async () => {
     // change selectedCategory type to {category_id: selectedCategory.id}
-    const param: KeyValue = {
-      category_id: selectedCategory.id,
-      minPrice: priceRange[selectedPrices.id].min,
-      maxPrice: priceRange[selectedPrices.id].max,
+    const param: KeyValue = {}
+
+    if (selectedCategory.id) {
+      param["category_id"] = selectedCategory.id
+    }
+
+    if (
+      priceRange[selectedPrices.id].min !== -1 &&
+      priceRange[selectedPrices.id].max !== -1
+    ) {
+      param["minPrice"] = priceRange[selectedPrices.id].min
+      param["maxPrice"] = priceRange[selectedPrices.id].max
     }
     console.log("param", param)
 
@@ -58,6 +66,7 @@ const ProductCatalogSection = () => {
           name: category.name,
         }
       })
+      convert.unshift({ id: 0, name: "All" })
       setCategoriesBoxList(convert)
     }
   }
@@ -85,24 +94,26 @@ const ProductCatalogSection = () => {
         })
       }
       console.log("priceRanges", priceRanges)
+      priceRanges.unshift({
+        min: -1,
+        max: -1,
+      })
       setPriceRange(priceRanges)
 
-      // If the max price is not a multiple of the range, adjust the last range
-      // if (maxPrice % range !== 0) {
-      //   priceRanges[priceRanges.length - 1].max = maxPrice
-      //   console.log("priceRanges", priceRanges)
-      // }
       // convert to listbox type
       const convertPriceRanges: listbox[] = priceRanges.map((range, index) => {
+        if (range.min === -1) {
+          return {
+            id: index,
+            name: "All Price",
+          }
+        }
         return {
           id: index,
           name: `${USDollar.format(range.min)} - ${USDollar.format(range.max)}`,
         }
       })
       console.log("convertPriceRanges", convertPriceRanges)
-
-      // const Ranges = [{ id: 0, name: "All" }, ...convertPriceRanges]
-      // console.log("convertPriceRanges", Ranges)
 
       setPricesBoxList(convertPriceRanges)
     }

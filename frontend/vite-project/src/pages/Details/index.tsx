@@ -1,4 +1,4 @@
-import React from "react"
+import ProductDetailSection from "../../components/ProductDetailSection"
 
 const DetailPage = () => {
   return (
