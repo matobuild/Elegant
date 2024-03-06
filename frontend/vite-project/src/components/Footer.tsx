@@ -1,6 +1,7 @@
 import instagram from "../../assets/icons/social-outline-instagram.svg"
 import facebook from "../../assets/icons/social-outline-facebook.svg"
 import youtube from "../../assets/icons/social-outline-youtube.svg"
+import { Link } from "react-router-dom"
 
 const Footer = () => {
   return (
@@ -8,21 +9,23 @@ const Footer = () => {
       <div className="flex justify-between pb-2">
         <div className="flex">
           <div className=" border-r-neutral-4 border-r pr-8 ">
-            <div className=" text-neutral-1 font-poppins text-center text-[24px] font-medium not-italic leading-6 ">
-              3legant
-              <span className=" text-neutral-4">.</span>
-            </div>
+            <Link to={"/"}>
+              <div className=" text-neutral-1 font-poppins text-center text-[24px] font-medium not-italic leading-6 ">
+                3legant
+                <span className=" text-neutral-4">.</span>
+              </div>
+            </Link>
           </div>
           <div className=" caption-1 text-neutral-3 pl-8  ">
             Gift & Decoration Store
           </div>
         </div>
         <div className="caption-1 text-neutral-1 flex gap-10">
-          <a href="">Home</a>
-          <a href="">Shop</a>
-          <a href="">Product</a>
-          <a href="">Blog</a>
-          <a href="">Contact Us</a>
+          <Link to={"/"}>Home</Link>
+          <Link to={"/shop"}>Shop</Link>
+          <Link to={"/shop"}>Product</Link>
+          <Link to={"/shop"}>Blog</Link>
+          <Link to={"/contact-us"}>Contact Us</Link>
         </div>
       </div>
       <div className=" flex justify-between py-4">

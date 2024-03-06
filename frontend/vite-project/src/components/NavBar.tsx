@@ -7,7 +7,9 @@ import shoppingBagIcon from "../../assets/icons/outline-shopping-bag.svg"
 const NavBar = () => {
   return (
     <nav className=" flex justify-between px-40 py-4">
-      <img src={logo} alt="logo" />
+      <NavLink to="/">
+        <img src={logo} alt="logo" />
+      </NavLink>
       <div className="button-xs text-neutral-4 flex gap-10 ">
         <NavLink
           className={({ isActive }) => (isActive ? "text-neutral-7" : "")}

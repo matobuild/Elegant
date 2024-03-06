@@ -3,6 +3,7 @@ import ProductCard from "./ProductCard"
 import RightArrowLink from "./RightArrowLink"
 import { ProductsService } from "../services/ProductsService"
 import { IProduct } from "../interface/productsResponse"
+import { Link } from "react-router-dom"
 
 type ProductSectionProps = {
   title1?: string
@@ -31,7 +32,9 @@ const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
             {title1}
             <br /> {title2}
           </h4>
-          <RightArrowLink name="More Products" />
+          <Link to="/shop">
+            <RightArrowLink name="More Products" />
+          </Link>
         </div>
       </header>
       <div className=" flex flex-nowrap gap-6 overflow-x-auto py-12 pl-40">

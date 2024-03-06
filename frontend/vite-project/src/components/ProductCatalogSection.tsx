@@ -105,7 +105,7 @@ const ProductCatalogSection = () => {
         if (range.min === -1) {
           return {
             id: index,
-            name: "All Price",
+            name: "All",
           }
         }
         return {

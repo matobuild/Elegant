@@ -1,6 +1,7 @@
 import ticket from "../../assets/icons/ticket-percent.svg"
 import closeIcon from "../../assets/icons/icon-union.svg"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const TopAlert = () => {
   const [showAlert, setShowAlert] = useState(true)
@@ -16,9 +17,11 @@ const TopAlert = () => {
             <div className="caption-1-semi text-neutral-5 flex flex-1 justify-center gap-3">
               <img src={ticket} alt="ticket-icon" />
               <p>30% off storewide — Limited time!</p>
-              <button className="button-xs text-secondary-blue border-b-secondary-blue border-b border-solid">
-                Shop Now →
-              </button>
+              <Link to={"/shop"}>
+                <button className="button-xs text-secondary-blue border-b-secondary-blue border-b border-solid">
+                  Shop Now →
+                </button>
+              </Link>
             </div>
             <button className="cursor-pointer" onClick={closeAlert}>
               <img src={closeIcon} alt="close-icon" />

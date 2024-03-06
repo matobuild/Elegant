@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { getImageUrl } from "../utils/utils"
 import RightArrowLink from "./RightArrowLink"
 
@@ -23,7 +24,9 @@ const LeftImageFillerSection = () => {
           </p>
         </div>
         <div>
-          <RightArrowLink name="Shop Now" />
+          <Link to={"/shop"}>
+            <RightArrowLink name="Shop Now" />
+          </Link>
         </div>
       </div>
     </section>
