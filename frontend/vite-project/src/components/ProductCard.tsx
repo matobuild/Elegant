@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { USDollar, getImageFromData } from "../utils/utils"
 import StarsReview from "./StarsReview"
 
@@ -19,7 +20,7 @@ const ProductCard = ({
   stars,
 }: ProductCardProps) => {
   return (
-    <div className=" group flex  w-full  flex-col gap-3">
+    <div className=" hover:border-neutral-3 group  flex w-full cursor-pointer flex-col gap-3 border border-transparent">
       <div className="relative w-full">
         <img className="h-auto w-full" src={getImageFromData(img)} alt={img} />
         <div className=" absolute left-4 top-4 inline-flex flex-col gap-2">
@@ -47,7 +48,7 @@ const ProductCard = ({
             />
           </svg>
         </div>
-        <button className=" bg-neutral-7 text-neutral-1 button-s absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block">
+        <button className=" bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block">
           Add to Cart
         </button>
       </div>
