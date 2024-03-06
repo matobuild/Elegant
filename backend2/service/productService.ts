@@ -53,4 +53,23 @@ console.log("queryObject", queryObject);
     }
 }
 
-export {products}
+const productById = async (req: Request, res: Response, next: NextFunction) => {
+    const { id } = req.params;
+
+    try {
+        const product = await prisma.products.findUnique({
+            where: { product_id: Number(id) },  
+        });
+
+        if (product) {
+            return res.status(200).json({ status: "success", data: product });
+        } else {
+            return res.status(404).json({ status: "error", message: "Product not found" });
+        }
+    } catch (error) {
+        console.log(error);
+        mapError(500, "Internal Server Error", next);
+    }
+}
+
+export { products, productById }

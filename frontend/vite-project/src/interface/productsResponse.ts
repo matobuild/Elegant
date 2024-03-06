@@ -18,3 +18,8 @@ export interface IProductsResponse {
   status: string
   data: IProduct[]
 }
+
+export interface ISpecificProductResponse {
+  status: string
+  data: IProduct
+}

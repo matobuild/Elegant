@@ -292,6 +292,19 @@
   line-height: 30px; /* 166.667% */
 }
 
+.text-18px-bold-18px-line-height {
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+
+  /* Text/18px/Bold */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px; /* 100% */
+}
+
 .body-2 {
   font-feature-settings:
     "clig" off,

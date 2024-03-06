@@ -2,9 +2,11 @@ import { Disclosure, Transition } from "@headlessui/react"
 
 type DisclosureBoxProps = {
   title: string
+  details?: string
+  packaging?: string
 }
 
-const DisclosureBox = ({ title }: DisclosureBoxProps) => {
+const DisclosureBox = ({ title, details, packaging }: DisclosureBoxProps) => {
   return (
     <Disclosure>
       {({ open }) => (
@@ -41,19 +43,11 @@ const DisclosureBox = ({ title }: DisclosureBoxProps) => {
             <Disclosure.Panel className=" flex flex-col gap-4 py-2">
               <div className="flex flex-col gap-2">
                 <p className="caption-1-semi text-neutral-4">Details</p>
-                <p className="caption-2 text-neutral-7">
-                  You can use the removable tray for serving. The design makes
-                  it easy to put the tray back after use since you place it
-                  directly on the table frame without having to fit it into any
-                  holes.
-                </p>
+                <p className="caption-2 text-neutral-7">{details}</p>
               </div>
               <div className="flex flex-col gap-2">
                 <p className="caption-1-semi text-neutral-4">Packaging</p>
-                <p className="caption-2 text-neutral-7">
-                  Width: 20 " Height: 1 ½ " Length: 21 ½ " Weight: 7 lb 8 oz
-                  Package(s): 1
-                </p>
+                <p className="caption-2 text-neutral-7">{packaging}</p>
               </div>
             </Disclosure.Panel>
           </Transition>

@@ -36,7 +36,7 @@ function App() {
         { path: "/shop", element: <ShopPage /> },
         { path: "/product", element: <ProductPage /> },
         { path: "/contact-us", element: <ContactUsPage /> },
-        { path: "/detail", element: <DetailPage /> },
+        { path: "/product/:name", element: <DetailPage /> },
       ],
     },
     {

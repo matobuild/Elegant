@@ -1,10 +1,18 @@
 import axios from "../configuration/axios"
-import { IProductsResponse } from "../interface/productsResponse"
+import {
+  IProductsResponse,
+  ISpecificProductResponse,
+} from "../interface/productsResponse"
 import { handleResponse } from "../utils/handleResponse"
 
 type IGetProductsResponse = {
   status: number | undefined
   data?: IProductsResponse
+}
+
+type IGetSpecificProductResponse = {
+  status: number | undefined
+  data?: ISpecificProductResponse
 }
 
 export interface KeyValue {
@@ -23,6 +31,20 @@ export const ProductsService = {
         const response = await axios.get("/api/v1/products")
         return handleResponse.success(response)
       }
+    } catch (error: any) {
+      console.error("the error is ------..>", error)
+      return handleResponse.error(error)
+    }
+  },
+
+  getSpecificProduct: async (
+    id: number,
+  ): Promise<IGetSpecificProductResponse> => {
+    try {
+      const response = await axios.get(`/api/v1/products/${id}`)
+      console.log("response", response)
+
+      return handleResponse.success(response)
     } catch (error: any) {
       console.error("the error is ------..>", error)
       return handleResponse.error(error)

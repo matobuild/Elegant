@@ -1,11 +1,18 @@
-import { getImageUrl } from "../utils/utils"
+import { IProduct } from "../interface/productsResponse"
+import { USDollar, getImageFromData, getImageUrl } from "../utils/utils"
 import Button from "./Button"
 import DisclosureBox from "./DisclosureBox"
 import QuantityButton from "./QuantityButton"
 import StarsReview from "./StarsReview"
 import WishlistButton from "./WishlistButton"
 
-const ProductDetailSection = () => {
+type ProductDetailSectionProps = {
+  specificProduct: IProduct
+}
+
+const ProductDetailSection = ({
+  specificProduct,
+}: ProductDetailSectionProps) => {
   return (
     <section className="border-neutral-2 border-t border-solid pb-10">
       <div className="py-4">
@@ -52,7 +59,9 @@ const ProductDetailSection = () => {
               </span>
             </button>
             <button className="flex items-center gap-1 text-[#605F5F]">
-              <span>Living Room</span>
+              <span>
+                {specificProduct.category_id}NEED TO GET Category name!
+              </span>
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,12 +88,21 @@ const ProductDetailSection = () => {
       </div>
       <div className="flex w-full gap-[63px] px-40">
         <div className="flex h-full w-full flex-col gap-6">
-          <div className=" flex-shrink-0">
+          <div className="relative w-full ">
             <img
-              className="h-auto w-full"
-              src={getImageUrl("Details/Main description Image.png")}
+              className="h-auto w-full "
+              src={getImageFromData(specificProduct.image_url)}
               alt="Main description "
             />
+
+            <div className=" absolute left-8 top-8 inline-flex flex-col gap-2">
+              <div className="text-18px-bold-18px-line-height bg-neutral-1 flex flex-shrink-0 content-center items-center rounded px-[18px] py-2 text-center text-[#121212]">
+                NEW
+              </div>
+              <div className=" bg-secondary-green text-neutral-1 hairline-1 flex flex-shrink-0  content-center items-center rounded px-[18px] py-2 ">
+                -{specificProduct.discount}%
+              </div>
+            </div>
           </div>
           <div className="flex gap-6 ">
             <div className="flex h-[167px] w-full ">
@@ -110,61 +128,68 @@ const ProductDetailSection = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="flex flex-col">
-            <div className=" border-neutral-3 flex flex-col items-start gap-4 border-b border-solid pb-4">
-              <div className="flex gap-[10px]">
-                <span>
-                  <StarsReview stars={5} />
-                </span>
-                <p className=" caption-2 text-neutral-7">11 Reviews</p>
-              </div>
-              <h4 className=" heading-4 text-neutral-7">Tray Table</h4>
-              <p className=" body-2 text-neutral-4">
-                Buy one or buy a few and make every space where you sit more
-                convenient. Light and easy to move around with removable tray
-                top, handy for serving snacks.
+        <div className="flex w-full flex-col">
+          <div className=" border-neutral-3 flex flex-col items-start gap-4 border-b border-solid pb-4">
+            <div className="flex gap-[10px]">
+              <span>
+                <StarsReview stars={specificProduct.total_stars_review} />
+              </span>
+              <p className=" caption-2 text-neutral-7">11 Reviews</p>
+            </div>
+            <h4 className=" heading-4 text-neutral-7">
+              {specificProduct.name}
+            </h4>
+            <p className=" body-2 text-neutral-4">
+              {specificProduct.description}
+            </p>
+            <div className="flex items-center gap-3">
+              <h6 className=" heading-6 text-black">
+                {USDollar.format(specificProduct.final_price)}
+              </h6>
+              <h6 className=" heading-7 text-neutral-4 line-through">
+                {USDollar.format(specificProduct.price)}
+              </h6>
+            </div>
+          </div>
+          <div className=" py-4">
+            <div className="flex flex-col gap-2">
+              <p className=" body-2-semi text-neutral-4">Measurements</p>
+              <p className=" body-1 text-primary-1">
+                {specificProduct.measurements}
               </p>
-              <div className="flex items-center gap-3">
-                <h6 className=" heading-6 text-black">$199.00</h6>
-                <h6 className=" heading-7 text-neutral-4 line-through">
-                  $400.00
-                </h6>
+            </div>
+          </div>
+          <div className=" flex flex-col items-start gap-4 py-6 ">
+            <div className="flex w-full gap-6">
+              <div className="w-1/4">
+                <QuantityButton />
+              </div>
+              <div className="w-3/4">
+                <WishlistButton />
               </div>
             </div>
-            <div className=" py-4">
-              <div className="flex flex-col gap-2">
-                <p className=" body-2-semi text-neutral-4">Measurements</p>
-                <p className=" body-1 text-primary-1">17 1/2x20 5/8 "</p>
-              </div>
+            <Button text={"Add to Cart"} buttonType="button-m" />
+          </div>
+          <div className="flex flex-col gap-2 py-4">
+            <div className=" caption-2 flex items-start">
+              <p className="text-neutral-4  w-1/4">SKU</p>
+              <p className="text-neutral-7 w-3/4">{specificProduct.stock}</p>
             </div>
-            <div className=" flex flex-col items-start gap-4 py-6 ">
-              <div className="flex w-full gap-6">
-                <div className="w-1/4">
-                  <QuantityButton />
-                </div>
-                <div className="w-3/4">
-                  <WishlistButton />
-                </div>
-              </div>
-              <Button text={"Add to Cart"} buttonType="button-m" />
+            <div className="caption-2 flex items-start">
+              <p className=" text-neutral-4 w-1/4">CATEGORY</p>
+              <p className=" text-neutral-7 w-3/4">
+                Living Room, Bedroom NEED TO GET Category name!
+              </p>
             </div>
-            <div className="flex flex-col gap-2 py-4">
-              <div className=" caption-2 flex items-start">
-                <p className="text-neutral-4  w-1/4">SKU</p>
-                <p className="text-neutral-7 w-3/4">1117</p>
-              </div>
-              <div className="caption-2 flex items-start">
-                <p className=" text-neutral-4 w-1/4">CATEGORY</p>
-                <p className=" text-neutral-7 w-3/4">Living Room, Bedroom</p>
-              </div>
-            </div>
-            <div className=" py-2">
-              <DisclosureBox title={"Additional Info"} />
-              <DisclosureBox title={"Questions"} />
-
-              <DisclosureBox title={"Review (11)"} />
-            </div>
+          </div>
+          <div className=" py-2">
+            <DisclosureBox
+              title={"Additional Info"}
+              details={specificProduct.details}
+              packaging={specificProduct.packaging}
+            />
+            <DisclosureBox title={"Questions"} />
+            <DisclosureBox title={"Review (11)"} />
           </div>
         </div>
       </div>
