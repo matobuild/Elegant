@@ -4,7 +4,12 @@ import RightArrowLink from "./RightArrowLink"
 import { ProductsService } from "../services/ProductsService"
 import { IProduct } from "../interface/productsResponse"
 
-const ProductSection = () => {
+type ProductSectionProps = {
+  title1?: string
+  title2?: string
+}
+
+const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
   const [productsList, setProductsList] = useState<IProduct[]>([])
 
   const getProducts = async () => {
@@ -23,8 +28,8 @@ const ProductSection = () => {
       <header className="px-40">
         <div className="flex items-end justify-between">
           <h4 className="heading-4 ">
-            New
-            <br /> Arrivals
+            {title1}
+            <br /> {title2}
           </h4>
           <RightArrowLink name="More Products" />
         </div>
@@ -32,9 +37,11 @@ const ProductSection = () => {
       <div className=" flex flex-nowrap gap-6 overflow-x-auto py-12 pl-40">
         {productsList.map((product) => {
           return (
-            <div className=" flex-auto flex-shrink-0 flex-grow-0">
+            <div
+              className=" flex-auto flex-shrink-0 flex-grow-0"
+              key={product.product_id}
+            >
               <ProductCard
-                key={product.product_id}
                 img={product.image_url}
                 title={product.name}
                 price={product.price}

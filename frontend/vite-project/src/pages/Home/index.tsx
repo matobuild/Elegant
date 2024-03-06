@@ -9,7 +9,7 @@ const HomePage = () => {
     <>
       <SliderSection />
       <BannerSection />
-      <ProductSection />
+      <ProductSection title1="New" title2="Arrivals" />
       <ValuesSection />
       <LeftImageFillerSection />
     </>

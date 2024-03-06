@@ -1,10 +1,13 @@
 import ProductDetailSection from "../../components/ProductDetailSection"
+import ProductSection from "../../components/ProductSection"
 
 const DetailPage = () => {
   return (
     <>
       <ProductDetailSection />
-      <div>DetailPage</div>
+      <div className=" pb-20">
+        <ProductSection title1="You might also like" />
+      </div>
     </>
   )
 }

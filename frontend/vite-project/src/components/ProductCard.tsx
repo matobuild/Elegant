@@ -1,5 +1,5 @@
-import star from "../../assets/icons/star-icon.svg"
 import { USDollar, getImageFromData } from "../utils/utils"
+import StarsReview from "./StarsReview"
 
 type ProductCardProps = {
   img: string
@@ -53,12 +53,7 @@ const ProductCard = ({
       </div>
 
       <div className="flex flex-col">
-        <div className="g-[2px] flex">
-          {Array.from({ length: stars }).map((_, index) => (
-            <img key={index} src={star} alt="start-icon" />
-          ))}
-          &nbsp;
-        </div>
+        <StarsReview stars={stars} />
         <p className=" text-neutral-7 body-2-semi self-stretch">{title}</p>
         <div className="flex gap-3">
           <p className=" caption-1-semi text-neutral-7">

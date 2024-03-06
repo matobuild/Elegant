@@ -241,6 +241,18 @@
   line-height: 32px; /* 160% */
 }
 
+.text-16px-semibold {
+  font-feature-settings:
+    "clig" off,
+    "liga" off;
+  /* Text/16px/Semibold */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px; /* 162.5% */
+}
+
 .text-18px-regular {
   font-feature-settings:
     "clig" off,

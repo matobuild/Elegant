@@ -151,7 +151,7 @@ const SignUpPage = () => {
                   </label>
                 </div>
               </div>
-              <Button text="submit" />
+              <Button text="Sign Up" />
             </form>
           </div>
         </div>

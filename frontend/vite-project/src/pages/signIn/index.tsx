@@ -99,7 +99,7 @@ const SignInPage = () => {
                 </div>
               </div>
 
-              <Button text="submit" />
+              <Button text="Sign In" />
             </form>
           </div>
         </div>
