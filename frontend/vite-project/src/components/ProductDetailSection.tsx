@@ -59,9 +59,7 @@ const ProductDetailSection = ({
               </span>
             </button>
             <button className="flex items-center gap-1 text-[#605F5F]">
-              <span>
-                {specificProduct.category_id}NEED TO GET Category name!
-              </span>
+              <span>{specificProduct.categories.name}</span>
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +176,7 @@ const ProductDetailSection = ({
             <div className="caption-2 flex items-start">
               <p className=" text-neutral-4 w-1/4">CATEGORY</p>
               <p className=" text-neutral-7 w-3/4">
-                Living Room, Bedroom NEED TO GET Category name!
+                {specificProduct.categories.name}
               </p>
             </div>
           </div>

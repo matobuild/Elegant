@@ -12,6 +12,10 @@ export interface IProduct {
   total_stars_review: number
   discount: number
   category_id: number
+  categories: {
+    category_id: number
+    name: string
+  }
 }
 
 export interface IProductsResponse {

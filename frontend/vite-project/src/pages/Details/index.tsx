@@ -19,10 +19,14 @@ const DetailPage = () => {
     measurements: "",
     details: "",
     packaging: "",
-    stock: 0,
-    total_stars_review: 0,
-    discount: 0,
-    category_id: 0,
+    stock: NaN,
+    total_stars_review: NaN,
+    discount: NaN,
+    category_id: NaN,
+    categories: {
+      category_id: NaN,
+      name: "",
+    },
   })
 
   const getSpecificProduct = async () => {
