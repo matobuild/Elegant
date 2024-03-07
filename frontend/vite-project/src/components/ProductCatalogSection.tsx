@@ -177,6 +177,7 @@ const ProductCatalogSection = () => {
                   discount={product.discount}
                   stars={product.total_stars_review}
                   finalPrice={product.final_price}
+                  id={product.product_id}
                 />
               )
             })}

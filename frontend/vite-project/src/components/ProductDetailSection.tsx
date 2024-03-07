@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { IProduct } from "../interface/productsResponse"
 import { USDollar, getImageFromData, getImageUrl } from "../utils/utils"
 import Button from "./Button"
@@ -18,46 +19,51 @@ const ProductDetailSection = ({
       <div className="py-4">
         <div className="px-40">
           <div className=" button-xs flex items-center gap-4">
-            <button className=" flex items-center gap-1 text-[#605F5F]">
-              <span>Home</span>
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                >
-                  <path
-                    d="M4.58423 3L7.58423 6L4.58423 9"
-                    stroke="#605F5F"
-                    strokeWidth="0.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
-            <button className="flex items-center gap-1 text-[#605F5F]">
-              <span>Shop</span>
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 12 12"
-                  fill="none"
-                >
-                  <path
-                    d="M4.58423 3L7.58423 6L4.58423 9"
-                    stroke="#605F5F"
-                    strokeWidth="0.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
+            <Link to="/">
+              <button className=" flex items-center gap-1 text-[#605F5F]">
+                <span>Home</span>
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M4.58423 3L7.58423 6L4.58423 9"
+                      stroke="#605F5F"
+                      strokeWidth="0.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </Link>
+            <Link to="/shop">
+              <button className="flex items-center gap-1 text-[#605F5F]">
+                <span>Shop</span>
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M4.58423 3L7.58423 6L4.58423 9"
+                      stroke="#605F5F"
+                      strokeWidth="0.75"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </Link>
+
             <button className="flex items-center gap-1 text-[#605F5F]">
               <span>{specificProduct.categories.name}</span>
               <span>
