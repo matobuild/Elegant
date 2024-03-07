@@ -8,6 +8,7 @@ import { CategoriesService } from "../services/CatagoriesService"
 import SortOption from "./SortOption"
 import ToolbarViewSelector from "./ToolbarViewSelector"
 import { USDollar } from "../utils/utils"
+import { set } from "react-hook-form"
 
 const ProductCatalogSection = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([])
@@ -30,6 +31,8 @@ const ProductCatalogSection = () => {
     }[]
   >([])
 
+  const [page, setPage] = useState(1)
+
   const getProducts = async () => {
     // change selectedCategory type to {category_id: selectedCategory.id}
     const param: KeyValue = {}
@@ -44,6 +47,10 @@ const ProductCatalogSection = () => {
     ) {
       param["minPrice"] = priceRange[selectedPrices.id].min
       param["maxPrice"] = priceRange[selectedPrices.id].max
+    }
+
+    if (page > 1) {
+      param["page"] = page
     }
     console.log("param", param)
 
@@ -118,6 +125,11 @@ const ProductCatalogSection = () => {
       setPricesBoxList(convertPriceRanges)
     }
   }
+
+  const getMore = () => {
+    setPage(page + 1)
+  }
+
   useEffect(() => {
     getProducts()
     getCategories()
@@ -126,7 +138,7 @@ const ProductCatalogSection = () => {
 
   useEffect(() => {
     getProducts()
-  }, [selectedCategory, selectedPrices])
+  }, [selectedCategory, selectedPrices, page])
 
   return (
     <section className=" px-40 pb-[100px] pt-[60px]">
@@ -183,7 +195,10 @@ const ProductCatalogSection = () => {
             })}
           </div>
           <div className="flex justify-center">
-            <button className=" button-s border-neutral-7 hover:border-neutral-4 hover:text-neutral-4 text-neutral-7 flex items-center rounded-[80px] border border-solid px-10 py-[6px]">
+            <button
+              onClick={getMore}
+              className=" button-s border-neutral-7 hover:border-neutral-4 hover:text-neutral-4 text-neutral-7 flex items-center rounded-[80px] border border-solid px-10 py-[6px]"
+            >
               Show more
             </button>
           </div>

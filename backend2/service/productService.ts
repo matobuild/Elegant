@@ -32,18 +32,28 @@ const getQueryObject = (query: { [key: string]: string }) => {
 const products = async (req: Request, res: Response, next: NextFunction) => {
     const query = req.query;
     // console.log("query", query);
+    const page = Number(req.query.page) || 1;
+    const pageSize = Number(req.query.pageSize) || 12;
+
+    const skip = 0
+    const take = pageSize*page;
 
     const queryObject = getQueryObject(query as { [key: string]: string });
 console.log("queryObject", queryObject);
 
     try {
         if (query) {const queryProducts = await prisma.products.findMany({
-                where: queryObject
+                where: queryObject,
+                skip: skip,
+                take: take
             });
             console.log(queryProducts);
             return res.status(200).json({ status: "success", data: queryProducts });    
         } else {
-            const allProducts = await prisma.products.findMany();
+            const allProducts = await prisma.products.findMany({
+                skip: skip,
+                take: take
+            });
             return res.status(200).json({ status: "success", data: allProducts });
         }
             
