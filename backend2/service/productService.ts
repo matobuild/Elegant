@@ -4,12 +4,13 @@ import prisma from '../configs/database';
 
 interface KeyValue {
     [key: string]: string | number | { gte: number, lte: number };
-  }
+}
 
 const getQueryObject = (query: { [key: string]: string }) => {
     const result:KeyValue= {};
     let min= NaN
     let max = NaN
+    let orderBy = {};
 
     for (let key in query) {
         switch (key) {
@@ -17,24 +18,27 @@ const getQueryObject = (query: { [key: string]: string }) => {
                 result[key] = Number(query[key]);
                 break;
             case "minPrice":                
-              min = Number(query[key]);
-              continue
-             case "maxPrice":
-              max = Number(query[key]);
+                min = Number(query[key]);
+                continue
+            case "maxPrice":
+                max = Number(query[key]);
                 result["final_price"] = {gte: min, lte: max};
+                break;
+            case "orderBy":
+                orderBy = { [query[key].split(':')[0]]: query[key].split(':')[1] };
                 break;
             default:
         }
     }
-    return result;
+    return { where: result, orderBy: orderBy };
 }
 
 const products = async (req: Request, res: Response, next: NextFunction) => {
     const query = req.query;
     // console.log("query", query);
+
     const page = Number(req.query.page) || 1;
     const pageSize = Number(req.query.pageSize) || 12;
-
     const skip = 0
     const take = pageSize*page;
 
@@ -43,9 +47,10 @@ console.log("queryObject", queryObject);
 
     try {
         if (query) {const queryProducts = await prisma.products.findMany({
-                where: queryObject,
+                ...queryObject,
                 skip: skip,
                 take: take
+                
             });
             console.log(queryProducts);
             return res.status(200).json({ status: "success", data: queryProducts });    

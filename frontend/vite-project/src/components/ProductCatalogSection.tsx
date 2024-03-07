@@ -8,7 +8,6 @@ import { CategoriesService } from "../services/CatagoriesService"
 import SortOption from "./SortOption"
 import ToolbarViewSelector from "./ToolbarViewSelector"
 import { USDollar } from "../utils/utils"
-import { set } from "react-hook-form"
 
 const ProductCatalogSection = () => {
   const [productsList, setProductsList] = useState<IProduct[]>([])
@@ -33,6 +32,13 @@ const ProductCatalogSection = () => {
 
   const [page, setPage] = useState(1)
 
+  const sortBoxList = [
+    { name: "Sort by" },
+    { name: "ascending", paramName: "asc" },
+    { name: "descending", paramName: "desc" },
+  ]
+  const [selectedSort, setSelectedSort] = useState(sortBoxList[0])
+
   const getProducts = async () => {
     // change selectedCategory type to {category_id: selectedCategory.id}
     const param: KeyValue = {}
@@ -52,6 +58,11 @@ const ProductCatalogSection = () => {
     if (page > 1) {
       param["page"] = page
     }
+
+    if (selectedSort.name !== "Sort by") {
+      param["orderBy"] = `final_price:${selectedSort.paramName}`
+    }
+
     console.log("param", param)
 
     const data = await ProductsService.getProducts(param)
@@ -138,7 +149,7 @@ const ProductCatalogSection = () => {
 
   useEffect(() => {
     getProducts()
-  }, [selectedCategory, selectedPrices, page])
+  }, [selectedCategory, selectedPrices, page, selectedSort])
 
   return (
     <section className=" px-40 pb-[100px] pt-[60px]">
@@ -169,7 +180,11 @@ const ProductCatalogSection = () => {
           <div className="flex items-end">
             <div className="flex items-center gap-8">
               <div>
-                <SortOption />
+                <SortOption
+                  list={sortBoxList}
+                  selected={selectedSort}
+                  setSelected={setSelectedSort}
+                />
               </div>
               <div>
                 <ToolbarViewSelector />
