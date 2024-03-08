@@ -1,4 +1,4 @@
-import Button from "./Button"
+import BlackButton from "./BlackButton"
 import MyRadioGroup from "./MyRadioGroup"
 
 const CartSummary = () => {
@@ -22,7 +22,10 @@ const CartSummary = () => {
           </div>
         </div>
         <div>
-          <Button text="Checkout" buttonType="button-m" paddingX="px-[26px]" />
+          <BlackButton
+            text="Checkout"
+            classes="button-m bg-neutral-7 text-neutral-1 hover:bg-neutral-5 w-full rounded-lg px-[26px] py-[10px]"
+          />
         </div>
       </div>
     </div>

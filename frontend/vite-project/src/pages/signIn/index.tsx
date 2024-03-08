@@ -2,7 +2,7 @@ import { getImageUrl } from "../../utils/utils"
 import logo from "../../../assets/logo.svg"
 import { Link, useNavigate } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
-import Button from "../../components/Button"
+import BlackButton from "../../components/BlackButton"
 import { SignService } from "../../services/SignService"
 
 interface FormData {
@@ -99,7 +99,10 @@ const SignInPage = () => {
                 </div>
               </div>
 
-              <Button text="Sign In" />
+              <BlackButton
+                text="Sign In"
+                classes="button-s bg-neutral-7 text-neutral-1 hover:bg-neutral-5 w-full rounded-lg px-10 py-[10px]"
+              />
             </form>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import { USDollar, getImageFromData } from "../utils/utils"
 import StarsReview from "./StarsReview"
+import { userStore } from "../store/userStore"
 
 type ProductCardProps = {
   img: string
@@ -21,6 +22,8 @@ const ProductCard = ({
   stars,
   id,
 }: ProductCardProps) => {
+  const { addToCart } = userStore()
+
   return (
     <Link to={`/product/${title}`} state={{ id: id }}>
       <div className=" hover:border-neutral-3 group  flex w-full cursor-pointer flex-col gap-3 border border-transparent">
@@ -55,7 +58,12 @@ const ProductCard = ({
               />
             </svg>
           </div>
-          <button className=" bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block">
+          <button
+            onClick={() => {
+              addToCart({ productId: id, quantity: 1 })
+            }}
+            className=" bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block"
+          >
             Add to Cart
           </button>
         </div>

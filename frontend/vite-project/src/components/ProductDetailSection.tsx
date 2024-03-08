@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { IProduct } from "../interface/productsResponse"
 import { USDollar, getImageFromData, getImageUrl } from "../utils/utils"
-import Button from "./Button"
+import BlackButton from "./BlackButton"
 import DisclosureBox from "./DisclosureBox"
 import QuantityButton from "./QuantityButton"
 import StarsReview from "./StarsReview"
@@ -172,7 +172,10 @@ const ProductDetailSection = ({
                 <WishlistButton />
               </div>
             </div>
-            <Button text={"Add to Cart"} buttonType="button-m" />
+            <BlackButton
+              text={"Add to Cart"}
+              classes="button-m bg-neutral-7 text-neutral-1 hover:bg-neutral-5 w-full rounded-lg px-10 py-[10px]"
+            />
           </div>
           <div className="flex flex-col gap-2 py-4">
             <div className=" caption-2 flex items-start">

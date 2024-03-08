@@ -74,3 +74,5 @@ export default App
 // todo: when shop page is open it should scroll to the top of the page
 // todo: be able to change content display catalog in shop page
 // todo: the news letter email is saved in the data base
+// todo: need to fix the add to cart button from going to the detail page
+// todo: connect the store and link it with backend

@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 import { getImageUrl } from "../../utils/utils"
 import logo from "../../../assets/logo.svg"
-import Button from "../../components/Button"
+import BlackButton from "../../components/BlackButton"
 import { SignService } from "../../services/SignService"
 import { Link, useNavigate } from "react-router-dom"
 
@@ -151,7 +151,10 @@ const SignUpPage = () => {
                   </label>
                 </div>
               </div>
-              <Button text="Sign Up" />
+              <BlackButton
+                text="Sign Up"
+                classes="button-s bg-neutral-7 text-neutral-1 hover:bg-neutral-5 w-full rounded-lg px-10 py-[10px]"
+              />
             </form>
           </div>
         </div>
