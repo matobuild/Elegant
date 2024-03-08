@@ -10,6 +10,7 @@ import ProductPage from "./pages/Product"
 import ContactUsPage from "./pages/ContactUs"
 import NavBar from "./components/NavBar"
 import DetailPage from "./pages/Details"
+import CartPage from "./pages/Cart"
 
 const AppLayout = () => (
   <>
@@ -24,6 +25,14 @@ const AppLayout = () => (
 const AppLayoutWithOutNavBar = () => (
   <>
     <Outlet />
+  </>
+)
+
+const AppLayoutForCheckout = () => (
+  <>
+    <NavBar />
+    <Outlet />
+    <Footer />
   </>
 )
 
@@ -46,6 +55,10 @@ function App() {
         { path: "/signIn", element: <SignInPage /> },
       ],
     },
+    {
+      element: <AppLayoutForCheckout />,
+      children: [{ path: "/cart", element: <CartPage /> }],
+    },
   ])
 
   return (
@@ -56,3 +69,8 @@ function App() {
 }
 
 export default App
+
+// todo: add to be able to click on the Living room tab and go to shop page with the living room category selected products, the same goes for the detail page
+// todo: when shop page is open it should scroll to the top of the page
+// todo: be able to change content display catalog in shop page
+// todo: the news letter email is saved in the data base
