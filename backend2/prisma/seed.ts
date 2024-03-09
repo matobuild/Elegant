@@ -53,7 +53,7 @@ async function main() {
     })
 
     for (let index = 0; index < 1000; index++) {
-        const product = await prisma.products.create({
+        await prisma.products.create({
             data: await productsData()
         })
         
