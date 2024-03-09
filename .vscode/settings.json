@@ -3,6 +3,7 @@
         "headlessui",
         "heroicons",
         "legant",
-        "Loverseat"
+        "Loverseat",
+        "cartitems"
     ]
 }

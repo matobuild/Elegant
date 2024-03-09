@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { USDollar, getImageFromData } from "../utils/utils"
 import StarsReview from "./StarsReview"
 import { userStore } from "../store/userStore"
+import BlackButton from "./BlackButton"
 
 type ProductCardProps = {
   img: string
@@ -58,14 +59,15 @@ const ProductCard = ({
               />
             </svg>
           </div>
-          <button
-            onClick={() => {
+          <BlackButton
+            text={"Add to Cart"}
+            classes={
+              "bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block"
+            }
+            clicking={() => {
               addToCart({ productId: id, quantity: 1 })
             }}
-            className=" bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block"
-          >
-            Add to Cart
-          </button>
+          />
         </div>
 
         <div className="flex flex-col">
