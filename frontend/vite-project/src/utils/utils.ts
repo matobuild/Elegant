@@ -10,3 +10,5 @@ export const USDollar = new Intl.NumberFormat("en-US", {
   style: "currency",
   currency: "USD",
 })
+
+export const token = localStorage.getItem("token")

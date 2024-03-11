@@ -27,9 +27,10 @@ const generateJWT = async (data:{username: string, role: string, userId: number}
   return token
 }
 
-// const verifyToken = async (token) => {
-//   const result = jwt.verify(token, process.env.JWT_SECRET)
-//   return result
-// }
+const encryptVerifyToken = async (token:string) => {
+  if(!process.env.JWT_SECRET) throw new Error("JWT_SECRET not found")
+  const result = jwt.verify(token, process.env.JWT_SECRET)
+  return result
+}
 
-export { hashPassword, comparePassword, generateJWT}
+export { hashPassword, comparePassword, generateJWT, encryptVerifyToken}

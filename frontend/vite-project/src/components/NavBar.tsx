@@ -3,10 +3,25 @@ import logo from "../../assets/logo.svg"
 import searchIcon from "../../assets/icons/search.svg"
 import userIcon from "../../assets/icons/outline-user-circle.svg"
 import shoppingBagIcon from "../../assets/icons/outline-shopping-bag.svg"
-import { userStore } from "../store/userStore"
+import { checkoutCartStore } from "../store/checkoutCartStore"
+import { useEffect } from "react"
+import { CartService } from "../services/CartService"
 
 const NavBar = () => {
-  const { cart } = userStore()
+  const { checkoutCart, updateCheckoutCart } = checkoutCartStore()
+
+  const getCheckoutCartList = async () => {
+    const checkoutCartList = await CartService.getCheckoutCart()
+    console.log("the checkoutCartList is ------->", checkoutCartList.data?.data)
+
+    if (checkoutCartList && checkoutCartList.data) {
+      updateCheckoutCart(checkoutCartList.data.data)
+    }
+  }
+
+  useEffect(() => {
+    getCheckoutCartList()
+  }, [])
 
   return (
     <nav className=" flex justify-between px-40 py-4">
@@ -46,7 +61,7 @@ const NavBar = () => {
           <div className="g-[5px] flex items-center">
             <img src={shoppingBagIcon} alt="shopping-icon" />
             <div className=" bg-neutral-7 flex h-5 w-5 items-center justify-center rounded-full ">
-              <p className=" text-white">{cart.length}</p>
+              <p className=" text-white">{checkoutCart.length}</p>
             </div>
           </div>
         </Link>

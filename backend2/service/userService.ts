@@ -1,7 +1,9 @@
+import { IGetUserAuthInfoRequest } from './../configs/definitionFile';
 import { Request, Response, NextFunction } from 'express';
 import {mapError} from "../utils/errors";
-import {hashPassword, generateJWT,comparePassword} from "../utils/encrypt";
+import {hashPassword, generateJWT,comparePassword, encryptVerifyToken} from "../utils/encrypt";
 import prisma from '../configs/database';
+import { JwtPayload } from 'jsonwebtoken';
 
 const signUp = async (req: Request, res: Response, next:NextFunction) => {
   try {
@@ -93,4 +95,35 @@ const signIn = async (req: Request, res: Response, next: NextFunction) => {
   }
 }
 
-export {signUp, signIn}
+const verifyToken = async (req: IGetUserAuthInfoRequest, res: Response, next: NextFunction) => {
+  // 1.check token
+  // console.log(req.headers.authorization)
+  if (req.headers.authorization == null) {
+    mapError(401, "Token undefine", next)
+  } else { 
+  const token = req.headers.authorization.split(" ")[1]
+  if (!token) {
+    mapError(401, "Token split undefine", next)
+  }
+
+  // 2. verify token
+  try {    
+    const data = await encryptVerifyToken(token) as JwtPayload
+    
+    console.log("data is -->", data);
+    
+    req.user = {
+      userId: data.userId,
+    }
+
+  } catch (error) {
+    console.log(error)
+    mapError(401, "Token invalid ", next)
+
+}
+
+}
+next()
+}
+
+export {signUp, signIn, verifyToken}

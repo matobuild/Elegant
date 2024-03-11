@@ -75,4 +75,10 @@ export default App
 // todo: be able to change content display catalog in shop page
 // todo: the news letter email is saved in the data base
 // todo: need to fix the add to cart button from going to the detail page
-// todo: connect the store and link it with backend
+// todo: need to be able to show the status if user is login or sign up fail, and any error message from back end and it should pop up on the screen
+// todo: need to change the token save location from local storage to cookies
+
+// question: what is bearer token with JWT, did i implement it correctly ?
+//help to check the code for getting the cart
+// how to make the environment have some viable from a return data from signup such as token
+// is there a way to make the data always refresh in dbeaver ?

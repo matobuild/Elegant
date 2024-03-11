@@ -1,9 +1,11 @@
 {
     "cSpell.words": [
+        "cartitem",
+        "cartitems",
         "headlessui",
         "heroicons",
         "legant",
         "Loverseat",
-        "cartitems"
+        "zustand"
     ]
 }

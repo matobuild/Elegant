@@ -15,7 +15,7 @@ const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
 
   const getProducts = async () => {
     const data = await ProductsService.getProducts()
-    console.log("data status", data.data?.data)
+    // console.log("data status", data.data?.data)
     if (data && data.data) {
       setProductsList(data.data?.data)
     }

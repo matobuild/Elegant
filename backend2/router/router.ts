@@ -1,7 +1,8 @@
 import express from "express";
-import { signUp, signIn } from "../service/userService";
+import { signUp, signIn, verifyToken } from "../service/userService";
 import { productById, products } from "../service/productService";
 import { categories } from "../service/categoriesService";
+import { addToCheckoutCart, getCheckoutCart } from "../service/cartService";
 
 const router = express.Router();
 
@@ -12,5 +13,8 @@ router.route("/products").get(products)
 router.route("/products/:id").get(productById)
 
 router.route("/categories").get(categories)
+
+router.route("/cart").post(verifyToken,addToCheckoutCart)
+router.route("/cart").get(verifyToken,getCheckoutCart)
 
 export default router;

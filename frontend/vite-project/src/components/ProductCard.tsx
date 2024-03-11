@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom"
 import { USDollar, getImageFromData } from "../utils/utils"
 import StarsReview from "./StarsReview"
-import { userStore } from "../store/userStore"
 import BlackButton from "./BlackButton"
+import { CartService } from "../services/CartService"
+import { cartObject, checkoutCartStore } from "../store/checkoutCartStore"
 
 type ProductCardProps = {
   img: string
@@ -23,7 +24,18 @@ const ProductCard = ({
   stars,
   id,
 }: ProductCardProps) => {
-  const { addToCart } = userStore()
+  const { updateCheckoutCart } = checkoutCartStore()
+
+  const postToCheckoutCart = async (product: cartObject) => {
+    await CartService.postCheckoutCart(product)
+
+    const checkoutCartList = await CartService.getCheckoutCart()
+    console.log("the checkoutCartList is ------->", checkoutCartList.data?.data)
+
+    if (checkoutCartList && checkoutCartList.data) {
+      updateCheckoutCart(checkoutCartList.data.data)
+    }
+  }
 
   return (
     <Link to={`/product/${title}`} state={{ id: id }}>
@@ -65,7 +77,7 @@ const ProductCard = ({
               "bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block"
             }
             clicking={() => {
-              addToCart({ productId: id, quantity: 1 })
+              postToCheckoutCart({ product_id: id, quantity: 1 })
             }}
           />
         </div>

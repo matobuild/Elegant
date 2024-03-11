@@ -18,10 +18,15 @@ model cartitems {
 
 model carts {
   cart_id   Int         @id @default(autoincrement())
-  type      String?     @db.VarChar(255)
+  type      cartsType?
   user_id   Int?
   cartitems cartitems[]
   users     users?      @relation(fields: [user_id], references: [user_id])
+}
+
+enum cartsType {
+  wishlist
+  checkoutCart
 }
 
 model categories {
