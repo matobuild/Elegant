@@ -78,7 +78,5 @@ export default App
 // todo: need to be able to show the status if user is login or sign up fail, and any error message from back end and it should pop up on the screen
 // todo: need to change the token save location from local storage to cookies
 
-// question: what is bearer token with JWT, did i implement it correctly ?
-//help to check the code for getting the cart
+// question: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
 // how to make the environment have some viable from a return data from signup such as token
-// is there a way to make the data always refresh in dbeaver ?

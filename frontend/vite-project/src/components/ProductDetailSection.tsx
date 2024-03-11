@@ -6,6 +6,7 @@ import DisclosureBox from "./DisclosureBox"
 import QuantityButton from "./QuantityButton"
 import StarsReview from "./StarsReview"
 import WishlistButton from "./WishlistButton"
+import { useState } from "react"
 
 type ProductDetailSectionProps = {
   specificProduct: IProduct
@@ -14,6 +15,9 @@ type ProductDetailSectionProps = {
 const ProductDetailSection = ({
   specificProduct,
 }: ProductDetailSectionProps) => {
+  const [quantity, setQuantity] = useState(1)
+
+  // use customhoook
   return (
     <section className="border-neutral-2 border-t border-solid pb-10">
       <div className="py-4">
@@ -166,7 +170,7 @@ const ProductDetailSection = ({
           <div className=" flex flex-col items-start gap-4 py-6 ">
             <div className="flex w-full gap-6">
               <div className="w-1/4">
-                <QuantityButton />
+                <QuantityButton quantity={quantity} setQuantity={setQuantity} />
               </div>
               <div className="w-3/4">
                 <WishlistButton />

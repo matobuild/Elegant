@@ -1,7 +1,27 @@
-const QuantityButton = () => {
+type QuantityButtonProps = {
+  quantity: number
+  setQuantity: (value: number) => void
+}
+
+const QuantityButton = ({ quantity, setQuantity }: QuantityButtonProps) => {
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1)
+  }
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
+    }
+  }
+
   return (
     <div className="text-16px-semibold flex content-center items-center justify-center gap-6 self-stretch rounded-lg bg-[#F5F5F5] px-4 py-3 text-center text-[#121212]">
-      <button className=" hover:bg-neutral-1">
+      <button
+        className=" hover:bg-neutral-1"
+        onClick={() => {
+          decreaseQuantity()
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
@@ -18,8 +38,11 @@ const QuantityButton = () => {
           />
         </svg>
       </button>
-      1
-      <button className=" hover:bg-neutral-1">
+      {quantity}
+      <button
+        className=" hover:bg-neutral-1"
+        onClick={() => increaseQuantity()}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="20"
