@@ -77,6 +77,6 @@ export default App
 // todo: need to fix the add to cart button from going to the detail page
 // todo: need to be able to show the status if user is login or sign up fail, and any error message from back end and it should pop up on the screen
 // todo: need to change the token save location from local storage to cookies
+// todo: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
 
-// question: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
-// how to make the environment have some viable from a return data from signup such as token
+// questions: how should the quantity button behave in the details page

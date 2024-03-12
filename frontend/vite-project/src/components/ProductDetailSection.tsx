@@ -6,7 +6,8 @@ import DisclosureBox from "./DisclosureBox"
 import QuantityButton from "./QuantityButton"
 import StarsReview from "./StarsReview"
 import WishlistButton from "./WishlistButton"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import usePostCheckoutCart from "../customHooks/usePostCheckoutCart"
 
 type ProductDetailSectionProps = {
   specificProduct: IProduct
@@ -16,8 +17,17 @@ const ProductDetailSection = ({
   specificProduct,
 }: ProductDetailSectionProps) => {
   const [quantity, setQuantity] = useState(1)
+  console.log("quantity", quantity)
 
-  // use customhoook
+  const { postToCheckoutCart } = usePostCheckoutCart({
+    product_id: specificProduct.product_id,
+    quantity: quantity,
+  })
+
+  useEffect(() => {
+    setQuantity(1)
+  }, [specificProduct])
+
   return (
     <section className="border-neutral-2 border-t border-solid pb-10">
       <div className="py-4">
@@ -179,6 +189,9 @@ const ProductDetailSection = ({
             <BlackButton
               text={"Add to Cart"}
               classes="button-m bg-neutral-7 text-neutral-1 hover:bg-neutral-5 w-full rounded-lg px-10 py-[10px]"
+              clicking={() => {
+                postToCheckoutCart()
+              }}
             />
           </div>
           <div className="flex flex-col gap-2 py-4">
