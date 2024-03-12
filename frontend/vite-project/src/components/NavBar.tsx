@@ -3,25 +3,10 @@ import logo from "../../assets/logo.svg"
 import searchIcon from "../../assets/icons/search.svg"
 import userIcon from "../../assets/icons/outline-user-circle.svg"
 import shoppingBagIcon from "../../assets/icons/outline-shopping-bag.svg"
-import { checkoutCartStore } from "../store/checkoutCartStore"
-import { useEffect } from "react"
-import { CartService } from "../services/CartService"
+import useGetCheckoutCartList from "../customHooks/useGetCheckoutCartList"
 
 const NavBar = () => {
-  const { checkoutCart, updateCheckoutCart } = checkoutCartStore()
-
-  const getCheckoutCartList = async () => {
-    const checkoutCartList = await CartService.getCheckoutCart()
-    console.log("the checkoutCartList is ------->", checkoutCartList.data?.data)
-
-    if (checkoutCartList && checkoutCartList.data) {
-      updateCheckoutCart(checkoutCartList.data.data)
-    }
-  }
-
-  useEffect(() => {
-    getCheckoutCartList()
-  }, [])
+  const { checkoutCart } = useGetCheckoutCartList()
 
   return (
     <nav className=" flex justify-between px-40 py-4">
