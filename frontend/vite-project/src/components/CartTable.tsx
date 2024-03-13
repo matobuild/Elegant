@@ -1,28 +1,47 @@
 import { useEffect } from "react"
 import { checkoutCartStore } from "../store/checkoutCartStore"
 import CartRow from "./CartRow"
+import { ProductsService } from "../services/ProductsService"
+import { IProduct } from "../interface/productsResponse"
 
 const CartTable = () => {
-  // const { checkoutCart } = checkoutCartStore()
+  const { checkoutCart, updateCheckoutCart } = checkoutCartStore()
 
-  // useEffect(() => {
-  //   console.log("the checkoutCart is ------->", checkoutCart)
+  const fetchData = async (productIds: number[]) => {
+    const result: IProduct[] = []
+    for (const id of productIds) {
+      const data = await ProductsService.getSpecificProduct(id)
+      if (data.data?.data) {
+        result.push(data.data?.data)
+      }
+    }
+    console.log(result)
+    const a = result.map((e) => ({
+      name: e?.name,
+      price: e?.price,
+      final_price: e?.final_price,
+      image_url: e.image_url,
+    }))
 
-  //   const productsIdArray = checkoutCart.map((item) => item.product_id)
-  //   console.log("productsIdArray", productsIdArray)
+    console.log(a)
+    console.log(checkoutCart)
 
-  // search for the products in the database using  productsIdArray and return the products
+    const newData = checkoutCart.map((item, index) => ({
+      ...item,
+      ...a[index],
+    }))
 
-  // need to create new array of displayCartProducts
-  // const displayCartProducts = {
-  //   cartitem_id: 83,
-  //   product_id: 1,
-  //   quantity: 2,
-  //   product: "product name",
-  //   price: 20,
-  //   total_price: 40,
-  // }
-  // }, [])
+    console.log("newData", newData)
+    updateCheckoutCart(newData)
+  }
+
+  useEffect(() => {
+    console.log("the checkoutCart is ------->", checkoutCart)
+    const productsIdArray = checkoutCart.map((item) => item.product_id)
+    console.log("productsIdArray", productsIdArray)
+
+    fetchData(productsIdArray)
+  }, [])
 
   return (
     <div className="flex w-full flex-col">
@@ -37,9 +56,9 @@ const CartTable = () => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <CartRow />
-        <CartRow />
-        <CartRow />
+        {checkoutCart.map((item) => (
+          <CartRow key={item.product_id} item={item} />
+        ))}
       </div>
     </div>
   )
