@@ -44,7 +44,6 @@ function App() {
         { path: "/", element: <HomePage /> },
         { path: "/shop", element: <ShopPage /> },
         { path: "/product", element: <ProductPage /> },
-        { path: "/contact-us", element: <ContactUsPage /> },
         { path: "/product/:name", element: <DetailPage /> },
       ],
     },
@@ -57,7 +56,10 @@ function App() {
     },
     {
       element: <AppLayoutForCheckout />,
-      children: [{ path: "/cart", element: <CartPage /> }],
+      children: [
+        { path: "/cart", element: <CartPage /> },
+        { path: "/contact-us", element: <ContactUsPage /> },
+      ],
     },
   ])
 

@@ -26,6 +26,16 @@
   text-transform: uppercase;
 }
 
+.hairline-2 {
+  /* Hairline 2 */
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 12px; /* 100% */
+  text-transform: uppercase;
+}
+
 .heading-1 {
   font-feature-settings:
     "clig" off,

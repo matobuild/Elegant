@@ -10,7 +10,7 @@ const LeftImageFillerSection = () => {
         src={getImageUrl("Home/left-section-image.png")}
         alt="left-home-image"
       />
-      <div className=" flex flex-col justify-center gap-6 pl-[72px] pr-40">
+      <div className=" bg-neutral-2 flex flex-col justify-center gap-6 pl-[72px] pr-40">
         <div className=" flex flex-col gap-4">
           <h1 className="hairline-1 text-secondary-blue self-stretch">
             SALE UP TO 35% OFF

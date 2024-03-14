@@ -1,9 +1,15 @@
 import Card from "./Card"
 import shippingIcon from "../../../assets/icons/shipping-and-delivery-outline-fast-delivery.svg"
 import CallIcon from "../../../assets/icons/communication-outline-call.svg"
-const ValuesSection = () => {
+import MoneyBack from "../../../assets/icons/finance-and-payment-outline-money.svg"
+import SecurePayment from "../../../assets/icons/interface-outline-lock-01.svg"
+
+type ValuesSectionProps = {
+  background?: string
+}
+const ValuesSection = ({ background }: ValuesSectionProps) => {
   return (
-    <section className=" flex content-between gap-6 px-40 py-12">
+    <section className={`flex content-between gap-6 px-40 py-12 ${background}`}>
       <Card
         img={shippingIcon}
         imgAlt="shipping-icon"
@@ -11,14 +17,14 @@ const ValuesSection = () => {
         text="Order above $200"
       />
       <Card
-        img={shippingIcon}
-        imgAlt="shipping-icon"
+        img={MoneyBack}
+        imgAlt="Money-back-icon"
         header="Money-Back"
         text="30 days guarantee"
       />
       <Card
-        img={shippingIcon}
-        imgAlt="shipping-icon"
+        img={SecurePayment}
+        imgAlt="SecurePayment-icon"
         header="Secure Payments"
         text="Secured by Stripe"
       />
