@@ -12,6 +12,7 @@ import NavBar from "./components/NavBar"
 import DetailPage from "./pages/Details"
 import CartPage from "./pages/Cart"
 import CheckOutPage from "./pages/CheckOut"
+import OrderCompletePage from "./pages/OrderComplete"
 
 const AppLayout = () => (
   <>
@@ -60,6 +61,7 @@ function App() {
       children: [
         { path: "/cart", element: <CartPage /> },
         { path: "/checkout", element: <CheckOutPage /> },
+        { path: "/orderComplete", element: <OrderCompletePage /> },
         { path: "/contact-us", element: <ContactUsPage /> },
       ],
     },
