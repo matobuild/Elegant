@@ -11,6 +11,7 @@ import ContactUsPage from "./pages/ContactUs"
 import NavBar from "./components/NavBar"
 import DetailPage from "./pages/Details"
 import CartPage from "./pages/Cart"
+import CheckOutPage from "./pages/CheckOut"
 
 const AppLayout = () => (
   <>
@@ -58,6 +59,7 @@ function App() {
       element: <AppLayoutForCheckout />,
       children: [
         { path: "/cart", element: <CartPage /> },
+        { path: "/checkout", element: <CheckOutPage /> },
         { path: "/contact-us", element: <ContactUsPage /> },
       ],
     },
@@ -81,4 +83,7 @@ export default App
 // todo: need to change the token save location from local storage to cookies
 // todo: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
 
-// questions: how should the quantity button behave in the details page
+// cartpage should be able to delete the row
+// cartpage should be able to change the quantity
+// how should i handle the total amount of the cart ?
+// fix bug when it does not show the image once the cart changes page

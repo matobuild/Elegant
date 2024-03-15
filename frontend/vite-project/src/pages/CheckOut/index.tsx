@@ -1,21 +1,27 @@
 import CartStatus from "../../components/CartStatus"
-import CartSummary from "../../components/CartSummary"
-import CartTable from "../../components/CartTable"
+import CheckoutForm from "../../components/CheckoutForm"
+import OrderSummary from "../../components/OrderSummary"
 
-const CartPage = () => {
+const CheckOutPage = () => {
   return (
     <section className=" px-40 py-20">
       <div className="flex flex-col">
         <div className="flex w-full flex-col items-center gap-10">
-          <h1 className="heading-3 text-primary-1 ">Cart</h1>
+          <h1 className="heading-3 text-primary-1 ">Check Out</h1>
           <div className="flex gap-8">
-            <CartStatus title={"Shopping cart"} step={1} borderBottom={true} />
+            <CartStatus
+              title={"Shopping cart"}
+              borderBottom={true}
+              textColor=" text-secondary-green"
+              circleColor="bg-secondary-green"
+              borderColor="border-secondary-green"
+            />
             <CartStatus
               title={"Checkout details"}
               step={2}
-              textColor={"text-[#B1B5C3]"}
-              circleColor={"bg-[#B1B5C3]"}
+              borderBottom={true}
             />
+
             <CartStatus
               title={"Order complete"}
               step={3}
@@ -25,10 +31,10 @@ const CartPage = () => {
           </div>
           <div className=" flex w-full gap-16 py-20">
             <div className=" w-2/3">
-              <CartTable />
+              <CheckoutForm />
             </div>
             <div className=" w-1/3">
-              <CartSummary />
+              <OrderSummary />
             </div>
           </div>
         </div>
@@ -37,4 +43,4 @@ const CartPage = () => {
   )
 }
 
-export default CartPage
+export default CheckOutPage

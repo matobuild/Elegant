@@ -1,13 +1,21 @@
+import { useState } from "react"
 import BlackButton from "./BlackButton"
 import MyRadioGroup from "./MyRadioGroup"
 
+const plans = [
+  { id: 1, name: "Free shipping", price: "$0.00" },
+  { id: 2, name: "Express shipping", price: "+$15.00" },
+  { id: 3, name: "Pick up", price: "%21.00" },
+]
+
 const CartSummary = () => {
+  const [plan, setPlan] = useState(plans[0])
   return (
     <div className="border-neutral-4 flex h-full w-full flex-col items-start gap-4  rounded-md border border-solid bg-[#FFF] p-6">
       <h1 className=" heading-7 text-neutral-7">Cart summary</h1>
       <div className="flex w-full flex-col">
         <div className="flex flex-col pb-8">
-          <MyRadioGroup />
+          <MyRadioGroup plan={plan} setPlan={setPlan} plans={plans} />
           <div className=" border-b border-solid border-[#EAEAEA] py-[13px] ">
             <div className="text-neutral-7 flex justify-between ">
               <p className=" body-2">Subtotal</p>

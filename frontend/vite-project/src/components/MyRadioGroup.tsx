@@ -1,15 +1,15 @@
-import { useState } from "react"
 import { RadioGroup } from "@headlessui/react"
+import { ReactElement } from "react"
 
-const plans = [
-  { id: 1, name: "Free shipping", price: "$0.00" },
-  { id: 1, name: "Express shipping", price: "+$15.00" },
-  { id: 1, name: "Pick up", price: "%21.00" },
-]
+type choice = { id: number; name: string; price: string; icon?: ReactElement }
 
-function MyRadioGroup() {
-  const [plan, setPlan] = useState(plans[0])
+type MyRadioGroupProps = {
+  plans: choice[]
+  plan: choice
+  setPlan: (value: choice) => void
+}
 
+function MyRadioGroup({ plan, setPlan, plans }: MyRadioGroupProps) {
   return (
     <RadioGroup
       value={plan}
@@ -66,7 +66,9 @@ function MyRadioGroup() {
                   )}
                   {plan.name}
                 </div>
-                <p className=" text-16px-regular">$0.00</p>
+                <p className=" text-16px-regular">
+                  {plan.icon ? plan.icon : plan.price}
+                </p>
               </div>
             </div>
           )}
