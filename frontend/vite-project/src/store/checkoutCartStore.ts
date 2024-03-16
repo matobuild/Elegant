@@ -2,6 +2,7 @@ import { create } from "zustand"
 import { ICheckoutCart } from "../interface/cartResponse"
 
 export type cartObject = { product_id: number; quantity: number }
+export type checkoutCartRow = { cartitem_id: number; quantity: number }
 
 type checkoutCartStoreType = {
   checkoutCart: ICheckoutCart[]

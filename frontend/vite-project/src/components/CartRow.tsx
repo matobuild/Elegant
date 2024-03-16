@@ -1,15 +1,36 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ICheckoutCart } from "../interface/cartResponse"
 import { USDollar, getImageFromData } from "../utils/utils"
 import SmallQuantityButton from "./SmallQuantityButton"
+import { CartService } from "../services/CartService"
+import { checkoutCartStore } from "../store/checkoutCartStore"
 
-type CartRowProps = {
+export type CartRowProps = {
   item: ICheckoutCart
 }
 
 const CartRow = ({ item }: CartRowProps) => {
+  const { checkoutCart, updateCheckoutCart } = checkoutCartStore()
+
   const [quantity, setQuantity] = useState(item.quantity)
-  console.log("quantity", quantity)
+  // console.log("quantity", quantity)
+
+  const updateSpecificRow = async () => {
+    await CartService.editCheckoutCart({
+      cartitem_id: item.cartitem_id,
+      quantity: quantity,
+    })
+  }
+  const removeSpecificRow = async () => {
+    await CartService.deleteCheckoutCart(item.cartitem_id)
+    const newCheckoutCart = checkoutCart.filter(
+      (c) => c.cartitem_id !== item.cartitem_id,
+    )
+    updateCheckoutCart(newCheckoutCart)
+  }
+  useEffect(() => {
+    updateSpecificRow()
+  }, [quantity])
 
   return (
     <div className="border-neutral-3 flex border-b border-solid py-6">
@@ -24,7 +45,7 @@ const CartRow = ({ item }: CartRowProps) => {
             {item.name}
           </p>
           {/* <p className=" caption-2 text-neutral-4">Color: Black</p> */}
-          <button>
+          <button onClick={() => removeSpecificRow()}>
             <div className="flex items-center gap-1 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

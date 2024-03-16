@@ -17,7 +17,7 @@ const ProductDetailSection = ({
   specificProduct,
 }: ProductDetailSectionProps) => {
   const [quantity, setQuantity] = useState(1)
-  console.log("quantity", quantity)
+  // console.log("quantity", quantity)
 
   const { postToCheckoutCart } = usePostCheckoutCart({
     product_id: specificProduct.product_id,

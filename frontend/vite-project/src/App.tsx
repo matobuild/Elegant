@@ -13,6 +13,7 @@ import DetailPage from "./pages/Details"
 import CartPage from "./pages/Cart"
 import CheckOutPage from "./pages/CheckOut"
 import OrderCompletePage from "./pages/OrderComplete"
+import MyAccountPage from "./pages/MyAccount"
 
 const AppLayout = () => (
   <>
@@ -63,6 +64,7 @@ function App() {
         { path: "/checkout", element: <CheckOutPage /> },
         { path: "/orderComplete", element: <OrderCompletePage /> },
         { path: "/contact-us", element: <ContactUsPage /> },
+        { path: "/account", element: <MyAccountPage /> },
       ],
     },
   ])
@@ -84,8 +86,9 @@ export default App
 // todo: need to be able to show the status if user is login or sign up fail, and any error message from back end and it should pop up on the screen
 // todo: need to change the token save location from local storage to cookies
 // todo: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
+//todo: need show message no page found, for order complete page
 
 // cartpage should be able to delete the row
 // cartpage should be able to change the quantity
-// how should i handle the total amount of the cart ?
+// how should i handle the total amount of the cart ? build  a new table ?
 // fix bug when it does not show the image once the cart changes page

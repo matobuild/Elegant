@@ -54,6 +54,7 @@ const getCheckoutCart = async (req: IGetUserAuthInfoRequest, res: Response, next
     try {
         const allCheckoutCart = await prisma.cartitems.findMany({
             where: { carts: { user_id: req.user?.userId, type: "checkoutCart" } },
+            orderBy:{cartitem_id:"asc"},
         });
         console.log(allCheckoutCart);
         return res.status(200).json({ status: "success", data: allCheckoutCart });
@@ -71,10 +72,11 @@ const cart = await prisma.carts.findFirst({ where: { user_id: req.user?.userId, 
     if (!cart) {
         return res.status(400).json({ status: "Fail", data: "No checkoutCart for this user" });
     }
+    const cartitem_id = req.params.cartitem_id;
     try {
         
         await prisma.cartitems.delete({
-            where: { cartitem_id: req.body.cartitem_id,
+            where: { cartitem_id: Number(cartitem_id),
                     cart_id: cart.cart_id},
         });
         return res.status(200).json({
@@ -88,6 +90,29 @@ const cart = await prisma.carts.findFirst({ where: { user_id: req.user?.userId, 
     
 }
 
-export { addToCheckoutCart, getCheckoutCart, deleteCheckoutCart  };
+const editToCheckoutCart = async (req: IGetUserAuthInfoRequest, res: Response, next: NextFunction) => {
+    try {
+        const cart = await prisma.carts.findFirst({ where: { user_id: req.user?.userId, type: "checkoutCart" } })
+        if (!cart) {
+            return res.status(400).json({ status: "Fail", data: "No checkoutCart for this user" });
+        }
+      
+            try {
+                await prisma.cartitems.update({
+                    where: { cartitem_id: req.body.cartitem_id },
+                    data: { quantity: req.body.quantity }
+                })
+                return res.status(200).json({ status: "Success", data: "update quantity for checkoutCart success" });
+                
+            } catch (error) {
+            return res.status(400).json({ status: "Fail", data: "update quantity for checkoutCart  fail" });
+            }
+    } catch (error) {
+        console.log("THE ERROR message is -->", error);
+        mapError(500, "Internal Server Error", next);
+    }
+}
+
+export { addToCheckoutCart, getCheckoutCart, deleteCheckoutCart, editToCheckoutCart  };
 
 

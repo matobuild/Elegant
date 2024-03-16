@@ -2,7 +2,7 @@ import express from "express";
 import { signUp, signIn, verifyToken } from "../service/userService";
 import { productById, products } from "../service/productService";
 import { categories } from "../service/categoriesService";
-import { addToCheckoutCart, deleteCheckoutCart, getCheckoutCart } from "../service/cartService";
+import { addToCheckoutCart, deleteCheckoutCart, editToCheckoutCart, getCheckoutCart } from "../service/cartService";
 
 const router = express.Router();
 
@@ -16,6 +16,7 @@ router.route("/categories").get(categories)
 
 router.route("/cart").post(verifyToken,addToCheckoutCart)
 router.route("/cart").get(verifyToken,getCheckoutCart)
-router.route("/cart").delete(verifyToken,deleteCheckoutCart)
+router.route("/cart/:cartitem_id").delete(verifyToken,deleteCheckoutCart)
+router.route("/cart").patch(verifyToken,editToCheckoutCart)
 
 export default router;
