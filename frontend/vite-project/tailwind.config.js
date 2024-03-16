@@ -11,8 +11,8 @@ export default {
         secondary: {
           blue: "#377DFF",
           green: "#38CB89",
-          orange: "##FFAB00",
-          red: "###FF5630",
+          orange: "#FFAB00",
+          red: "#FF5630",
         },
         neutral: {
           7: "#141718",

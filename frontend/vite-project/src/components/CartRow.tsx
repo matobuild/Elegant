@@ -69,11 +69,16 @@ const CartRow = ({ item }: CartRowProps) => {
 
       <div className="flex w-1/2 items-center justify-between">
         <SmallQuantityButton quantity={quantity} setQuantity={setQuantity} />
-        <h2 className=" text-18px-regular">
-          {USDollar.format(Number(item.price))}
-        </h2>
+        <div className="flex flex-col items-center gap-2">
+          <h2 className=" text-18px-regular text-secondary-red">
+            {USDollar.format(Number(item.final_price))}
+          </h2>
+          <h2 className="caption-2 line-through">
+            {USDollar.format(Number(item.price))}
+          </h2>
+        </div>
         <h2 className=" text-18px-semibold text-[#121212]">
-          {USDollar.format(Number(item.final_price))}
+          {USDollar.format(Number(item.final_price * item.quantity))}
         </h2>
       </div>
     </div>
