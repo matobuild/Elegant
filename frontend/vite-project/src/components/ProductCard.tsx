@@ -28,6 +28,14 @@ const ProductCard = ({
     quantity: 1,
   })
 
+  function handleAddProduct(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) {
+    e.stopPropagation()
+    e.preventDefault()
+    postToCheckoutCart()
+  }
+
   return (
     <Link to={`/product/${title}`} state={{ id: id }}>
       <div className=" hover:border-neutral-3 group  flex w-full cursor-pointer flex-col gap-3 border border-transparent">
@@ -62,15 +70,17 @@ const ProductCard = ({
               />
             </svg>
           </div>
-          <BlackButton
-            text={"Add to Cart"}
-            classes={
+          <button
+            className={
               "bg-neutral-7 text-neutral-1 button-s hover:bg-neutral-5 absolute bottom-4 left-4 right-4 hidden rounded-lg px-6 py-2 text-center shadow-[0_8px_16px_0px_rgba(0,0,0,0.04)] group-hover:block"
             }
-            clicking={() => {
-              postToCheckoutCart()
+            type="submit"
+            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+              handleAddProduct(e)
             }}
-          />
+          >
+            Add to Cart
+          </button>
         </div>
 
         <div className="flex flex-col">
