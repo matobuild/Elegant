@@ -4,6 +4,7 @@ import { USDollar, getImageFromData } from "../utils/utils"
 import SmallQuantityButton from "./SmallQuantityButton"
 import { CartService } from "../services/CartService"
 import { checkoutCartStore } from "../store/checkoutCartStore"
+import useGetCheckoutCartList from "../customHooks/useGetCheckoutCartList"
 
 export type CartRowProps = {
   item: ICheckoutCart
@@ -11,6 +12,7 @@ export type CartRowProps = {
 
 const CartRow = ({ item }: CartRowProps) => {
   const { checkoutCart, updateCheckoutCart } = checkoutCartStore()
+  const { getCheckoutCartList } = useGetCheckoutCartList()
 
   const [quantity, setQuantity] = useState(item.quantity)
   // console.log("quantity", quantity)
@@ -20,6 +22,7 @@ const CartRow = ({ item }: CartRowProps) => {
       cartitem_id: item.cartitem_id,
       quantity: quantity,
     })
+    getCheckoutCartList()
   }
   const removeSpecificRow = async () => {
     await CartService.deleteCheckoutCart(item.cartitem_id)
@@ -78,7 +81,7 @@ const CartRow = ({ item }: CartRowProps) => {
           </h2>
         </div>
         <h2 className=" text-18px-semibold text-[#121212]">
-          {USDollar.format(Number(item.final_price * item.quantity))}
+          {USDollar.format(Number(item.subtotal_price))}
         </h2>
       </div>
     </div>

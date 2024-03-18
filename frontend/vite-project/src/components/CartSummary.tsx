@@ -24,7 +24,7 @@ const CartSummary = () => {
           </div>
           <div className=" py-[13px] ">
             <div className="text-neutral-7 body-1-semi flex justify-between ">
-              <p>Subtotal</p>
+              <p>Total</p>
               <p>$1234.00</p>
             </div>
           </div>

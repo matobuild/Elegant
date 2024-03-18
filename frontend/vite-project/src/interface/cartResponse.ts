@@ -8,10 +8,11 @@ export interface ICheckoutCart {
   quantity: number
   cart_id: number
   product_id: number
-  name?: string
-  price?: number
-  final_price?: number
-  image_url?: string
+  name: string
+  price: number
+  final_price: number
+  subtotal_price: number
+  image_url: string
 }
 
 export interface ICheckoutCartResponse {

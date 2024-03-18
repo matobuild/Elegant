@@ -35,6 +35,9 @@ const useGetCheckoutCartList = () => {
       ...a[index],
     }))
     console.log("newData=--->>", newData)
+    newData.forEach((e) => {
+      e.subtotal_price = e.final_price * e.quantity
+    })
 
     updateCheckoutCart(newData)
   }
