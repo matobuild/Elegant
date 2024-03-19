@@ -1,8 +1,9 @@
 import { checkoutCartStore } from "../store/checkoutCartStore"
+import { USDollar } from "../utils/utils"
 import OrderSummaryRow from "./OrderSummaryRow"
 
 const OrderSummary = () => {
-  const { checkoutCart } = checkoutCartStore()
+  const { checkoutCart, cartSummary } = checkoutCartStore()
 
   return (
     <div className=" border-neutral-4 flex flex-col gap-4 rounded-md border border-solid bg-[#FFF] px-6 py-4">
@@ -16,19 +17,21 @@ const OrderSummary = () => {
         <div className=" border-b border-solid border-[#EAEAEA] py-[13px] ">
           <div className="text-neutral-7 flex justify-between ">
             <p className=" body-2">Shipping</p>
-            <p className=" body-2-semi ">Free</p>
+            <p className=" body-2-semi ">{cartSummary.plan.name}</p>
           </div>
         </div>
         <div className=" border-b border-solid border-[#EAEAEA] py-[13px] ">
           <div className="text-neutral-7 flex justify-between ">
             <p className=" body-2">Subtotal</p>
-            <p className=" body-2-semi ">$99.00</p>
+            <p className=" body-2-semi ">
+              {USDollar.format(Number(cartSummary.subtotal))}
+            </p>
           </div>
         </div>
         <div className=" border-b border-solid border-[#EAEAEA] py-[13px] ">
           <div className="text-neutral-7 body-1-semi flex justify-between ">
             <p>Total</p>
-            <p>$234.00</p>
+            <p>{USDollar.format(Number(cartSummary.total))}</p>
           </div>
         </div>
       </div>
