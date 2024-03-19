@@ -88,7 +88,5 @@ export default App
 // todo: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
 //todo: need show message no page found, for order complete page
 
-// cartpage should be able to delete the row
-// cartpage should be able to change the quantity
-// how should i handle the total amount of the cart ? build  a new table ?
-// fix bug when it does not show the image once the cart changes page
+//where to set to show all error message when api response with error?
+// when should the API be send on the second page of the check out page or on the first page ?

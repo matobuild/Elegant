@@ -1,7 +1,13 @@
 import { RadioGroup } from "@headlessui/react"
 import { ReactElement } from "react"
 
-type choice = { id: number; name: string; price: string; icon?: ReactElement }
+export type choice = {
+  id: number
+  name: string
+  price: string
+  icon?: ReactElement
+  amount: number
+}
 
 type MyRadioGroupProps = {
   plans: choice[]
