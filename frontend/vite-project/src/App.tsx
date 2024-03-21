@@ -87,6 +87,10 @@ export default App
 // todo: need to change the token save location from local storage to cookies
 // todo: what is bearer token with JWT, did i implement it correctly ? / should use interceptor
 //todo: need show message no page found, for order complete page
+// todo: need to be able to edit photo in my account
 
 //where to set to show all error message when api response with error?
 // when should the API be send on the second page of the check out page or on the first page ?
+// check the data table for backend when paying?
+// how to change only that companion on a page
+// remove the box for css
