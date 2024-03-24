@@ -4,6 +4,8 @@ import OrderSummaryRow from "./OrderSummaryRow"
 
 const OrderSummary = () => {
   const { checkoutCart, cartSummary } = checkoutCartStore()
+  console.log("cart summary--->", cartSummary)
+  console.log("checkoutcart--->", checkoutCart)
 
   return (
     <div className=" border-neutral-4 flex flex-col gap-4 rounded-md border border-solid bg-[#FFF] px-6 py-4">

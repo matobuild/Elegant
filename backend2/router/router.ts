@@ -3,6 +3,7 @@ import { signUp, signIn, verifyToken } from "../service/userService";
 import { productById, products } from "../service/productService";
 import { categories } from "../service/categoriesService";
 import { addToCheckoutCart, deleteCheckoutCart, editToCheckoutCart, getCheckoutCart } from "../service/cartService";
+import { checkout } from "../service/checkoutService";
 
 const router = express.Router();
 
@@ -18,5 +19,7 @@ router.route("/cart").post(verifyToken,addToCheckoutCart)
 router.route("/cart").get(verifyToken,getCheckoutCart)
 router.route("/cart/:cartitem_id").delete(verifyToken,deleteCheckoutCart)
 router.route("/cart").patch(verifyToken,editToCheckoutCart)
+
+router.route("/checkout").post(verifyToken, checkout)
 
 export default router;

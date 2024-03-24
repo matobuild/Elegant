@@ -37,11 +37,16 @@ model categories {
 
 model order_items {
   order_item_id Int       @id @default(autoincrement())
-  name          String?   @db.VarChar(255)
-  quantity      Int?
-  price         Decimal?  @db.Decimal(10, 2)
-  description   String?   @db.VarChar(255)
-  image_url     String?   @db.VarChar(255)
+  quantity      Int
+  name          String    @db.VarChar(255)
+  description   String    @db.VarChar(255)
+  price         Decimal   @db.Decimal(10, 2)
+  image_url     String    @db.VarChar(255)
+  measurements  String?   @db.VarChar(255)
+  details       String?   @db.VarChar(255)
+  packaging     String?   @db.VarChar(255)
+  discount      Int?      @default(0)
+  category_id   Int?
   order_id      Int?
   product_id    Int?
   orders        orders?   @relation(fields: [order_id], references: [order_id])
