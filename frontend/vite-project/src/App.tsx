@@ -91,3 +91,4 @@ export default App
 //todo need to use interceptors on the config axios file and add token here as well.and show model error if it exist.
 
 // should send only one line, upon arrival seperate it and save in to different table.
+// how to deal with the payment method ?? in backend it should be save in orders_payment

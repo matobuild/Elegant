@@ -30,27 +30,29 @@ enum cartsType {
 }
 
 model categories {
-  category_id Int        @id @default(autoincrement())
-  name        String     @unique @db.VarChar(255)
+  category_id Int           @id @default(autoincrement())
+  name        String        @unique @db.VarChar(255)
   products    products[]
+  order_items order_items[]
 }
 
 model order_items {
-  order_item_id Int       @id @default(autoincrement())
+  order_item_id Int         @id @default(autoincrement())
   quantity      Int
-  name          String    @db.VarChar(255)
-  description   String    @db.VarChar(255)
-  price         Decimal   @db.Decimal(10, 2)
-  image_url     String    @db.VarChar(255)
-  measurements  String?   @db.VarChar(255)
-  details       String?   @db.VarChar(255)
-  packaging     String?   @db.VarChar(255)
-  discount      Int?      @default(0)
+  name          String      @db.VarChar(255)
+  description   String      @db.VarChar(255)
+  price         Decimal     @db.Decimal(10, 2)
+  image_url     String      @db.VarChar(255)
+  measurements  String?     @db.VarChar(255)
+  details       String?     @db.VarChar(255)
+  packaging     String?     @db.VarChar(255)
+  discount      Int?        @default(0)
   category_id   Int?
   order_id      Int?
   product_id    Int?
-  orders        orders?   @relation(fields: [order_id], references: [order_id])
-  products      products? @relation(fields: [product_id], references: [product_id])
+  categories    categories? @relation(fields: [category_id], references: [category_id])
+  orders        orders?     @relation(fields: [order_id], references: [order_id])
+  products      products?   @relation(fields: [product_id], references: [product_id])
 }
 
 model orders {
@@ -109,11 +111,16 @@ model reviews {
 
 model shipping {
   shipping_id     Int     @id @default(autoincrement())
-  address         String? @db.VarChar(255)
-  city            String? @db.VarChar(255)
-  zip_code        String? @db.VarChar(255)
-  country         String? @db.VarChar(255)
-  shipping_method String? @db.VarChar(255)
+  first_name      String  @db.VarChar(255)
+  last_name       String  @db.VarChar(255)
+  phone           String  @db.VarChar(255)
+  email           String  @db.VarChar(255)
+  street_address  String  @db.VarChar(255)
+  country         String  @db.VarChar(255)
+  city            String  @db.VarChar(255)
+  state           String  @db.VarChar(255)
+  zip_code        String  @db.VarChar(255)
+  shipping_method String  @db.VarChar(255)
   order_id        Int?
   orders          orders? @relation(fields: [order_id], references: [order_id])
 }

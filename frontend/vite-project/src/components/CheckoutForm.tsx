@@ -99,10 +99,10 @@ const CheckoutForm = () => {
           </div>
           <div className=" w-1/2">
             <InputBox
-              title={"First Name"}
-              placeholder={"First name"}
+              title={"Last Name"}
+              placeholder={"Last name"}
               register={{
-                ...register("firstName", {
+                ...register("lastName", {
                   required: "*",
                 }),
               }}
