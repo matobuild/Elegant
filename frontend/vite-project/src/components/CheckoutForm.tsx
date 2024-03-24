@@ -2,6 +2,9 @@ import { SubmitHandler, useForm } from "react-hook-form"
 import InputBox from "./InputBox"
 import MyRadioGroup from "./MyRadioGroup"
 import { useState } from "react"
+import { CheckoutService } from "../services/CheckoutService"
+import { checkoutCartStore } from "../store/checkoutCartStore"
+import { useNavigate } from "react-router-dom"
 
 const plans = [
   {
@@ -23,7 +26,7 @@ const plans = [
           height="16"
           rx="4"
           stroke="#141718"
-          stroke-width="1.5"
+          strokeWidth="1.5"
         />
         <circle
           cx="2"
@@ -31,7 +34,7 @@ const plans = [
           r="2"
           transform="matrix(1 0 0 -1 10 14)"
           stroke="#141718"
-          stroke-width="1.5"
+          strokeWidth="1.5"
         />
         <circle
           cx="1"
@@ -53,7 +56,7 @@ const plans = [
   { id: 2, name: "Paypal", price: "" },
 ]
 
-interface FormData {
+export interface FormData {
   firstName: string
   lastName: string
   phone: number
@@ -66,8 +69,13 @@ interface FormData {
   cardNumber: number
   expiryDate: string
   cvc: number
+  shipping_method: string
 }
 const CheckoutForm = () => {
+  const navigate = useNavigate()
+  const { cartSummary, updateCheckoutCart, updateCartSummary } =
+    checkoutCartStore()
+
   const [plan, setPlan] = useState(plans[0])
 
   const {
@@ -76,8 +84,25 @@ const CheckoutForm = () => {
     formState: { errors },
   } = useForm<FormData>()
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    // hit for API
+    data.shipping_method = cartSummary.plan.name
     console.log(data)
+
+    const checkout = await CheckoutService.postCheckout(data)
+
+    if (checkout.status === 200) {
+      // clear out the store and make sure it's empty
+      updateCheckoutCart([])
+      updateCartSummary({
+        subtotal: 0,
+        total: 0,
+        plan: { id: NaN, name: "", price: "$0.00", amount: NaN },
+      })
+
+      // go to next page
+      navigate("/orderComplete")
+    }
   }
 
   return (

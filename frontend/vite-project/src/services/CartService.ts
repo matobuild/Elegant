@@ -7,7 +7,7 @@ import { handleResponse } from "../utils/handleResponse"
 import { token } from "../utils/utils"
 import { cartObject, checkoutCartRow } from "../store/checkoutCartStore"
 
-type IPostCartResponse = {
+export type IPostCartResponse = {
   status: number | undefined
   data?: ICartResponse
 }

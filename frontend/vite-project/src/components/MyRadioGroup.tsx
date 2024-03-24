@@ -45,8 +45,8 @@ function MyRadioGroup({ plan, setPlan, plans }: MyRadioGroupProps) {
                         height="18"
                         rx="9"
                         stroke="#121212"
-                        stroke-miterlimit="0"
-                        stroke-linejoin="bevel"
+                        strokeMiterlimit="0"
+                        strokeLinejoin="bevel"
                       />
                       <circle cx="10" cy="9.5" r="5" fill="#121212" />
                     </svg>
@@ -65,8 +65,8 @@ function MyRadioGroup({ plan, setPlan, plans }: MyRadioGroupProps) {
                         height="18"
                         rx="9"
                         stroke="#121212"
-                        stroke-miterlimit="0"
-                        stroke-linejoin="bevel"
+                        strokeMiterlimit="0"
+                        strokeLinejoin="bevel"
                       />
                     </svg>
                   )}

@@ -44,17 +44,17 @@ try {
     try {
         const body = req.body;
             await prisma.shipping.create({data:{
-                first_name: body.first_name,
-                last_name: body.last_name,
+                first_name: body.firstName,
+                last_name: body.lastName,
                 phone: String(body.phone),
                 email: body.email,
-                street_address: body.street_address,
+                street_address: body.streetAddress,
                 country: body.country,
                 city: body.city,
                 state: body.state,
-                zip_code: String(body.zip_code),
+                zip_code: String(body.zip),
                 shipping_method: body.shipping_method,
-                order_id:orders.order_id
+                order_id: orders.order_id
             }})
     } catch (error) {
         return res.status(400).json({ status: "Fail", data: "Add to shipping fail" });
