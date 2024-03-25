@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import CartStatus from "../../components/CartStatus"
 import { OrdersService } from "../../services/OrdersService"
 import { IOrders } from "../../interface/ordersResponse"
-import { extractDate } from "../../utils/utils"
+import { extractDate, getImageFromData } from "../../utils/utils"
 
 const OrderCompletePage = () => {
   const [ordersList, setOrdersList] = useState<IOrders[]>([
@@ -12,7 +12,23 @@ const OrderCompletePage = () => {
       status: "",
       created_at: "",
       user_id: NaN,
-      order_items: [],
+      order_items: [
+        {
+          order_item_id: NaN,
+          quantity: NaN,
+          name: "",
+          description: "",
+          price: NaN,
+          image_url: "",
+          measurements: "",
+          details: "",
+          packaging: "",
+          discount: NaN,
+          category_id: NaN,
+          order_id: NaN,
+          product_id: NaN,
+        },
+      ],
     },
   ])
 
@@ -61,7 +77,24 @@ const OrderCompletePage = () => {
                 Your order has been received
               </h4>
             </div>
-            <div className="flex gap-10">3 images</div>
+            <div className="flex justify-center gap-10">
+              {ordersList[0].order_items.map((product) => {
+                return (
+                  <div className="relative flex h-28 w-24 items-end">
+                    <div className=" h-5/6 w-4/5 ">
+                      <img
+                        src={getImageFromData(`${product.image_url}`)}
+                        alt={product.name}
+                        className="h-full w-full object-cover "
+                      />
+                    </div>
+                    <div className="bg-neutral-7 absolute right-0 top-0 flex h-8 w-8 items-center justify-center rounded-full">
+                      <p className="text-white">{product.quantity}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
             <div className=" flex justify-center ">
               <div className=" caption-1-semi flex w-1/2 justify-between">
                 <div className="  text-neutral-4 flex flex-col gap-5">
