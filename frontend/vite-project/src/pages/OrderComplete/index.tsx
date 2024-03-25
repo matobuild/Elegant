@@ -1,49 +1,9 @@
-import { useEffect, useState } from "react"
 import CartStatus from "../../components/CartStatus"
-import { OrdersService } from "../../services/OrdersService"
-import { IOrders } from "../../interface/ordersResponse"
 import { extractDate, getImageFromData } from "../../utils/utils"
+import useGetOrders from "../../customHooks/useGetOrders"
 
 const OrderCompletePage = () => {
-  const [ordersList, setOrdersList] = useState<IOrders[]>([
-    {
-      order_id: NaN,
-      total_price: NaN,
-      status: "",
-      created_at: "",
-      user_id: NaN,
-      order_items: [
-        {
-          order_item_id: NaN,
-          quantity: NaN,
-          name: "",
-          description: "",
-          price: NaN,
-          image_url: "",
-          measurements: "",
-          details: "",
-          packaging: "",
-          discount: NaN,
-          category_id: NaN,
-          order_id: NaN,
-          product_id: NaN,
-        },
-      ],
-    },
-  ])
-
-  const getOrders = async () => {
-    const orders = await OrdersService.getOrders()
-    console.log("orders----->", orders)
-    if (orders?.data?.data) {
-      setOrdersList(orders?.data?.data)
-    }
-  }
-
-  useEffect(() => {
-    getOrders()
-  }, [])
-
+  const { ordersList } = useGetOrders()
   return (
     <section className=" px-[304px] py-20">
       <div className="flex flex-col items-center gap-20">

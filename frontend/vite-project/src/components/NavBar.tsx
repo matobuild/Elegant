@@ -41,7 +41,9 @@ const NavBar = () => {
       </div>
       <div className="flex gap-4">
         <img src={searchIcon} alt="search-icon" />
-        <img src={userIcon} alt="user-icon" />
+        <Link to="/account">
+          <img src={userIcon} alt="user-icon" />
+        </Link>
         <Link to="/cart">
           <div className="g-[5px] flex items-center">
             <img src={shoppingBagIcon} alt="shopping-icon" />
