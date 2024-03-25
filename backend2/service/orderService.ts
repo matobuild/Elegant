@@ -8,7 +8,7 @@ const orders = async (req: IGetUserAuthInfoRequest, res: Response, next: NextFun
     try {
         const allOrders = await prisma.orders.findMany({
             where: { user_id: req.user?.userId } ,
-            orderBy:{created_at:"asc"},
+            orderBy:{created_at:"desc"},
             include:{order_items: true}
         });
         console.log(allOrders);

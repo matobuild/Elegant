@@ -1,6 +1,33 @@
+import { useEffect, useState } from "react"
 import CartStatus from "../../components/CartStatus"
+import { OrdersService } from "../../services/OrdersService"
+import { IOrders } from "../../interface/ordersResponse"
+import { extractDate } from "../../utils/utils"
 
 const OrderCompletePage = () => {
+  const [ordersList, setOrdersList] = useState<IOrders[]>([
+    {
+      order_id: NaN,
+      total_price: NaN,
+      status: "",
+      created_at: "",
+      user_id: NaN,
+      order_items: [],
+    },
+  ])
+
+  const getOrders = async () => {
+    const orders = await OrdersService.getOrders()
+    console.log("orders----->", orders)
+    if (orders?.data?.data) {
+      setOrdersList(orders?.data?.data)
+    }
+  }
+
+  useEffect(() => {
+    getOrders()
+  }, [])
+
   return (
     <section className=" px-[304px] py-20">
       <div className="flex flex-col items-center gap-20">
@@ -44,9 +71,9 @@ const OrderCompletePage = () => {
                   <p>Payment method:</p>
                 </div>
                 <div className=" text-neutral-7 flex flex-col gap-5">
-                  <p>#0123_45678</p>
-                  <p>October 19, 2023</p>
-                  <p>$1,345.00</p>
+                  <p>#{ordersList[0].order_id}</p>
+                  <p>{extractDate(ordersList[0].created_at)}</p>
+                  <p>{ordersList[0].total_price}</p>
                   <p>Credit Card</p>
                 </div>
               </div>

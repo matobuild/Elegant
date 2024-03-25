@@ -89,6 +89,7 @@ export default App
 //todo: need show message no page found, for order complete page
 // todo: need to be able to edit photo in my account
 //todo need to use interceptors on the config axios file and add token here as well.and show model error if it exist.
+// todo need to check the rules for form before submiting and make sure it is the correct type
 
 // how to deal with the payment method ?? in backend it should be save in orders_payment ?
 // in checkoutForm on line 197 typescript error?

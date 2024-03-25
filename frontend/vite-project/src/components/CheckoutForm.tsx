@@ -90,6 +90,7 @@ const CheckoutForm = () => {
     console.log(data)
 
     const checkout = await CheckoutService.postCheckout(data)
+    console.log("CHECKOUT is ____>", checkout)
 
     if (checkout.status === 200) {
       // clear out the store and make sure it's empty
