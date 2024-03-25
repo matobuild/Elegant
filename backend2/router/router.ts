@@ -4,6 +4,7 @@ import { productById, products } from "../service/productService";
 import { categories } from "../service/categoriesService";
 import { addToCheckoutCart, deleteCheckoutCart, editToCheckoutCart, getCheckoutCart } from "../service/cartService";
 import { checkout } from "../service/checkoutService";
+import { orders } from "../service/orderService";
 
 const router = express.Router();
 
@@ -21,5 +22,7 @@ router.route("/cart/:cartitem_id").delete(verifyToken,deleteCheckoutCart)
 router.route("/cart").patch(verifyToken,editToCheckoutCart)
 
 router.route("/checkout").post(verifyToken, checkout)
+
+router.route("/orders").get(verifyToken,orders)
 
 export default router;
