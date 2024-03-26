@@ -1,6 +1,18 @@
-const WishlistButton = () => {
+import useWishListCartList from "../customHooks/useWishListCartList"
+
+type WishlistButtonProps = {
+  id: number
+}
+
+const WishlistButton = ({ id }: WishlistButtonProps) => {
+  const { handleWishItem, wishListCartsIds } = useWishListCartList(id)
+
   return (
-    <div className="border-neutral-7 hover:bg-neutral-2 flex w-full items-center justify-center rounded-lg border border-solid px-10 py-[10px]">
+    <button
+      type="submit"
+      onClick={handleWishItem}
+      className={`border-neutral-7 hover:bg-neutral-2 text-neutral-7 flex w-full items-center justify-center rounded-lg border border-solid px-10 py-[10px] ${wishListCartsIds.includes(id) ? "bg-secondary-red border-secondary-red" : "border-neutral-7"}`}
+    >
       <div className="flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -16,9 +28,11 @@ const WishlistButton = () => {
             fill="#141718"
           />
         </svg>
-        <p className="button-m text-neutral-7 text-center">Wishlist</p>
+        <p className="button-m  text-center">
+          {wishListCartsIds.includes(id) ? "Wishlist Added" : "Wishlist"}
+        </p>
       </div>
-    </div>
+    </button>
   )
 }
 

@@ -183,7 +183,7 @@ const ProductDetailSection = ({
                 <QuantityButton quantity={quantity} setQuantity={setQuantity} />
               </div>
               <div className="w-3/4">
-                <WishlistButton />
+                <WishlistButton id={specificProduct.product_id} />
               </div>
             </div>
             <BlackButton
