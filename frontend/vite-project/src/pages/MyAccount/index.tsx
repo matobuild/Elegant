@@ -4,11 +4,25 @@ import AccountMenu from "../../components/MyAccount/AccountMenu"
 import AddressTab from "../../components/MyAccount/AddressTab"
 import OrdersTab from "../../components/MyAccount/OrdersTab"
 import WishlistTab from "../../components/MyAccount/WishlistTab"
+import { useState } from "react"
+import { useSearchParams } from "react-router-dom"
 
 const MyAccountPage = () => {
+  const [searchParams] = useSearchParams()
+
+  console.log("state", searchParams.get("state"))
+
+  const [selectedIndex, setSelectedIndex] = useState<number>(
+    Number(searchParams.get("state")) ?? 0,
+  )
+
   return (
     <section className=" flex flex-col px-40 pb-20">
-      <Tab.Group vertical>
+      <Tab.Group
+        vertical
+        selectedIndex={selectedIndex}
+        onChange={setSelectedIndex}
+      >
         <h3 className=" text-primary-1 heading-3 py-20 text-center">
           My Account
         </h3>

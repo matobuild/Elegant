@@ -6,7 +6,7 @@ export type choice = {
   name: string
   price: string
   icon?: ReactElement
-  amount: number
+  amount?: number
 }
 
 type MyRadioGroupProps = {

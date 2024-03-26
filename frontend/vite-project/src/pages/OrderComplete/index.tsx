@@ -1,6 +1,7 @@
 import CartStatus from "../../components/CartStatus"
 import { extractDate, getImageFromData } from "../../utils/utils"
 import useGetOrders from "../../customHooks/useGetOrders"
+import { Link } from "react-router-dom"
 
 const OrderCompletePage = () => {
   const { ordersList } = useGetOrders()
@@ -72,9 +73,11 @@ const OrderCompletePage = () => {
               </div>
             </div>
             <div className="w1/3 flex justify-center">
-              <button className=" bg-neutral-7 button-s rounded-[80px] px-10 py-3 text-center text-[#FFF]">
-                Purchase history
-              </button>
+              <Link to="/account?state=2">
+                <button className=" bg-neutral-7 button-s rounded-[80px] px-10 py-3 text-center text-[#FFF]">
+                  Purchase history
+                </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -79,7 +79,6 @@ function App() {
 export default App
 
 // todo: add to be able to click on the Living room tab and go to shop page with the living room category selected products, the same goes for the detail page
-// todo: when shop page is open it should scroll to the top of the page
 // todo: be able to change content display catalog in shop page
 // todo: the news letter email is saved in the data base
 // todo: need to fix the add to cart button from going to the detail page
@@ -91,8 +90,4 @@ export default App
 //todo need to use interceptors on the config axios file and add token here as well.and show model error if it exist.
 // todo need to check the rules for form before submitting and make sure it is the correct type
 
-// how to deal with the payment method ?? in backend it should be save in orders_payment ?
-// in checkoutForm on line 197 typescript error?
-// is it ok to use router.route("/checkout").post(verifyToken, checkout) to delete the carts when call the API?
-// need to fix the shipping method and add it to the total in the backend
-// how to click purchase history and go to the account page with order history tabs ?
+// add address to to the user in my account
