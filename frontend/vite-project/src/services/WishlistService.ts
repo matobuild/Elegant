@@ -1,6 +1,6 @@
 import { cartObject } from "../store/checkoutCartStore"
 import { token } from "../utils/utils"
-import { IPostCartResponse } from "./CartService"
+import { IGetCheckoutCartResponse, IPostCartResponse } from "./CartService"
 import axios from "../configuration/axios"
 import { handleResponse } from "../utils/handleResponse"
 
@@ -12,6 +12,22 @@ export const WishlistService = {
       }
 
       const response = await axios.post("/api/v1/wishlist", input, config)
+      // console.log("the response is ------->", response)
+
+      return handleResponse.success(response)
+    } catch (error: any) {
+      console.error("the error is ------..>", error)
+      return handleResponse.error(error)
+    }
+  },
+
+  getWishlistCart: async (): Promise<IGetCheckoutCartResponse> => {
+    try {
+      const config = {
+        headers: { authorization: `Bearer ${token}` },
+      }
+
+      const response = await axios.get("/api/v1/wishlist", config)
       // console.log("the response is ------->", response)
 
       return handleResponse.success(response)

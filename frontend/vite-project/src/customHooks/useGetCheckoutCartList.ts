@@ -34,7 +34,7 @@ const useGetCheckoutCartList = () => {
       ...item,
       ...a[index],
     }))
-    console.log("newData=--->>", newData)
+    // console.log("newData=--->>", newData)
     newData.forEach((e) => {
       e.subtotal_price = e.final_price * e.quantity
     })

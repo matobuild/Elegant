@@ -12,7 +12,7 @@ export type IPostCartResponse = {
   data?: ICartResponse
 }
 
-type IGetCheckoutCartResponse = {
+export type IGetCheckoutCartResponse = {
   status: number | undefined
   data?: ICheckoutCartResponse
 }

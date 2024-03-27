@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { WishlistService } from "../services/WishlistService"
 import { wishListCartStore } from "../store/wishListCartStore"
 
@@ -24,8 +25,21 @@ const useWishListCartList = (id: number) => {
       await WishlistService.postWishlistCart(product)
     }
   }
+  // console.log(wishListCartsIds)
 
-  console.log(wishListCartsIds)
+  const getWishlist = async () => {
+    const wishlistCartList = await WishlistService.getWishlistCart()
+    // console.log("the wishlistCartList is ------->", wishlistCartList.data?.data)
+    if (wishlistCartList && wishlistCartList.data) {
+      const fetchData = wishlistCartList.data.data.map((e) => e.product_id)
+      console.log("fetchData", fetchData)
+      updateWishListCartsIds(fetchData)
+    }
+  }
+
+  useEffect(() => {
+    getWishlist()
+  }, [])
 
   return { handleWishItem, wishListCartsIds }
 }
