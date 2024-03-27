@@ -91,3 +91,4 @@ export default App
 // todo need to check the rules for form before submitting and make sure it is the correct type
 
 // add address to to the user in my account
+//the wishlist does not refresh properly when click on refresh
