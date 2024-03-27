@@ -1,9 +1,12 @@
+import { WishlistService } from "../services/WishlistService"
 import { wishListCartStore } from "../store/wishListCartStore"
 
 const useWishListCartList = (id: number) => {
   const { wishListCartsIds, updateWishListCartsIds } = wishListCartStore()
 
-  function handleWishItem(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  async function handleWishItem(
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) {
     e.stopPropagation()
     e.preventDefault()
 
@@ -12,9 +15,13 @@ const useWishListCartList = (id: number) => {
       updateWishListCartsIds(
         wishListCartsIds.filter((idNumber) => idNumber !== id),
       )
+      await WishlistService.deleteWishlistCart(id)
     } else {
       // If item is not in wish list, add it
       updateWishListCartsIds([...wishListCartsIds, id])
+
+      const product = { product_id: id, quantity: 1 }
+      await WishlistService.postWishlistCart(product)
     }
   }
 
