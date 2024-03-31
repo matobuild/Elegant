@@ -5,12 +5,12 @@ type WishlistButtonProps = {
 }
 
 const WishlistButton = ({ id }: WishlistButtonProps) => {
-  const { handleWishItem, wishListCartsIds } = useWishListCartList(id)
+  const { handleWishItem, wishListCartsIds } = useWishListCartList()
 
   return (
     <button
       type="submit"
-      onClick={handleWishItem}
+      onClick={(e) => handleWishItem(e, id)}
       className={`border-neutral-7 hover:bg-neutral-2 text-neutral-7 flex w-full items-center justify-center rounded-lg border border-solid px-10 py-[10px] ${wishListCartsIds.includes(id) ? "bg-secondary-red border-secondary-red" : "border-neutral-7"}`}
     >
       <div className="flex items-center gap-2">

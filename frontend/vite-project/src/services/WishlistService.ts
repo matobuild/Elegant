@@ -1,5 +1,4 @@
 import { cartObject } from "../store/checkoutCartStore"
-import { token } from "../utils/utils"
 import { IGetCheckoutCartResponse, IPostCartResponse } from "./CartService"
 import axios from "../configuration/axios"
 import { handleResponse } from "../utils/handleResponse"
@@ -7,11 +6,7 @@ import { handleResponse } from "../utils/handleResponse"
 export const WishlistService = {
   postWishlistCart: async (input: cartObject): Promise<IPostCartResponse> => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.post("/api/v1/wishlist", input, config)
+      const response = await axios.post("/api/v1/wishlist", input)
       // console.log("the response is ------->", response)
 
       return handleResponse.success(response)
@@ -23,11 +18,7 @@ export const WishlistService = {
 
   getWishlistCart: async (): Promise<IGetCheckoutCartResponse> => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.get("/api/v1/wishlist", config)
+      const response = await axios.get("/api/v1/wishlist")
       // console.log("the response is ------->", response)
 
       return handleResponse.success(response)
@@ -39,14 +30,7 @@ export const WishlistService = {
 
   deleteWishlistCart: async (productId: number) => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.delete(
-        `/api/v1/wishlist/${productId}`,
-        config,
-      )
+      const response = await axios.delete(`/api/v1/wishlist/${productId}`)
       console.log("Delete success", response)
       return handleResponse.success(response)
     } catch (error: any) {

@@ -11,8 +11,6 @@ export const USDollar = new Intl.NumberFormat("en-US", {
   currency: "USD",
 })
 
-export const token = localStorage.getItem("token")
-
 export function extractDate(timestamp) {
   const date = new Date(timestamp)
   const year = date.getFullYear()

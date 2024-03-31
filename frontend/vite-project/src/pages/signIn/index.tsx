@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { SubmitHandler, useForm } from "react-hook-form"
 import BlackButton from "../../components/BlackButton"
 import { SignService } from "../../services/SignService"
+import { accountStore } from "@/store/accountStore"
 
 interface FormData {
   username: string
@@ -12,7 +13,7 @@ interface FormData {
 
 const SignInPage = () => {
   const navigate = useNavigate()
-
+  const { login } = accountStore()
   const {
     register,
     handleSubmit,
@@ -27,6 +28,7 @@ const SignInPage = () => {
         return
       }
       localStorage.setItem("token", token)
+      login()
       navigate("/")
     } else {
       // show  a model pop up error such as wrong password or username or username

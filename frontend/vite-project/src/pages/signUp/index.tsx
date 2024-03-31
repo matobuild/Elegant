@@ -4,6 +4,7 @@ import logo from "../../../assets/logo.svg"
 import BlackButton from "../../components/BlackButton"
 import { SignService } from "../../services/SignService"
 import { Link, useNavigate } from "react-router-dom"
+import { accountStore } from "@/store/accountStore"
 
 interface FormData {
   name: string
@@ -15,6 +16,7 @@ interface FormData {
 
 const SignUpPage = () => {
   const navigate = useNavigate()
+  const { login } = accountStore()
 
   const {
     register,
@@ -30,6 +32,7 @@ const SignUpPage = () => {
         return
       }
       localStorage.setItem("token", token)
+      login()
       navigate("/")
     } else {
       console.log("CANNOT sing up ")

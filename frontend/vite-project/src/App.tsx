@@ -15,6 +15,9 @@ import CheckOutPage from "./pages/CheckOut"
 import OrderCompletePage from "./pages/OrderComplete"
 import MyAccountPage from "./pages/MyAccount"
 import { Toaster } from "@/components/ui/toaster"
+import { accountStore } from "./store/accountStore"
+import { useEffect } from "react"
+import { TOKEN } from "./utils/constant"
 
 const AppLayout = () => (
   <>
@@ -41,6 +44,15 @@ const AppLayoutForCheckout = () => (
 )
 
 function App() {
+  const { login } = accountStore()
+
+  useEffect(() => {
+    const token = localStorage.getItem(TOKEN)
+    if (token) {
+      login()
+    }
+  }, [])
+
   const router = createBrowserRouter([
     {
       element: <AppLayout />,
@@ -92,11 +104,8 @@ export default App
 // todo: be able to search item
 // todo: make it responsive
 // todo: if user is login show the Avatar using shadcn
-
 // add address to to the user in my account
-//the wishlist does not refresh properly when click on refresh
 
-// how to apply toast everywhere ?
-// need to check if user already log in or not when trying to add cart or favorite ? or trying to access my account page , if not redirect to sing in page and ask user to log in.
-// todo: need to be able to show the status if user is login or sign up fail, and any error message from back end and it should pop up on the screen
 //todo need to use interceptors on the config axios file and add token here as well.and show model error if it exist.
+
+// can not link to correct categories from home page

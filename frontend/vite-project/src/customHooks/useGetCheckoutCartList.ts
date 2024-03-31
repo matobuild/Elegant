@@ -3,9 +3,11 @@ import { useEffect } from "react"
 import { CartService } from "../services/CartService"
 import { IProduct } from "../interface/productsResponse"
 import { ProductsService } from "../services/ProductsService"
+import { accountStore } from "@/store/accountStore"
 
 const useGetCheckoutCartList = () => {
   const { checkoutCart, updateCheckoutCart } = checkoutCartStore()
+  const { isLogin } = accountStore()
 
   const fetchData = async (productIds: number[]) => {
     const checkoutCartList = await CartService.getCheckoutCart()
@@ -52,8 +54,10 @@ const useGetCheckoutCartList = () => {
   }
 
   useEffect(() => {
-    getCheckoutCartList()
-  }, [])
+    if (isLogin) {
+      getCheckoutCartList()
+    }
+  }, [isLogin])
 
   return { checkoutCart, getCheckoutCartList }
 }

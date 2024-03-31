@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { USDollar, getImageFromData } from "../utils/utils"
 import StarsReview from "./StarsReview"
 import usePostCheckoutCart from "../customHooks/usePostCheckoutCart"
-import useWishListCartList from "../customHooks/useWishListCartList"
+import { wishListCartStore } from "@/store/wishListCartStore"
 
 type ProductCardProps = {
   img: string
@@ -12,6 +12,10 @@ type ProductCardProps = {
   finalPrice: number
   stars: number
   id: number
+  onAddOrRemove: (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number,
+  ) => void
 }
 
 const ProductCard = ({
@@ -22,8 +26,9 @@ const ProductCard = ({
   finalPrice,
   stars,
   id,
+  onAddOrRemove,
 }: ProductCardProps) => {
-  const { handleWishItem, wishListCartsIds } = useWishListCartList(id)
+  const { wishListCartsIds } = wishListCartStore()
   const { postToCheckoutCart } = usePostCheckoutCart({
     product_id: id,
     quantity: 1,
@@ -57,7 +62,7 @@ const ProductCard = ({
           <button
             type="submit"
             onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-              handleWishItem(e)
+              onAddOrRemove(e, id)
             }}
             className="bg-neutral-1 hover:bg-neutral-2 absolute right-4 top-4 hidden rounded-[32px] p-[6px] shadow-[0_8px_16px_-8px_rgba(15,15,15,0.12)] group-hover:block"
           >

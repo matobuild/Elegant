@@ -1,12 +1,15 @@
 import { useEffect } from "react"
 import { WishlistService } from "../services/WishlistService"
 import { wishListCartStore } from "../store/wishListCartStore"
+import { accountStore } from "@/store/accountStore"
 
-const useWishListCartList = (id: number) => {
+const useWishListCartList = () => {
   const { wishListCartsIds, updateWishListCartsIds } = wishListCartStore()
+  const { isLogin } = accountStore()
 
   async function handleWishItem(
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number,
   ) {
     e.stopPropagation()
     e.preventDefault()
@@ -38,7 +41,9 @@ const useWishListCartList = (id: number) => {
   }
 
   useEffect(() => {
-    getWishlist()
+    if (isLogin) {
+      getWishlist()
+    }
   }, [])
 
   return { handleWishItem, wishListCartsIds }

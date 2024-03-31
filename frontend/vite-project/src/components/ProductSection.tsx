@@ -4,6 +4,7 @@ import RightArrowLink from "./RightArrowLink"
 import { ProductsService } from "../services/ProductsService"
 import { IProduct } from "../interface/productsResponse"
 import { Link } from "react-router-dom"
+import useWishListCartList from "@/customHooks/useWishListCartList"
 
 type ProductSectionProps = {
   title1?: string
@@ -12,6 +13,14 @@ type ProductSectionProps = {
 
 const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
   const [productsList, setProductsList] = useState<IProduct[]>([])
+  const { handleWishItem } = useWishListCartList()
+
+  const handleAddOrRemoveWishList = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number,
+  ) => {
+    handleWishItem(e, id)
+  }
 
   const getProducts = async () => {
     const data = await ProductsService.getProducts()
@@ -52,6 +61,7 @@ const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
                 stars={product.total_stars_review}
                 finalPrice={product.final_price}
                 id={product.product_id}
+                onAddOrRemove={handleAddOrRemoveWishList}
               />
             </div>
           )

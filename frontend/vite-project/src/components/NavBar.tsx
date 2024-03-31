@@ -4,9 +4,11 @@ import searchIcon from "../../assets/icons/search.svg"
 import userIcon from "../../assets/icons/outline-user-circle.svg"
 import shoppingBagIcon from "../../assets/icons/outline-shopping-bag.svg"
 import useGetCheckoutCartList from "../customHooks/useGetCheckoutCartList"
+import { accountStore } from "@/store/accountStore"
 
 const NavBar = () => {
   const { checkoutCart } = useGetCheckoutCartList()
+  const { isLogin } = accountStore()
 
   return (
     <nav className=" flex justify-between px-40 py-4">
@@ -41,9 +43,16 @@ const NavBar = () => {
       </div>
       <div className="flex gap-4">
         <img src={searchIcon} alt="search-icon" />
-        <Link to="/account">
-          <img src={userIcon} alt="user-icon" />
-        </Link>
+        {isLogin ? (
+          <Link to="/account">
+            <img src={userIcon} alt="user-icon" />
+          </Link>
+        ) : (
+          <Link to="/signIn">
+            <img src={userIcon} alt="login-icon" />
+          </Link>
+        )}
+
         <Link to="/cart">
           <div className="g-[5px] flex items-center">
             <img src={shoppingBagIcon} alt="shopping-icon" />

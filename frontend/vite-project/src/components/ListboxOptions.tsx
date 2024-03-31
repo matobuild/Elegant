@@ -13,9 +13,9 @@ type ListboxOptionsProps = {
 }
 
 function ListboxOptions({ selected, list, setSelected }: ListboxOptionsProps) {
-  console.log(list[0])
+  // console.log(list[0])
 
-  console.log(selected)
+  // console.log(selected)
 
   useEffect(() => {
     setSelected(list[0])

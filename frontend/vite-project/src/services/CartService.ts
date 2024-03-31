@@ -4,7 +4,6 @@ import {
 } from "./../interface/cartResponse"
 import axios from "../configuration/axios"
 import { handleResponse } from "../utils/handleResponse"
-import { token } from "../utils/utils"
 import { cartObject, checkoutCartRow } from "../store/checkoutCartStore"
 
 export type IPostCartResponse = {
@@ -20,12 +19,7 @@ export type IGetCheckoutCartResponse = {
 export const CartService = {
   postCheckoutCart: async (input: cartObject): Promise<IPostCartResponse> => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.post("/api/v1/cart", input, config)
-      // console.log("the response is ------->", response)
+      const response = await axios.post("/api/v1/cart", input)
 
       return handleResponse.success(response)
     } catch (error: any) {
@@ -36,11 +30,7 @@ export const CartService = {
 
   getCheckoutCart: async (): Promise<IGetCheckoutCartResponse> => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.get("/api/v1/cart", config)
+      const response = await axios.get("/api/v1/cart")
       // console.log("the response is ------->", response)
 
       return handleResponse.success(response)
@@ -52,11 +42,7 @@ export const CartService = {
 
   deleteCheckoutCart: async (cartitemId: number) => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.delete(`/api/v1/cart/${cartitemId}`, config)
+      const response = await axios.delete(`/api/v1/cart/${cartitemId}`)
       console.log("Delete success", response)
       return handleResponse.success(response)
     } catch (error: any) {
@@ -69,11 +55,7 @@ export const CartService = {
     input: checkoutCartRow,
   ): Promise<IPostCartResponse> => {
     try {
-      const config = {
-        headers: { authorization: `Bearer ${token}` },
-      }
-
-      const response = await axios.patch("/api/v1/cart", input, config)
+      const response = await axios.patch("/api/v1/cart", input)
       // console.log("the response is ------->", response)
 
       return handleResponse.success(response)

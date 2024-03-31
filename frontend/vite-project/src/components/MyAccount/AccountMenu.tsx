@@ -2,12 +2,14 @@ import { Tab } from "@headlessui/react"
 import { getImageUrl } from "../../utils/utils"
 import { useToast } from "@/components/ui/use-toast"
 import { useNavigate } from "react-router-dom"
+import { accountStore } from "@/store/accountStore"
 
 const menu = ["Account", "Address", "Orders", "Wishlist"]
 
 const AccountMenu = () => {
   const { toast } = useToast()
   const navigate = useNavigate()
+  const { logout } = accountStore()
   return (
     <div className=" bg-neutral-2 rounded-lg px-4 py-10 ">
       <div className=" flex flex-col gap-10">
@@ -47,6 +49,7 @@ const AccountMenu = () => {
           <button
             onClick={() => {
               localStorage.removeItem("token")
+              logout()
               navigate("/")
               toast({
                 title: "Logout Successfully",
