@@ -42,21 +42,22 @@ const SignInPage = () => {
 
   return (
     <div>
-      <div className="flex">
-        <div className="w-1/2 ">
+      <div className="sm:flex">
+        <div className="sm:w-1/2 ">
           <div className="relative ">
             <img
-              className="h-screen w-full "
+              className="h-auto w-full object-cover sm:h-screen"
               src={getImageUrl("signUp&In/SignIn Image Placeholder.png")}
-              alt="Image Placeholder"
+              alt="Placeholder"
             />
+            <div className="absolute left-0 right-0 top-8 flex items-center justify-center">
+              <img src={logo} alt="logo" />
+            </div>
           </div>
-          {/* need to make logo responsive */}
-          <img className="absolute left-[315px] top-8 " src={logo} alt="logo" />
         </div>
 
-        <div className="flex w-1/2 items-center justify-center ">
-          <div className="flex w-[456px] flex-col gap-8 rounded-b-lg shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)]">
+        <div className="flex items-center justify-center sm:w-1/2 ">
+          <div className="flex flex-col gap-8 rounded-b-lg px-9 py-10 sm:w-[456px] sm:shadow-[0_4px_4px_-0px_rgba(0,0,0,0.25)]">
             <div className="flex flex-col items-start gap-6 self-stretch">
               <div className=" heading-4 text-neutral-7 text-with-shadow">
                 Sign In
