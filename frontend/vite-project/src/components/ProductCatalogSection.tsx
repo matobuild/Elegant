@@ -8,8 +8,12 @@ import { CategoriesService } from "../services/CatagoriesService"
 import SortOption from "./SortOption"
 import ToolbarViewSelector from "./ToolbarViewSelector"
 import { USDollar } from "../utils/utils"
+import { useSearchParams } from "react-router-dom"
 
 const ProductCatalogSection = () => {
+  const [searchParams] = useSearchParams()
+  console.log(Number(searchParams.get("categoryId")))
+
   const [productsList, setProductsList] = useState<IProduct[]>([])
 
   const [categoriesBoxList, setCategoriesBoxList] = useState<listbox[]>([])
@@ -42,12 +46,14 @@ const ProductCatalogSection = () => {
   const getProducts = async () => {
     // change selectedCategory type to {category_id: selectedCategory.id}
     const param: KeyValue = {}
-
+    // console.log("selectedCategory--->", selectedCategory)
     if (selectedCategory.id) {
       param["category_id"] = selectedCategory.id
     }
 
     if (
+      priceRange[selectedPrices.id]?.min !== undefined &&
+      priceRange[selectedPrices.id]?.max !== undefined &&
       priceRange[selectedPrices.id].min !== -1 &&
       priceRange[selectedPrices.id].max !== -1
     ) {
@@ -63,7 +69,7 @@ const ProductCatalogSection = () => {
       param["orderBy"] = `final_price:${selectedSort.paramName}`
     }
 
-    console.log("param", param)
+    console.log("param------>", param)
 
     const data = await ProductsService.getProducts(param)
     // console.log("data status", data?.data?.data)
@@ -86,6 +92,8 @@ const ProductCatalogSection = () => {
       })
       convert.unshift({ id: 0, name: "All" })
       setCategoriesBoxList(convert)
+      setSelectedCategory(convert[0])
+      return convert
     }
   }
 
@@ -134,6 +142,7 @@ const ProductCatalogSection = () => {
       console.log("convertPriceRanges", convertPriceRanges)
 
       setPricesBoxList(convertPriceRanges)
+      setSelectedPrices(convertPriceRanges[0])
     }
   }
 
@@ -142,14 +151,21 @@ const ProductCatalogSection = () => {
   }
 
   useEffect(() => {
-    getProducts()
-    getCategories()
     getPrices()
+    getCategories().then((categoriesList) => {
+      const selectedCategoryId = Number(searchParams.get("categoryId"))
+      const selected = categoriesList?.find((e) => e.id === selectedCategoryId)
+      if (selected) {
+        setSelectedCategory(selected)
+      }
+    })
   }, [])
 
   useEffect(() => {
     getProducts()
   }, [selectedCategory, selectedPrices, page, selectedSort])
+
+  // console.log("latest--->", selectedCategory, categoriesBoxList)
 
   return (
     <section className=" px-40 pb-[100px] pt-[60px]">
@@ -162,7 +178,9 @@ const ProductCatalogSection = () => {
                 <ListboxOptions
                   list={categoriesBoxList}
                   selected={selectedCategory}
-                  setSelected={setSelectedCategory}
+                  setSelected={(category) => {
+                    setSelectedCategory(category)
+                  }}
                 />
               </div>
             </div>

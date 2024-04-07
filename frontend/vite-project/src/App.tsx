@@ -92,8 +92,7 @@ function App() {
 
 export default App
 
-// todo: add to be able to click on the Living room tab and go to shop page with the living room category selected products, the same goes for the detail page
-// todo: be able to change content display catalog in shop page
+// todo: be able to change content display type catalog in shop page
 // todo: the news letter email is saved in the data base
 // todo: able to edit the account details and Address in My account page
 // todo: need to change the token save location from local storage to cookies
@@ -107,5 +106,3 @@ export default App
 // add address to to the user in my account
 
 //todo need to use interceptors on the config axios file and add token here as well.and show model error if it exist.
-
-// can not link to correct categories from home page

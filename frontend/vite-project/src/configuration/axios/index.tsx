@@ -36,8 +36,10 @@ axios.interceptors.response.use(
   (error) => {
     // Do something with response error
     // console.error("Response error:", error)
-    // if (error.status == 401) {
-    // }
+    if (error.status == 401) {
+      localStorage.removeItem(TOKEN)
+      window.location.reload()
+    }
     // check if 401 if so redirect to sign in  page.
     return Promise.reject(error)
   },

@@ -13,14 +13,6 @@ type ListboxOptionsProps = {
 }
 
 function ListboxOptions({ selected, list, setSelected }: ListboxOptionsProps) {
-  // console.log(list[0])
-
-  // console.log(selected)
-
-  useEffect(() => {
-    setSelected(list[0])
-  }, [list])
-
   return (
     <div className=" border-neutral-4 body-2-semi w-[262px] rounded-lg border-2 border-solid p-2">
       <Listbox value={selected} onChange={setSelected}>
