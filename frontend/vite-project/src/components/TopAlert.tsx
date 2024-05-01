@@ -17,13 +17,22 @@ const TopAlert = () => {
             <div className="caption-1-semi text-neutral-5 flex flex-1 justify-center gap-3">
               <img src={ticket} alt="ticket-icon" />
               <p>30% off storewide — Limited time!</p>
-              <Link to={"/shop"}>
+              <Link className="hidden md:inline" to={"/shop"}>
                 <button className="button-xs text-secondary-blue border-b-secondary-blue border-b border-solid">
                   Shop Now →
                 </button>
               </Link>
+              <button
+                className="mx-5 inline cursor-pointer md:hidden"
+                onClick={closeAlert}
+              >
+                <img src={closeIcon} alt="close-icon" />
+              </button>
             </div>
-            <button className="cursor-pointer" onClick={closeAlert}>
+            <button
+              className="hidden cursor-pointer md:inline"
+              onClick={closeAlert}
+            >
               <img src={closeIcon} alt="close-icon" />
             </button>
           </div>

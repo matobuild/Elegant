@@ -11,11 +11,33 @@ const NavBar = () => {
   const { isLogin } = accountStore()
 
   return (
-    <nav className=" flex justify-between px-40 py-4">
-      <NavLink to="/">
+    <nav className=" flex justify-between px-40 py-4 ">
+      <div className="flex gap-1 md:hidden">
+        {/* <!-- Hamburger Icon --> */}
+        <button className="text-primary-1 focus:outline-none">
+          <svg
+            className="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+        <NavLink to="/">
+          <img src={logo} alt="logo" />
+        </NavLink>
+      </div>
+      <NavLink className="hidden md:inline-block" to="/">
         <img src={logo} alt="logo" />
       </NavLink>
-      <div className="button-xs text-neutral-4 flex gap-10 ">
+      <div className="button-xs text-neutral-4 hidden gap-10 md:flex">
         <NavLink
           className={({ isActive }) => (isActive ? "text-neutral-7" : "")}
           to="/"
@@ -42,13 +64,13 @@ const NavBar = () => {
         </NavLink>
       </div>
       <div className="flex gap-4">
-        <img src={searchIcon} alt="search-icon" />
+        <img className="hidden" src={searchIcon} alt="search-icon" />
         {isLogin ? (
           <Link to="/account">
             <img src={userIcon} alt="user-icon" />
           </Link>
         ) : (
-          <Link to="/signIn">
+          <Link className="hidden md:inline-block" to="/signIn">
             <img src={userIcon} alt="login-icon" />
           </Link>
         )}
