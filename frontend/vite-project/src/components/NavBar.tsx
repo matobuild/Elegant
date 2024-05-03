@@ -11,7 +11,7 @@ const NavBar = () => {
   const { isLogin } = accountStore()
 
   return (
-    <nav className=" flex justify-between px-40 py-4 ">
+    <nav className=" flex justify-between px-8 py-4 md:px-40">
       <div className="flex gap-1 md:hidden">
         {/* <!-- Hamburger Icon --> */}
         <button className="text-primary-1 focus:outline-none">

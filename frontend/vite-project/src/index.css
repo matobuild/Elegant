@@ -75,6 +75,132 @@
   }
 }
 
+@layer components {
+  .hero-a {
+    @apply hero;
+  }
+  .hairline-1-a {
+    @apply hairline-1;
+  }
+  .hairline-2-a {
+    @apply hairline-2;
+  }
+  .heading-1-a {
+    @apply heading-1;
+  }
+  .heading-2-a {
+    @apply heading-2;
+  }
+  .heading-3-a {
+    @apply heading-3;
+  }
+  .heading-4-a {
+    @apply heading-4;
+  }
+  .heading-5-a {
+    @apply heading-5;
+  }
+  .heading-6-a {
+    @apply heading-6;
+  }
+  .heading-7-a {
+    @apply heading-7;
+  }
+  .text-26px-regular-a {
+    @apply text-26px-regular;
+  }
+  .text-26px-semibold-a {
+    @apply text-26px-semibold;
+  }
+  .text-26px-bold-a {
+    @apply text-26px-bold;
+  }
+  .text-22px-regular-a {
+    @apply text-22px-regular;
+  }
+  .text-22px-semibold-a {
+    @apply text-22px-semibold;
+  }
+  .text-22px-bold-a {
+    @apply text-22px-bold;
+  }
+  .body-1-a {
+    @apply body-1;
+  }
+  .body-1-semi-a {
+    @apply body-1-semi;
+  }
+  .body-1-bold-a {
+    @apply body-1-bold;
+  }
+  .text-16px-semibold-a {
+    @apply text-16px-semibold;
+  }
+  .text-16px-regular-a {
+    @apply text-16px-regular;
+  }
+  .text-18px-regular-a {
+    @apply text-18px-regular;
+  }
+  .text-18px-semibold-a {
+    @apply text-18px-semibold;
+  }
+  .text-18px-bold-a {
+    @apply text-18px-bold;
+  }
+  .text-18px-bold-18px-line-height-a {
+    @apply text-18px-bold-18px-line-height;
+  }
+  .body-2-a {
+    @apply body-2;
+  }
+  .body-2-semi-a {
+    @apply body-2-semi;
+  }
+  .body-2-bold-a {
+    @apply body-2-bold;
+  }
+  .caption-a {
+    @apply caption;
+  }
+  .caption-1-a {
+    @apply caption-1;
+  }
+  .caption-1-semi-a {
+    @apply caption-1-semi;
+  }
+  .caption-1-bold-a {
+    @apply caption-1-bold;
+  }
+  .caption-2-a {
+    @apply caption-2;
+  }
+  .caption-2-semi-a {
+    @apply caption-2-semi;
+  }
+  .caption-2-bold-a {
+    @apply caption-2-bold;
+  }
+  .button-xl-a {
+    @apply button-xl;
+  }
+  .button-l-a {
+    @apply button-l;
+  }
+  .button-m-a {
+    @apply button-m;
+  }
+  .button-s-a {
+    @apply button-s;
+  }
+  .button-xs-a {
+    @apply button-xs;
+  }
+  .text-with-shadow-a {
+    @apply text-with-shadow;
+  }
+}
+
 /* Heading */
 .hero {
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
