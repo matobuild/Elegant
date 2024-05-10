@@ -34,19 +34,19 @@ const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
   }, [])
 
   return (
-    <section className="pt-12">
-      <header className="px-40">
+    <section className="pt-8 md:pt-12">
+      <header className="px-8 md:px-40">
         <div className="flex items-end justify-between">
-          <h4 className="heading-4 ">
+          <h4 className="md:heading-4-a heading-5">
             {title1}
             <br /> {title2}
           </h4>
-          <Link to="/shop">
+          <Link className="hidden md:inline" to="/shop">
             <RightArrowLink name="More Products" />
           </Link>
         </div>
       </header>
-      <div className=" flex flex-nowrap gap-6 overflow-x-auto py-12 pl-40">
+      <div className=" flex flex-nowrap gap-6 overflow-x-auto py-10 pl-8 md:py-12 md:pl-40">
         {productsList.map((product) => {
           return (
             <div
@@ -67,6 +67,9 @@ const ProductSection = ({ title1, title2 }: ProductSectionProps) => {
           )
         })}
       </div>
+      <Link className="px-8 md:hidden " to="/shop">
+        <RightArrowLink name="More Products" />
+      </Link>
     </section>
   )
 }

@@ -9,7 +9,9 @@ type ValuesSectionProps = {
 }
 const ValuesSection = ({ background }: ValuesSectionProps) => {
   return (
-    <section className={`flex content-between gap-6 px-40 py-12 ${background}`}>
+    <section
+      className={`grid grid-cols-2 gap-2 gap-y-6 p-8 md:flex md:content-between md:gap-6 md:px-40 md:py-12 ${background}`}
+    >
       <Card
         img={shippingIcon}
         imgAlt="shipping-icon"
