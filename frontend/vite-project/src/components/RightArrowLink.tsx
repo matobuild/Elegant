@@ -4,7 +4,7 @@ type RightArrowLinkProps = {
 
 const RightArrowLink = ({ name }: RightArrowLinkProps) => {
   return (
-    <button className="button-s text-neutral-7 border-b-neutral-7 hover:border-neutral-4 hover:text-neutral-4 border-b border-solid">
+    <button className="md:button-s-a button-xs text-neutral-7 border-b-neutral-7 hover:border-neutral-4 hover:text-neutral-4 border-b border-solid">
       <div className="flex items-center gap-1">
         {name}
         <svg

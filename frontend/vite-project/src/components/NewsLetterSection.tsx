@@ -2,16 +2,16 @@ import { getImageUrl } from "../utils/utils"
 
 export const NewsLetterSection = () => {
   return (
-    <section className="relative">
+    <section className="relative h-[360px] bg-[#F2F4F6] px-8 py-[95px] md:h-fit md:p-0">
       <img
-        className="w-screen"
+        className="hidden w-screen md:inline"
         src={getImageUrl("Home/newsletter-bg.png")}
         alt="newsletter-bg"
       />
       <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col gap-8">
         <div className="text-neutral-7 flex flex-col items-center gap-2">
-          <h4 className="heading-4 ">Join Our Newsletter</h4>
-          <p className="text-18px-regular">
+          <h4 className="md:heading-4-a heading-6">Join Our Newsletter</h4>
+          <p className="md:text-18px-regular-a caption-1 text-center">
             Sign up for deals, new products and promotions
           </p>
         </div>
