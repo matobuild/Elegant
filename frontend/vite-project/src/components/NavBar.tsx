@@ -62,7 +62,7 @@ const NavBar = () => {
         )}
 
         <Link to="/cart">
-          <div className="g-[5px] flex items-center">
+          <div className="flex items-center gap-[5px]">
             <img src={shoppingBagIcon} alt="shopping-icon" />
             <div className=" bg-neutral-7 flex h-5 w-5 items-center justify-center rounded-full ">
               <p className=" text-white">{checkoutCart.length}</p>

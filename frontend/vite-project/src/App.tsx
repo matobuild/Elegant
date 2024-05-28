@@ -104,5 +104,6 @@ export default App
 // todo: make it responsive
 // todo: if user is login show the Avatar using shadcn
 // add address to to the user in my account
+// todo:fix the heart count in navsheet and link where it goes to.
 
 //todo need to use interceptors on the config axios file and add token here as well.and show model error if it exist.

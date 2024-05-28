@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="caption-1 text-neutral-1 flex flex-col gap-10 text-center md:flex-row">
           <Link to={"/"}>Home</Link>
           <Link to={"/shop"}>Shop</Link>
-          <Link to={"/shop"}>Product</Link>
+          <Link to={"/product"}>Product</Link>
           <Link to={"/shop"}>Blog</Link>
           <Link to={"/contact-us"}>Contact Us</Link>
         </div>
