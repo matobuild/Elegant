@@ -2,7 +2,11 @@ const SliderSection = () => {
   return (
     <section className=" px-8 pb-10 md:px-40 md:pb-10">
       <div className="flex flex-col gap-8 ">
-        <img src="../../assets/Home/header-image.png" alt="Header-Image" />
+        <img
+          className="h-[308px] w-full object-cover md:h-auto"
+          src="../../assets/Home/header-image.png"
+          alt="Header-Image"
+        />
         <div className="flex flex-col justify-between gap-4 md:flex-row">
           <div className="text-neutral-7 md:heading-2-a heading-4">
             <h1>

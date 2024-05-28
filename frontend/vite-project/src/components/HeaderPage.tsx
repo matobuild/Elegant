@@ -3,9 +3,9 @@ import { getImageUrl } from "../utils/utils"
 
 const HeaderSection = () => {
   return (
-    <section className="relative px-40">
+    <section className="relative px-8 md:px-40 ">
       <img
-        className=" w-full "
+        className="h-[308px] w-full object-cover md:h-auto"
         src={getImageUrl("Shop/shop page Banner.png")}
         alt="shop-page-banner"
       />
@@ -35,8 +35,8 @@ const HeaderSection = () => {
             Shop
           </Link>
         </div>
-        <h3 className="heading-3 text-primary-1">Shop Page</h3>
-        <p className="body-1 text-center text-[#121212]">
+        <h3 className="md:heading-3-a heading-4  text-primary-1">Shop Page</h3>
+        <p className="md:body-1-a body-2 text-center text-[#121212]">
           Let’s design the place you always imagined.
         </p>
       </div>
