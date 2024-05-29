@@ -14,7 +14,7 @@ type ListboxOptionsProps = {
 
 function ListboxOptions({ selected, list, setSelected }: ListboxOptionsProps) {
   return (
-    <div className=" border-neutral-4 body-2-semi w-[262px] rounded-lg border-2 border-solid p-2">
+    <div className=" border-neutral-4 body-2-semi w-ful rounded-lg border-2 border-solid p-2 md:w-[262px]">
       <Listbox value={selected} onChange={setSelected}>
         <Listbox.Button className="flex w-full cursor-default items-center justify-between ">
           <div>{selected?.name}</div>
@@ -48,8 +48,8 @@ function ListboxOptions({ selected, list, setSelected }: ListboxOptionsProps) {
                 key={item.id}
                 value={item}
                 className={({ active }) =>
-                  `cursor-default select-none ${
-                    active ? " bg-neutral-2" : " body-2"
+                  `h-[42px] cursor-default select-none align-middle md:h-auto ${
+                    active ? " bg-neutral-2" : " body-2 "
                   }`
                 }
               >

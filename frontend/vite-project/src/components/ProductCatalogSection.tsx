@@ -168,10 +168,10 @@ const ProductCatalogSection = () => {
   // console.log("latest--->", selectedCategory, categoriesBoxList)
 
   return (
-    <section className=" px-40 pb-[100px] pt-[60px]">
+    <section className=" p-8 md:px-40 md:pb-[100px] md:pt-[60px]">
       <div className="flex flex-col gap-10">
-        <div className="flex justify-between">
-          <div className="flex gap-6">
+        <div className="flex flex-col justify-between gap-6 md:flex-row">
+          <div className="flex flex-col gap-6 md:flex-row">
             <div className="flex flex-col gap-2">
               <p className=" text-neutral-4 body-2-semi">CATEGORIES</p>
               <div>
@@ -210,8 +210,8 @@ const ProductCatalogSection = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-20">
-          <div className="grid grid-cols-4 grid-rows-3 gap-6">
+        <div className="flex flex-col gap-8 md:gap-20">
+          <div className="grid grid-cols-2 grid-rows-3 gap-6 md:grid-cols-4">
             {productsList.map((product) => {
               return (
                 <ProductCard

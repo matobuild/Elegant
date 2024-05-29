@@ -9,7 +9,7 @@ const HeaderSection = () => {
         src={getImageUrl("Shop/shop page Banner.png")}
         alt="shop-page-banner"
       />
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-center gap-6">
+      <div className="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 transform flex-col items-center gap-6">
         <div className="button-xs flex gap-4 ">
           <div className="flex items-center  gap-1">
             <Link className="text-[#605F5F]" to={"/"}>

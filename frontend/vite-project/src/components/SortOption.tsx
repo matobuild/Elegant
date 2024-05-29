@@ -44,7 +44,7 @@ function SortOption({ selected, list, setSelected }: SortOptionProps) {
                 key={option.name}
                 value={option}
                 className={({ active }) =>
-                  `cursor-default select-none ${
+                  `h-[42px] cursor-default select-none md:h-auto ${
                     active ? " bg-neutral-2 " : " body-2"
                   }`
                 }
