@@ -17,7 +17,7 @@ const CartStatus = ({
 }: CartStatusProps) => {
   return (
     <div
-      className={` pb-[26px] ${borderBottom ? "border-neutral-7 border-b-2 border-solid" : ""} ${borderColor ? borderColor : "border-neutral-7"}`}
+      className={`pb-[26px] ${borderBottom ? "border-neutral-7 border-b-2 border-solid" : ""} ${borderColor ? borderColor : "border-neutral-7"}`}
     >
       <div className="flex w-64 items-center gap-[17px]">
         <div

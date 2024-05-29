@@ -179,7 +179,7 @@ const ProductDetailSection = ({
           </div>
           <div className=" flex flex-col items-start gap-4 py-6 ">
             <div className="flex w-full gap-6">
-              <div className="w-1/4">
+              <div className="w-1/3 md:w-1/4">
                 <QuantityButton quantity={quantity} setQuantity={setQuantity} />
               </div>
               <div className="w-3/4">

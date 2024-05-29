@@ -9,7 +9,7 @@ const CartTable = () => {
       <div className=" border-neutral-4 border-b border-solid pb-6">
         <div className="body-2-semi flex text-[#121212]">
           <div className="w-1/2">Product</div>
-          <div className=" flex w-1/2 justify-between">
+          <div className=" hidden w-1/2 justify-between md:flex">
             <h2>Quantity</h2>
             <h2>Price</h2>
             <h2>Subtotal</h2>
