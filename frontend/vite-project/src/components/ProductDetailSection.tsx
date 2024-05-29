@@ -31,8 +31,8 @@ const ProductDetailSection = ({
   return (
     <section className="border-neutral-2 border-t border-solid pb-10">
       <div className="py-4">
-        <div className="px-40">
-          <div className=" button-xs flex items-center gap-4">
+        <div className="px-8 md:px-40">
+          <div className=" caption-2 md:button-xs-a flex items-center gap-4">
             <Link to="/">
               <button className=" flex items-center gap-1 text-[#605F5F]">
                 <span>Home</span>
@@ -104,7 +104,7 @@ const ProductDetailSection = ({
           </div>
         </div>
       </div>
-      <div className="flex w-full gap-[63px] px-40">
+      <div className="flex w-full flex-col gap-8 px-8 md:flex-row md:gap-[63px] md:px-40">
         <div className="flex h-full w-full flex-col gap-6">
           <div className="relative w-full ">
             <img
