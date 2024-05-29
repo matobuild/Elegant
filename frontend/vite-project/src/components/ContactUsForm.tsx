@@ -45,7 +45,7 @@ const ContactUsForm = () => {
       />
       <div className="flex flex-grow flex-col gap-3">
         <label className=" hairline-2 text-neutral-4 uppercase ">Message</label>
-        <div className=" body-2 flex h-10 flex-grow items-center rounded-md border border-solid border-[#CBCBCB] bg-[#FFF] px-4 py-4 focus-within:border-transparent">
+        <div className=" body-2 flex h-28 flex-grow items-center rounded-md border border-solid border-[#CBCBCB] bg-[#FFF] px-4 py-4 focus-within:border-transparent md:h-10">
           <textarea
             placeholder="Your message"
             className="h-full w-full grow px-1 focus:outline-none"
@@ -56,7 +56,7 @@ const ContactUsForm = () => {
           {errors.message && <span>{errors.message.message}</span>}
         </div>
       </div>
-      <button className=" bg-neutral-7 button-s button-s w-1/3 items-center justify-center rounded-lg px-10 py-[6px] text-[#FFF]">
+      <button className=" bg-neutral-7 button-s button-s w-full items-center justify-center rounded-lg px-10 py-[6px] text-[#FFF] md:w-1/3">
         Send Message
       </button>
     </form>

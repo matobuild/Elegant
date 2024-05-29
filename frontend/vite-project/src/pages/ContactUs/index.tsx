@@ -9,7 +9,7 @@ import ContactUsForm from "../../components/ContactUsForm"
 const ContactUsPage = () => {
   return (
     <section>
-      <div className=" flex flex-col gap-12 px-40 pb-20 pt-4">
+      <div className=" flex flex-col gap-12 px-8 pb-20 pt-4 md:px-40">
         <div className="flex flex-col gap-10">
           <div className=" button-xs flex items-center gap-4">
             <Link to="/">
@@ -41,8 +41,8 @@ const ContactUsPage = () => {
             </Link>
           </div>
           <div className="w-full">
-            <div className="></div text-neutral-7 flex w-[824px] flex-col gap-6">
-              <h3 className=" heading-3 ">
+            <div className=" text-neutral-7 flex flex-col gap-6 md:w-[824px]">
+              <h3 className=" md:heading-3-a heading-6">
                 We believe in sustainable decor. We’re passionate about life at
                 home.
               </h3>
@@ -58,10 +58,10 @@ const ContactUsPage = () => {
         </div>
         <AboutUsSection />
         <div className=" flex flex-col gap-10">
-          <h4 className=" heading-4 self-stretch text-center text-[#121212]">
+          <h4 className=" md:heading-4-a heading-7 self-stretch text-center text-[#121212]">
             Contact Us
           </h4>
-          <div className="flex gap-6">
+          <div className="flex flex-col gap-6 md:flex-row">
             <ContactUsCard
               title="Address"
               text="+234 Hai Trieu, Ho Chi Minh City, 
@@ -82,13 +82,13 @@ const ContactUsPage = () => {
               imgAlt={"HomeIcon"}
             />
           </div>
-          <div className="flex gap-7">
-            <div className="w-1/2 ">
+          <div className="flex flex-col flex-col-reverse gap-7 md:flex-row">
+            <div className="w-full md:w-1/2">
               <ContactUsForm />
             </div>
-            <div className="relative w-1/2">
+            <div className="relative w-full md:w-1/2">
               <img
-                className="w-full"
+                className="h-[311px] w-full object-cover md:h-full"
                 src={getImageUrl("ContactUs/map.png")}
                 alt=""
               />
