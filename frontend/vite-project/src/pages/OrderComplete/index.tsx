@@ -6,35 +6,47 @@ import { Link } from "react-router-dom"
 const OrderCompletePage = () => {
   const { ordersList } = useGetOrders()
   return (
-    <section className=" px-[304px] py-20">
-      <div className="flex flex-col items-center gap-20">
-        <div className="flex w-full flex-col items-center gap-10">
-          <h1 className="heading-3 text-primary-1 ">Complete!</h1>
+    <section className="px-8 py-5 md:py-20 xl:px-[304px]">
+      <div className="flex flex-col items-center gap-10 md:gap-20">
+        <div className="flex w-full flex-col items-center gap-6 md:gap-10">
+          <h1 className="md:heading-3-a heading-4 text-primary-1 ">
+            Complete!
+          </h1>
           <div className="flex gap-8">
-            <CartStatus
-              title={"Shopping cart"}
-              borderBottom={true}
-              textColor=" text-secondary-green"
-              circleColor="bg-secondary-green"
-              borderColor="border-secondary-green"
-            />
-            <CartStatus
-              title={"Checkout details"}
-              borderBottom={true}
-              textColor=" text-secondary-green"
-              circleColor="bg-secondary-green"
-              borderColor="border-secondary-green"
-            />
-            <CartStatus title={"Order complete"} step={3} borderBottom={true} />
+            <div className="hidden md:block">
+              <CartStatus
+                title={"Shopping cart"}
+                borderBottom={true}
+                textColor=" text-secondary-green"
+                circleColor="bg-secondary-green"
+                borderColor="border-secondary-green"
+              />
+            </div>
+            <div className="hidden md:block">
+              <CartStatus
+                title={"Checkout details"}
+                borderBottom={true}
+                textColor=" text-secondary-green"
+                circleColor="bg-secondary-green"
+                borderColor="border-secondary-green"
+              />
+            </div>
+            <div>
+              <CartStatus
+                title={"Order complete"}
+                step={3}
+                borderBottom={true}
+              />
+            </div>
           </div>
         </div>
-        <div className=" w-3/4 rounded-lg bg-[#FFF] px-[95px] py-20 shadow-[0_32px_48px_-25px_rgba(0,0,0,0.3)]">
+        <div className="w-full rounded-lg bg-[#FFF] p-4 shadow-[0_32px_48px_-25px_rgba(0,0,0,0.3)] md:w-3/4 md:px-[95px] md:py-20">
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-4">
-              <h6 className=" heading-6 text-neutral-4 text-center">
+              <h6 className=" md:heading-6-a body-2 text-neutral-4 text-left md:text-center">
                 Thank you! 🎉
               </h6>
-              <h4 className=" heading-4 text-center text-[#23262F]">
+              <h4 className=" heading-5 md:heading-4-a text-left text-[#23262F] md:text-center">
                 Your order has been received
               </h4>
             </div>
@@ -57,7 +69,7 @@ const OrderCompletePage = () => {
               })}
             </div>
             <div className=" flex justify-center ">
-              <div className=" caption-1-semi flex w-1/2 justify-between">
+              <div className=" caption-1-semi flex w-full justify-between md:w-1/2">
                 <div className="  text-neutral-4 flex flex-col gap-5">
                   <p>Order code:</p>
                   <p>Date:</p>
@@ -72,9 +84,9 @@ const OrderCompletePage = () => {
                 </div>
               </div>
             </div>
-            <div className="w1/3 flex justify-center">
-              <Link to="/account?state=2">
-                <button className=" bg-neutral-7 button-s rounded-[80px] px-10 py-3 text-center text-[#FFF]">
+            <div className="md:w1/3 flex w-full justify-center">
+              <Link to="/account?state=2" className="w-full md:w-auto">
+                <button className=" bg-neutral-7 button-s w-full rounded-[80px] px-10 py-3 text-center text-[#FFF] md:w-auto">
                   Purchase history
                 </button>
               </Link>

@@ -8,22 +8,32 @@ const CartPage = () => {
       <div className="flex flex-col">
         <div className="flex w-full flex-col items-center gap-2 md:gap-10">
           <h1 className="md:heading-3-a heading-4 text-primary-1 ">Cart</h1>
-          <div className="flex flex-col gap-8 md:flex-row">
-            <CartStatus title={"Shopping cart"} step={1} borderBottom={true} />
-            <CartStatus
-              title={"Checkout details"}
-              step={2}
-              textColor={"text-[#B1B5C3]"}
-              circleColor={"bg-[#B1B5C3]"}
-            />
-            <CartStatus
-              title={"Order complete"}
-              step={3}
-              textColor={"text-[#B1B5C3]"}
-              circleColor={"bg-[#B1B5C3]"}
-            />
+          <div className="flex flex-row gap-8">
+            <div>
+              <CartStatus
+                title={"Shopping cart"}
+                step={1}
+                borderBottom={true}
+              />
+            </div>
+            <div className="hidden md:block">
+              <CartStatus
+                title={"Checkout details"}
+                step={2}
+                textColor={"text-[#B1B5C3]"}
+                circleColor={"bg-[#B1B5C3]"}
+              />
+            </div>
+            <div className="hidden md:block">
+              <CartStatus
+                title={"Order complete"}
+                step={3}
+                textColor={"text-[#B1B5C3]"}
+                circleColor={"bg-[#B1B5C3]"}
+              />
+            </div>
           </div>
-          <div className=" flex w-full flex-col gap-16 py-1 md:flex-row md:py-20">
+          <div className=" flex w-full flex-col gap-16 py-10 md:flex-row md:py-20">
             <div className=" w-full md:w-2/3">
               <CartTable />
             </div>

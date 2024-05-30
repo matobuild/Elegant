@@ -108,9 +108,11 @@ const CheckoutForm = () => {
 
   return (
     <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-      <div className=" border-neutral-4 flex flex-col gap-6 rounded border border-solid px-6 py-10">
-        <h1 className=" heading-7 text-primary-1">Contact Information</h1>
-        <div className="flex gap-6">
+      <div className=" border-neutral-4 flex flex-col gap-6 rounded border border-solid px-4 py-6 md:px-6 md:py-10">
+        <h1 className=" md:heading-7-a body-2-semi  text-primary-1">
+          Contact Information
+        </h1>
+        <div className="flex gap-2 md:gap-6">
           <div className=" w-1/2">
             <InputBox
               title={"First Name"}
@@ -157,8 +159,10 @@ const CheckoutForm = () => {
           errors={errors["email"]?.message}
         />
       </div>
-      <div className=" border-neutral-4 flex flex-col gap-6 rounded border border-solid px-6 py-10">
-        <h1 className=" heading-7 text-primary-1">Shipping Address</h1>
+      <div className=" border-neutral-4 flex flex-col gap-6 rounded border border-solid px-4 py-6 md:px-6 md:py-10">
+        <h1 className=" md:heading-7-a body-2-semi  text-primary-1">
+          Shipping Address
+        </h1>
         <InputBox
           title={"Street Address"}
           placeholder={"Street Address"}
@@ -190,7 +194,7 @@ const CheckoutForm = () => {
           }}
           errors={errors["city"]?.message}
         />
-        <div className="flex gap-6">
+        <div className="flex gap-2 md:gap-6">
           <div className=" w-1/2">
             <InputBox
               title={"State"}
@@ -217,7 +221,7 @@ const CheckoutForm = () => {
           </div>
         </div>
       </div>
-      <div className=" border-neutral-4 flex flex-col gap-6 rounded border border-solid px-6 py-10">
+      <div className=" border-neutral-4 flex flex-col gap-6 rounded border border-solid px-4 py-6 md:px-6 md:py-10">
         <h1 className=" heading-7 text-primary-1">Payment method</h1>
         <MyRadioGroup plan={plan} setPlan={setPlan} plans={plans} />
         <InputBox

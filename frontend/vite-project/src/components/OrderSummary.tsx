@@ -8,7 +8,7 @@ const OrderSummary = () => {
   console.log("checkoutcart--->", checkoutCart)
 
   return (
-    <div className=" border-neutral-4 flex flex-col gap-4 rounded-md border border-solid bg-[#FFF] px-6 py-4">
+    <div className=" border-neutral-4 flex flex-col gap-4 rounded-md border border-solid bg-[#FFF] px-4 py-6 md:px-6 md:py-4">
       <h6 className=" heading-6 self-stretch text-[#121212]"> Order Summary</h6>
       <div className="flex flex-col gap-6">
         {checkoutCart.map((item) => (
