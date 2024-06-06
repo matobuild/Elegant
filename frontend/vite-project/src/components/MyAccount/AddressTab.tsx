@@ -1,10 +1,10 @@
 const AddressTab = () => {
   return (
-    <div className=" px-[72px]">
+    <div className=" sm:px-[72px]">
       <div className=" flex flex-col gap-[19px]">
         <p className="text-primary-1 body-1-semi">Address</p>
         <div>
-          <div className=" border-neutral-4 w-5/12 rounded-lg border border-solid p-4">
+          <div className=" border-neutral-4 w-full rounded-lg border border-solid p-4 sm:w-5/12">
             <div className="flex flex-col gap-2">
               <div className=" flex justify-between">
                 <p className="text-primary-1 body-2-semi">Billing Address</p>

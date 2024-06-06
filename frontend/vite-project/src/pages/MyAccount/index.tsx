@@ -17,21 +17,21 @@ const MyAccountPage = () => {
   )
 
   return (
-    <section className=" flex flex-col px-40 pb-20">
+    <section className=" flex flex-col px-8 pb-20 sm:px-40">
       <Tab.Group
         vertical
         selectedIndex={selectedIndex}
         onChange={setSelectedIndex}
       >
-        <h3 className=" text-primary-1 heading-3 py-20 text-center">
+        <h3 className=" text-primary-1 sm:heading-3-a heading-4 py-10 text-center sm:py-20">
           My Account
         </h3>
-        <div className="flex gap-[7px]">
-          <div className=" w-2/12">
+        <div className="flex flex-col gap-10 sm:flex-row sm:gap-[7px]">
+          <div className=" w-full sm:w-2/12">
             <AccountMenu />
           </div>
 
-          <div className="w-10/12">
+          <div className="w-full sm:w-10/12">
             <Tab.Panel>
               <AccountTab />
             </Tab.Panel>

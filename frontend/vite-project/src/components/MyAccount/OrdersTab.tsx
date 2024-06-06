@@ -6,7 +6,7 @@ const OrdersTab = () => {
   console.log(ordersList)
 
   return (
-    <div className=" px-[72px]">
+    <div className=" sm:px-[72px]">
       <div className="flex flex-col gap-10">
         <p className="text-primary-1 body-1-semi">Orders History</p>
         <div>

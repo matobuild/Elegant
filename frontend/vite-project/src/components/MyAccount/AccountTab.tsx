@@ -23,7 +23,7 @@ const AccountDetails = () => {
 
   return (
     <form
-      className=" flex flex-col gap-10 px-[72px]"
+      className=" flex flex-col gap-10 sm:px-[72px]"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex flex-col gap-6">
@@ -91,7 +91,7 @@ const AccountDetails = () => {
           }}
           errors={errors["repeatNewPassword"]?.message}
         />
-        <button className="bg-neutral-7 button-s button-s w-3/12  items-center justify-center rounded-lg px-10 py-[12px] text-[#FFF]">
+        <button className="bg-neutral-7 button-s button-s w-full items-center  justify-center rounded-lg px-10 py-[12px] text-[#FFF] sm:w-3/12">
           Save changes
         </button>
       </div>
