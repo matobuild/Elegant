@@ -9,10 +9,20 @@ import SortOption from "./SortOption"
 import ToolbarViewSelector from "./ToolbarViewSelector"
 import { USDollar } from "../utils/utils"
 import { useSearchParams } from "react-router-dom"
+import useWishListCartList from "@/customHooks/useWishListCartList"
 
 const ProductCatalogSection = () => {
   const [searchParams] = useSearchParams()
   console.log(Number(searchParams.get("categoryId")))
+
+  const { handleWishItem } = useWishListCartList()
+
+  const handleAddOrRemoveWishList = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    id: number,
+  ) => {
+    handleWishItem(e, id)
+  }
 
   const [productsList, setProductsList] = useState<IProduct[]>([])
 
@@ -223,6 +233,7 @@ const ProductCatalogSection = () => {
                   stars={product.total_stars_review}
                   finalPrice={product.final_price}
                   id={product.product_id}
+                  onAddOrRemove={handleAddOrRemoveWishList}
                 />
               )
             })}
