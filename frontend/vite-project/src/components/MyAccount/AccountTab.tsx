@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form"
+import { useForm, SubmitHandler } from "react-hook-form"
 import InputBox from "../InputBox"
 
 interface FormData {

@@ -5,7 +5,6 @@ import userIcon from "../../assets/icons/outline-user-circle.svg"
 import shoppingBagIcon from "../../assets/icons/outline-shopping-bag.svg"
 import useGetCheckoutCartList from "../customHooks/useGetCheckoutCartList"
 import { accountStore } from "@/store/accountStore"
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet"
 import NavSheet from "./NavSheet"
 
 const NavBar = () => {

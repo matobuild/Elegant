@@ -10,7 +10,7 @@ type IGetOrdersResponse = {
 export const OrdersService = {
   getOrders: async (): Promise<IGetOrdersResponse> => {
     try {
-      const response = await axios.get("/api/v1/orders", config)
+      const response = await axios.get("/api/v1/orders")
       return handleResponse.success(response)
     } catch (error: any) {
       console.error("the error is ------..>", error)

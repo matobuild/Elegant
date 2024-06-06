@@ -11,7 +11,7 @@ export const USDollar = new Intl.NumberFormat("en-US", {
   currency: "USD",
 })
 
-export function extractDate(timestamp) {
+export function extractDate(timestamp: string) {
   const date = new Date(timestamp)
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, "0") // Months are 0-based

@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react"
+import { Fragment } from "react"
 import { Listbox, Transition } from "@headlessui/react"
 
 export type listbox = {
