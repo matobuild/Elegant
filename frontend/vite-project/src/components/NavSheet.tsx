@@ -48,7 +48,7 @@ function NavSheet() {
                   Shop
                 </div>
               </Link>
-              <Link to={"/product"}>
+              <Link to={"/product/Recycled%20Cotton%20Tuna"} state={{ id: 1 }}>
                 <div className=" border-b border-solid border-b-[##E8ECEF] pb-2 ">
                   Product
                 </div>

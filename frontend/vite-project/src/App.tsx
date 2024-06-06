@@ -101,7 +101,6 @@ export default App
 // todo need to check the rules for form before submitting and make sure it is the correct type
 // todo: make sure the total in the backend include the shipping fees
 // todo: be able to search item
-// todo: make it responsive
 // todo: if user is login show the Avatar using shadcn
 // add address to to the user in my account
 // todo:fix the heart count in navsheet and link where it goes to.

@@ -38,7 +38,9 @@ const NavBar = () => {
         </NavLink>
         <NavLink
           className={({ isActive }) => (isActive ? "text-neutral-7" : "")}
-          to="/product"
+          // to="/product"
+          to={"/product/Recycled%20Cotton%20Tuna"}
+          state={{ id: 1 }}
         >
           Product
         </NavLink>
