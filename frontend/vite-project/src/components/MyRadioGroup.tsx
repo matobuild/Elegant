@@ -12,7 +12,12 @@ export type choice = {
 type MyRadioGroupProps = {
   plans: choice[]
   plan: choice
-  setPlan: (value: choice) => void
+  setPlan: (plan: {
+    id: number
+    name: string
+    price: string
+    amount: number
+  }) => void
 }
 
 function MyRadioGroup({ plan, setPlan, plans }: MyRadioGroupProps) {
